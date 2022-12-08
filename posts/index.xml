@@ -1,0 +1,16 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>All Posts - Jerfson Bruno</title>
+        <link>https://jerfsonbruno.github.io/posts/</link>
+        <description>All Posts | Jerfson Bruno</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 08 Dec 2022 20:36:33 -0300</lastBuildDate><atom:link href="https://jerfsonbruno.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Primeiro Post</title>
+    <link>https://jerfsonbruno.github.io/primeiro-post/</link>
+    <pubDate>Thu, 08 Dec 2022 20:36:33 -0300</pubDate>
+    <author>xxxx</author>
+    <guid>https://jerfsonbruno.github.io/primeiro-post/</guid>
+    <description><![CDATA[Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Titulo Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.]]></description>
+</item>
+</channel>
+</rss>
