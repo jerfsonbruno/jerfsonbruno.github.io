@@ -1,21 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  
-  <sitemap>
-    <loc>https://jerfsonbruno.github.io/en/sitemap.xml</loc>
-    
-      <lastmod>2022-12-08T20:56:46-03:00</lastmod>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>https://jerfsonbruno.github.io/zh-cn/sitemap.xml</loc>
-    
-  </sitemap>
-  
-  <sitemap>
-    <loc>https://jerfsonbruno.github.io/fr/sitemap.xml</loc>
-    
-  </sitemap>
-  
-</sitemapindex>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xhtml="http://www.w3.org/1999/xhtml"
+    ><url>
+            <loc>https://jerfsonbruno.github.io/primeiro-post/</loc><lastmod>2022-12-08T22:30:00-03:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://jerfsonbruno.github.io/</loc><lastmod>2022-12-08T22:30:00-03:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://jerfsonbruno.github.io/posts/</loc><lastmod>2022-12-08T22:30:00-03:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://jerfsonbruno.github.io/quatro-post/</loc><lastmod>2022-12-08T22:30:00-03:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://jerfsonbruno.github.io/terceiro-post/</loc><lastmod>2022-12-08T22:30:00-03:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://jerfsonbruno.github.io/segundo-post/</loc><lastmod>2022-12-08T22:30:00-03:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://jerfsonbruno.github.io/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://jerfsonbruno.github.io/tags/</loc><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>

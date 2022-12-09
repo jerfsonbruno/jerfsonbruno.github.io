@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Detecção de Câncer de Mama - LoveIt</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Detecção de Câncer de Mama" />
+<meta property="og:description" content="Introdução O principal objetivo deste texto é mostrar como é possível, utilizando apenas recursos gratuitos da internet, realizar um projeto de data science do início ao fim. Vamos treinar um algoritmo de classificação de dados baseado em uma técnica chamada Random Forest, capaz de realizar tanto tarefas de classificação quanto de regressão.
+Há diversas atividades que podem ser feitas com este conjunto de dados. O que farei aqui é tentar prever corretamente qual o tipo de câncer mamário (maligno ou benigno) dado algumas observações." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jerfsonbruno.github.io/quatro-post/" /><meta property="og:image" content="https://jerfsonbruno.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-13T21:45:46-03:00" />
+<meta property="article:modified_time" content="2022-12-08T22:30:00-03:00" /><meta property="og:site_name" content="LoveIt" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jerfsonbruno.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="Detecção de Câncer de Mama"/>
+<meta name="twitter:description" content="Introdução O principal objetivo deste texto é mostrar como é possível, utilizando apenas recursos gratuitos da internet, realizar um projeto de data science do início ao fim. Vamos treinar um algoritmo de classificação de dados baseado em uma técnica chamada Random Forest, capaz de realizar tanto tarefas de classificação quanto de regressão.
+Há diversas atividades que podem ser feitas com este conjunto de dados. O que farei aqui é tentar prever corretamente qual o tipo de câncer mamário (maligno ou benigno) dado algumas observações."/>
+<meta name="application-name" content="ainda nao sei">
+<meta name="apple-mobile-web-app-title" content="ainda nao sei"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jerfsonbruno.github.io/quatro-post/" /><link rel="prev" href="https://jerfsonbruno.github.io/terceiro-post/" /><link rel="next" href="https://jerfsonbruno.github.io/primeiro-post/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Detecção de Câncer de Mama",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jerfsonbruno.github.io\/quatro-post\/"
+        },"image": ["https:\/\/jerfsonbruno.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  2757 ,
+        "url": "https:\/\/jerfsonbruno.github.io\/quatro-post\/","datePublished": "2020-02-13T21:45:46-03:00","dateModified": "2022-12-08T22:30:00-03:00","publisher": {
+            "@type": "Organization",
+            "name": "Jerfson Bruno","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/jerfsonbruno.github.io\/images\/avatar.png",
+                    "width":  420 ,
+                    "height":  420 
+                }},"author": {
+                "@type": "Person",
+                "name": "Jerfson Bruno"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="LoveIt"><span class="header-title-pre"><i class='fa-solid fa-house'></i></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="LoveIt"><span class="header-title-pre"><i class='fa-solid fa-house'></i></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Detecção de Câncer de Mama</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Jerfson Bruno</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="13-02-2020">13-02-2020</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2757 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;13 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#o-que-é-nódulo-na-mama">O que é Nódulo na mama?</a>
+      <ul>
+        <li><a href="#tipos">Tipos</a>
+          <ul>
+            <li><a href="#nódulos-sólidos">Nódulos sólidos</a></li>
+            <li><a href="#nódulos-císticos">Nódulos císticos</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#validação-cruzada">Validação Cruzada</a></li>
+    <li><a href="#ajuste-do-modelo-1">Ajuste do Modelo</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="introdução">Introdução</h1>
+<p>O principal objetivo deste texto é mostrar como é possível, utilizando
+apenas recursos gratuitos da internet, realizar um projeto de data
+science do início ao fim. Vamos treinar um algoritmo de classificação de
+dados baseado em uma técnica chamada Random Forest, capaz de realizar
+tanto tarefas de classificação quanto de regressão.</p>
+<p>Há diversas atividades que podem ser feitas com este conjunto de dados.
+O que farei aqui é tentar prever corretamente qual o tipo de câncer
+mamário (maligno ou benigno) dado algumas observações.</p>
+<h2 id="o-que-é-nódulo-na-mama">O que é Nódulo na mama?</h2>
+<p>Nódulo de mama é definido pela presença de tumoração (ou massa palpável)
+no tecido mamário, podendo ter conteúdo líquido (cístico) ou sólido. A
+condição pode ser descrita como uma massa, um inchaço ou um aumento na
+espessura do seio.</p>
+<p>O tecido da mama varia de consistência, com a parte superior externa do
+seio mais firme e as partes internas e inferiores um pouco mais suaves.
+Os seios podem se tornar mais sensíveis ou irregulares durante a
+menstruação e tendem a ficar menos densos à medida que envelhecem.</p>
+<h3 id="tipos">Tipos</h3>
+<p>Os nódulos mamários podem ser divididos em sólidos ou císticos.</p>
+<h4 id="nódulos-sólidos">Nódulos sólidos</h4>
+<p>Os nódulos sólidos podem ser benignos ou cancerígenos. Eles são
+avaliados de acordo com a forma e velocidade de crescimento. As lesões
+com margens irregulares ou espiculadas são as mais suspeitas para
+câncer. Já aquelas com margens regulares e crescimento lento geralmente
+são benignas.</p>
+<h4 id="nódulos-císticos">Nódulos císticos</h4>
+<p>Já os nódulos compostos exclusivamente por líquido sempre são benignos.
+Os cistos são causados por alterações normais do tecido mamário. A única
+situação preocupante neste caso é quando existe conteúdo sólido
+(vegetação) dentro de um cisto.</p>
+<h1 id="dados">Dados</h1>
+<p>O conjunto de dados trata-se sobre o estudo de câncer, onde ele
+discrimina nódulos mamários malignos e benignos. O conjunto de dados
+WBCD (Wisconsin Breast Cancer Diagnosis) é amplamente utilizado para
+este tipo de aplicação, porque tem um grande número de observações.</p>
+<p>Os recursos são calculados a partir de uma imagem digitalizada de um
+aspirado por agulha fina (PAAF) de uma massa mamária. Eles descrevem
+características dos núcleos celulares presentes na imagem.</p>
+<p>Variáveis do estudo:</p>
+<ul>
+<li>Número de identificação de código da amostra.</li>
+<li>Espessura do Clump (1 - 10)</li>
+<li>Uniformidade do Tamanho da Célula (1 - 10).</li>
+<li>Uniformidade da Forma da Célula (1 - 10)</li>
+<li>Adesão Marginal (1 - 10)</li>
+<li>Tamanho Único de Célula Epitelial (1 - 10)</li>
+<li>Núcleos Nus (1 - 10)</li>
+<li>Cromatina Branda (1 - 10)</li>
+<li>Nucleoli Normal (1 - 10)</li>
+<li>Mitoses (1 - 10)</li>
+<li>Classe (2 para benigno, 4 para maligno)</li>
+</ul>
+<p>Esse banco de dados está disponível no Repositório de Aprendizado de
+Máquina da UCI:
+<a href="https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29" class="uri"><a href="https://archive.ics.uci.edu/ml/datasets/Breast&#43;Cancer&#43;Wisconsin&#43;%28Diagnostic%29" target="_blank" rel="noopener noreffer ">https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29</a></a></p>
+<h1 id="análise-exploratória-dos-dados">Análise Exploratória dos Dados</h1>
+<p>Como não poderia deixar de ser, a primeira parte de um projeto de data
+science segue a mesma lógica de um projeto de análise estatística de
+dados. Precisamos fazer a análise exploratória a fim de entender o
+conjunto de dados com o qual estamos trabalhando.</p>
+<p>O conjunto de dados WBCD (Wisconsin Breast Cancer Diagnosis) será obtido
+diretamente da internet. Então é isto que faremos abaixo, baixando este
+conjunto diretamente do site do UCI Machine Learning Repository e
+processando-o na sequência para análise.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># definir o endereco do conjunto de dados e baixa-lo.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">url</span> <span class="o">&lt;-</span> <span class="s">&#34;https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/breast-cancer-wisconsin.data&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="n">bc</span>  <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">,</span> <span class="n">na.strings</span><span class="o">=</span><span class="s">&#34;?&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Nomeando cada coluna</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">bc</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&#34;id&#34;</span><span class="p">,</span> <span class="s">&#34;espessura&#34;</span><span class="p">,</span> <span class="s">&#34;unif_tamanho&#34;</span><span class="p">,</span> <span class="s">&#34;unif_forma&#34;</span><span class="p">,</span> <span class="s">&#34;aderencia&#34;</span><span class="p">,</span> <span class="s">&#34;size&#34;</span><span class="p">,</span> <span class="s">&#34;nucleo&#34;</span><span class="p">,</span> <span class="s">&#34;cromatina&#34;</span><span class="p">,</span> <span class="s">&#34;nucleoli&#34;</span><span class="p">,</span> <span class="s">&#34;mitose&#34;</span><span class="p">,</span> <span class="s">&#34;classificacao&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Removendo a coluna ID, ela não será importante para nosso objetivo.</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">bc</span> <span class="o">&lt;-</span> <span class="n">bc[</span><span class="p">,</span> <span class="m">-1</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Mudando a codificação de números para palavras (2 para benigno, 4 para maligno)  </span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">bc</span><span class="o">$</span><span class="n">classificacao</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">bc</span><span class="o">$</span><span class="n">classificacao</span><span class="o">==</span><span class="m">2</span><span class="p">,</span> <span class="s">&#34;benigno&#34;</span><span class="p">,</span> <span class="s">&#34;maligno&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">bc</span><span class="o">$</span><span class="n">classificacao</span> <span class="o">&lt;-</span><span class="nf">as.factor</span><span class="p">(</span><span class="n">bc</span><span class="o">$</span><span class="n">classificacao</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Feito todo o tratamento dos dados, será feito um ‘summary’ dos dados
+(Estatisticas descritivas basica).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Estatistica descritiva basica</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summary</span><span class="p">(</span><span class="n">bc</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>##    espessura       unif_tamanho      unif_forma       aderencia     
+##  Min.   : 1.000   Min.   : 1.000   Min.   : 1.000   Min.   : 1.000  
+##  1st Qu.: 2.000   1st Qu.: 1.000   1st Qu.: 1.000   1st Qu.: 1.000  
+##  Median : 4.000   Median : 1.000   Median : 1.000   Median : 1.000  
+##  Mean   : 4.418   Mean   : 3.134   Mean   : 3.207   Mean   : 2.807  
+##  3rd Qu.: 6.000   3rd Qu.: 5.000   3rd Qu.: 5.000   3rd Qu.: 4.000  
+##  Max.   :10.000   Max.   :10.000   Max.   :10.000   Max.   :10.000  
+##                                                                     
+##       size            nucleo         cromatina         nucleoli     
+##  Min.   : 1.000   Min.   : 1.000   Min.   : 1.000   Min.   : 1.000  
+##  1st Qu.: 2.000   1st Qu.: 1.000   1st Qu.: 2.000   1st Qu.: 1.000  
+##  Median : 2.000   Median : 1.000   Median : 3.000   Median : 1.000  
+##  Mean   : 3.216   Mean   : 3.545   Mean   : 3.438   Mean   : 2.867  
+##  3rd Qu.: 4.000   3rd Qu.: 6.000   3rd Qu.: 5.000   3rd Qu.: 4.000  
+##  Max.   :10.000   Max.   :10.000   Max.   :10.000   Max.   :10.000  
+##                   NA's   :16                                        
+##      mitose       classificacao
+##  Min.   : 1.000   benigno:458  
+##  1st Qu.: 1.000   maligno:241  
+##  Median : 1.000                
+##  Mean   : 1.589                
+##  3rd Qu.: 1.000                
+##  Max.   :10.000                
+##
+</code></pre>
+<p>Com isso, percebemos que temos um conjunto de dados formado por dez
+variáveis. Nove destas variáveis são quantitativas e uma é categórica.
+As variáveis são</p>
+<p>Quantitativas:</p>
+<ul>
+<li>espessura.</li>
+<li>unif_tamanho.</li>
+<li>unif_forma.</li>
+<li>aderencia.</li>
+<li>size.</li>
+<li>nucleo.</li>
+<li>cromatina.</li>
+<li>nucleoli.</li>
+<li>mitose.</li>
+</ul>
+<p>Categóricas</p>
+<ul>
+<li>classificacao.</li>
+</ul>
+<p>Há diversas atividades que podem ser feitas com este conjunto de dados.
+O que farei aqui é uma tarefa de classificação. Vou ajustar um modelo
+que vai prever o tipo de câncer mamário (maligno ou benigno) baseado nas
+variáveis quantitativas vistas anteriormente.</p>
+<p>É importante decidir qual o objetivo do projeto logo no seu começo.
+Assim, podemos direcionar nossas análises diretamente para este fim, sem
+perder tempo realizando atividades que não contribuem para o objetivo.</p>
+<p>Com o objetivo definido, vamos fazer algumas análises básicas. A
+primeira delas é verificar se existe correlação entre as variáveis.
+Perceba que vou retirar a coluna 10 e as observações que possuem dados
+faltantes (NA’s) desta análise. (Motivo: a coluna 10 não é uma variável
+quantitativa e dados faltantes podem influenciar na autocorrelação).</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>##
+## Attaching package: 'dplyr'
+
+## The following objects are masked from 'package:stats':
+##
+##     filter, lag
+
+## The following objects are masked from 'package:base':
+##
+##     intersect, setdiff, setequal, union
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">corrplot</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## corrplot 0.84 loaded
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">bc</span> <span class="o">&lt;-</span> <span class="n">bc[</span><span class="o">-</span><span class="nf">which</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">bc</span><span class="o">$</span><span class="n">nucleo</span><span class="p">)),</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">correlacao</span> <span class="o">&lt;-</span> <span class="nf">cor</span><span class="p">(</span><span class="n">bc[</span><span class="p">,</span> <span class="m">-10</span><span class="n">]</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s">&#34;spearman&#34;</span><span class="p">,</span> <span class="n">use</span><span class="o">=</span><span class="s">&#34;complete.obs&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">corrplot.mixed</span><span class="p">(</span><span class="n">correlacao</span><span class="p">,</span> <span class="n">upper</span> <span class="o">=</span> <span class="s">&#34;ellipse&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/cancer_files/figure-markdown_github/unnamed-chunk-3-1.png"
+        data-srcset="/cancer_files/figure-markdown_github/unnamed-chunk-3-1.png, /cancer_files/figure-markdown_github/unnamed-chunk-3-1.png 1.5x, /cancer_files/figure-markdown_github/unnamed-chunk-3-1.png 2x"
+        data-sizes="auto"
+        alt="/cancer_files/figure-markdown_github/unnamed-chunk-3-1.png"
+        title="/cancer_files/figure-markdown_github/unnamed-chunk-3-1.png" width="672" height="480" /></p>
+<p>Podemos perceber que existem valores razoáveis de correlação entre
+algumas das combinações de variáveis. Em particular, entre o comprimento
+e a largura da pétala. Podemos visualizar isto em um gráfico de
+dispersão:</p>
+<p>Podemos perceber que existem valores razoáveis de correlação entre
+algumas das combinações de variáveis. Em particular, entre o tamanho
+único de célula epitelial e a espessura do clump. Podemos visualizar
+isto em um gráfico de dispersão.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># gráfico de dispersão</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">unif_tamanho</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">unif_forma</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/cancer_files/figure-markdown_github/unnamed-chunk-4-1.png"
+        data-srcset="/cancer_files/figure-markdown_github/unnamed-chunk-4-1.png, /cancer_files/figure-markdown_github/unnamed-chunk-4-1.png 1.5x, /cancer_files/figure-markdown_github/unnamed-chunk-4-1.png 2x"
+        data-sizes="auto"
+        alt="/cancer_files/figure-markdown_github/unnamed-chunk-4-1.png"
+        title="/cancer_files/figure-markdown_github/unnamed-chunk-4-1.png" width="672" height="480" /></p>
+<p>Embora já vejamos a relação que existe entre as variáveis, podemos
+colocar mais informações neste gráfico. Por exemplo, podemos colorir os
+pontos de acordo com o tipo de câncer.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">bc</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">unif_tamanho</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">unif_forma</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">classificacao</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/cancer_files/figure-markdown_github/unnamed-chunk-5-1.png"
+        data-srcset="/cancer_files/figure-markdown_github/unnamed-chunk-5-1.png, /cancer_files/figure-markdown_github/unnamed-chunk-5-1.png 1.5x, /cancer_files/figure-markdown_github/unnamed-chunk-5-1.png 2x"
+        data-sizes="auto"
+        alt="/cancer_files/figure-markdown_github/unnamed-chunk-5-1.png"
+        title="/cancer_files/figure-markdown_github/unnamed-chunk-5-1.png" width="672" height="480" /></p>
+<p>Agora podemos ver que os tipos de câncer estão bastante separados. Esta
+é uma informação importante, pois queremos construir um algoritmo de
+classificação. Por outro lado, existe algumas observações atípicas. Isto
+pode acabar prejudicando um pouco o desempenho do algoritmo de
+classificação.</p>
+<p>A fim de verificar como é o comportamento das outras variáveis, podemos
+estender o gráfico anterior para todas a combinações de variáveis neste
+conjunto de dados. Em vez de repetirmos manualmente o código, vamos
+utilizar a função ggpairs do pacote GGally:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">GGally</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>##
+## Attaching package: 'GGally'
+
+## The following object is masked from 'package:dplyr':
+##
+##     nasa
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ggpairs</span><span class="p">(</span><span class="n">bc[</span><span class="p">,</span> <span class="m">-10</span><span class="n">]</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">colour</span> <span class="o">=</span> <span class="n">bc</span><span class="o">$</span><span class="n">classificacao</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/cancer_files/figure-markdown_github/unnamed-chunk-6-1.png"
+        data-srcset="/cancer_files/figure-markdown_github/unnamed-chunk-6-1.png, /cancer_files/figure-markdown_github/unnamed-chunk-6-1.png 1.5x, /cancer_files/figure-markdown_github/unnamed-chunk-6-1.png 2x"
+        data-sizes="auto"
+        alt="/cancer_files/figure-markdown_github/unnamed-chunk-6-1.png"
+        title="/cancer_files/figure-markdown_github/unnamed-chunk-6-1.png" width="672" height="480" /></p>
+<p>Veja que agora temos muitas informações sobre os dados. Para quem já tem
+alguma experiência em análise de dados, o que vemos é o seguinte:</p>
+<ul>
+<li>
+<p>Diagonal principal: estimativas da função densidade de cada
+co-variável, de acordo com o tipo de câncer</p>
+</li>
+<li>
+<p>Triângulo inferior: gráficos de dispersão das variáveis do conjunto
+de dados, duas a duas</p>
+</li>
+<li>
+<p>Triângulo superior: correlação total entre as variáveis e correlação
+dentro de cada grupo</p>
+</li>
+</ul>
+<p>Com a análise exploratória dos dados terminada, podemos partir para o
+ajuste do modelo.</p>
+<h1 id="ajuste-do-modelo">Ajuste do Modelo</h1>
+<p>Há uma infinidade de opções quando falamos de ajuste de modelos de
+classificação. Neste tutorial vou utilizar o Random Forest, que é
+poderoso o suficiente, além de ter convergência rápida e ser de fácil
+utilização.</p>
+<p>O Random Forest é baseado em árvores de classificação. Sem entrar muito
+fundo na parte teórica, uma árvore de classificação é um modelo
+matemático que utiliza a estrutura de árvore de decisão para classificar
+dados. Melhor do que explicar isto em palavras é ver o algoritmo em
+ação:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">rpart</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">rpart.plot</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">modelo</span> <span class="o">&lt;-</span> <span class="nf">rpart</span><span class="p">(</span><span class="n">classificacao</span> <span class="o">~</span> <span class="n">.,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&#34;class&#34;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">bc</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">prp</span><span class="p">(</span><span class="n">modelo</span><span class="p">,</span> <span class="n">extra</span> <span class="o">=</span> <span class="m">1</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/cancer_files/figure-markdown_github/unnamed-chunk-7-1.png"
+        data-srcset="/cancer_files/figure-markdown_github/unnamed-chunk-7-1.png, /cancer_files/figure-markdown_github/unnamed-chunk-7-1.png 1.5x, /cancer_files/figure-markdown_github/unnamed-chunk-7-1.png 2x"
+        data-sizes="auto"
+        alt="/cancer_files/figure-markdown_github/unnamed-chunk-7-1.png"
+        title="/cancer_files/figure-markdown_github/unnamed-chunk-7-1.png" width="672" height="480" /></p>
+<p>Perceba que é feita uma pergunta em cada nó da árvore. A resposta da
+pergunta determina se outra pergunta será feita ou se a árvore chegou ao
+fim e a classificação foi terminada. Além disso, o erro de classificação
+é determinado ao final da árvore.</p>
+<p>Uma Random Forest (ou Floresta Aleatória) é a combinação de centenas de
+árvores de classificação. Este resultado segue do fato de que a
+combinação de diversos modelos diferentes é melhor do que um modelo
+sozinho.</p>
+<h1 id="conjuntos-de-treino-e-teste">Conjuntos de Treino e Teste</h1>
+<p>Um problema que surge no ajuste de modelos de classificação e regressão
+é o sobreajuste. O sobreajuste ocorre quando o modelo se ajusta muito
+bem aos dados, se tornando ineficaz para prever observações novas.</p>
+<p>O gráfico abaixo ilustra este conceito no contexto de um modelo de
+classificação.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/sobre.png"
+        data-srcset="/sobre.png, /sobre.png 1.5x, /sobre.png 2x"
+        data-sizes="auto"
+        alt="/sobre.png"
+        title="/sobre.png" width="1344" height="960" /></p>
+<p>Note como o modelo sobreajustado acompanha os dados muito mais de perto,
+enquanto o modelo ajustado segue a tendência geral de separação dos
+pontos. A desvantagem de ter um modelo que acompanhe os dados de maneira
+muito próxima é a perda de generalidade. Este tipo de modelo funciona
+muito bem para um conjunto de dados específico, mas vai se comportar
+muito mal se novas observações forem coletadas.</p>
+<p>Uma forma de evitar este problema é dividindo aleatoriamente o conjunto
+de dados original em duas partes mutuamente exclusivas. Uma destas
+partes é chamada de conjunto de treino e, a outra, conjunto de teste. A
+ideia por trás disso é ajustar o modelo aos dados de treinamento e
+simular a entrada de novas observações através do conjunto de teste.
+Assim, é possível verificar quão bem ou quão mal o modelo ajustado está
+se comportando ao prever observações que não foram utilizadas em seu
+ajuste.</p>
+<p>Para fazer isto no R utilizamos a função createDataPartition do pacote
+caret.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## Loading required package: lattice
+</code></pre>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">trainIndex</span> <span class="o">&lt;-</span> <span class="nf">createDataPartition</span><span class="p">(</span><span class="n">bc</span><span class="o">$</span><span class="n">classificacao</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="m">0.75</span><span class="p">,</span> <span class="n">list</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">cancer_treino</span> <span class="o">&lt;-</span> <span class="n">bc[trainIndex</span><span class="p">,</span> <span class="n">]</span>
+</span></span><span class="line"><span class="cl"><span class="n">cancer_teste</span> <span class="o">&lt;-</span> <span class="n">bc[</span><span class="o">-</span><span class="n">trainIndex</span><span class="p">,</span> <span class="n">]</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Esta divisão é arbitrária. Normalmente, recomenda-se que o conjunto de
+treino tenha de 70% a 80% das observações. O restante das observações
+irá fazer parte do conjunto de teste.</p>
+<p>Ocorre que esta divisão dos dados em dois grupos tem uma desvantagem.
+Isto acaba fazendo com que tenhamos menos dados para ajustar o modelo.
+E, com menos dados para ajustar o modelo, menos informação temos. Com
+menos informação, pior ficará nosso modelo. Uma maneira de reduzir este
+efeito é através da validação cruzada.</p>
+<h2 id="validação-cruzada">Validação Cruzada</h2>
+<p>A validação cruzada é mais um método utilizado para evitar sobreajuste
+no modelo. A ideia é ajustar diversas vezes o mesmo modelo em partições
+(conjuntos mutuamente exclusivos) do conjunto de treinamento original.
+Neste exemplo eu vou utilizar um método chamado validação cruzada.</p>
+<p>Esta técnica consiste em cinco passos:</p>
+<p>1- Separar o conjunto de treinamento em <em>k</em> folds (ou partições)</p>
+<p>2- Ajustar o modelo em <em>k</em> − 1 folds</p>
+<p>3- Testar o modelo no fold restante</p>
+<p>4- Repetir os passos 2 e 3 até que todos os folds tenham sido utilizados
+para teste</p>
+<p>5- Calcular a acurácia do modelo</p>
+<p>Entretanto, precisamos definir o número de folds a serem utilizados na
+validação cruzada. Em geral, a literatura sugere que de 5 a 10 folds
+sejam usados. O desempenho dos algoritmos não melhora de maneira
+considerável se aumentarmos muito o número de folds.</p>
+<p>Dependendo do tamanho do conjunto de dados, é possível que muitos folds
+acabem deixando-nos sem observações para os conjuntos de teste dentro da
+validação cruzada. Por este motivo, é sempre bom controlar este
+parâmetro de acordo com o conjunto de dados que estamos estudando.</p>
+<p>Com estas técnicas definidas, podemos finalmente passar para o ajuste do
+modelo.</p>
+<h2 id="ajuste-do-modelo-1">Ajuste do Modelo</h2>
+<p>Como dito anteriormente, vamos ajustar um modelo chamado Random Forest
+aos dados do tipo de câncer. Para realizar este ajuste precisamos criar
+os conjuntos de treino e teste e fazer a validação cruzada do modelo a
+ser ajustado. Como já criamos os conjuntos de treino e teste
+anteriormente, apenas precisamos nos preocupar com a validação cruzada
+do modelo.</p>
+<p>Felizmente, o pacote caret já possui o algoritmo da validação cruzada
+implementado. Só precisamos ser explícitos no ajuste do modelo para que
+este método seja utilizado.</p>
+<p>O caret utiliza duas funções para ajustar modelos aos dados, chamadas
+train e trainControl. Basicamente, a função trainControl estabelece os
+parâmetros utilizados no ajuste do modelo. Abaixo estou exemplificando
+como definir que desejamos fazer validação cruzada com 5 folds.</p>
+<p>Com os parâmetros da validação cruzada definidos, podemos partir para a
+o ajuste em si.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">fitControl</span> <span class="o">&lt;-</span> <span class="nf">trainControl</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&#34;cv&#34;</span><span class="p">,</span> <span class="n">number</span> <span class="o">=</span> <span class="m">5</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ajuste_cancer</span> <span class="o">&lt;-</span> <span class="nf">train</span><span class="p">(</span><span class="n">classificacao</span> <span class="o">~</span> <span class="n">.,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">cancer_treino</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&#34;rf&#34;</span><span class="p">,</span> <span class="n">importance</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">,</span> <span class="n">trControl</span> <span class="o">=</span> <span class="n">fitControl</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>Note que defino várias coisas com a função train:</p>
+<ul>
+<li>
+<p>method = “rf” diz que vou ajustar um modelo do tipo Random Forest.
+Uma grande vantagem de usar o pacote caret é poder aprender uma
+sintaxe apenas e poder ajustar centenas de algoritmos diferentes,
+apenas mudando o argumento method da função train.</p>
+</li>
+<li>
+<p>trControl = fitControl define as opções da validação cruzada</p>
+</li>
+</ul>
+<p>Para saber o resultado do ajuste, basta chamar o objeto ajuste_cancer:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">ajuste_cancer</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## Random Forest
+##
+## 513 samples
+##   9 predictor
+##   2 classes: 'benigno', 'maligno'
+##
+## No pre-processing
+## Resampling: Cross-Validated (5 fold)
+## Summary of sample sizes: 410, 411, 410, 410, 411
+## Resampling results across tuning parameters:
+##
+##   mtry  Accuracy   Kappa    
+##   2     0.9785266  0.9534563
+##   5     0.9707025  0.9363065
+##   9     0.9648391  0.9232639
+##
+## Accuracy was used to select the optimal model using the largest value.
+## The final value used for the model was mtry = 2.
+</code></pre>
+<p>Note que há um parâmetro chamado mtry no output acima. Este parâmetro
+significa que os modelos foram ajustados com 2, 3, 4, … variáveis
+preditoras selecionadas aleatoriamente (na verdade, quando mtry = 9
+temos todas as variáveis preditoras utilizadas no modelo). Ao final, o
+melhor modelo é aquele que utiliza 2 variáveis preditoras.</p>
+<p>Este resultado pode variar dependendo de como os dados foram
+selecionados durante as criação do conjunto de treinamento e teste e
+também de como a validação cruzada foi realizada, principalmente se
+estivermos com conjuntos de dados pequenos.</p>
+<p>Para não alongar ainda mais, vou deixar a explicação da acurácia e do
+Kappa em aberto, mas basta saber que tanto a acurácia quanto o Kappa
+variam entre 0 e 1. Quanto maiores estes valores, melhor é o ajuste do
+modelo.</p>
+<p>Finalizamos o ajuste testando se este modelo criado é capaz de
+classificar novos dados. Para isto, vamos utilizar o conjunto de teste
+definido anteriormente:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="n">predicao</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">ajuste_cancer</span><span class="p">,</span> <span class="n">cancer_teste</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">confusionMatrix</span><span class="p">(</span><span class="n">predicao</span><span class="p">,</span> <span class="n">cancer_teste</span><span class="o">$</span><span class="n">classificacao</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><pre><code>## Confusion Matrix and Statistics
+##
+##           Reference
+## Prediction benigno maligno
+##    benigno     108       0
+##    maligno       3      59
+##                                           
+##                Accuracy : 0.9824          
+##                  95% CI : (0.9493, 0.9963)
+##     No Information Rate : 0.6529          
+##     P-Value [Acc &gt; NIR] : &lt;2e-16          
+##                                           
+##                   Kappa : 0.9615          
+##                                           
+##  Mcnemar's Test P-Value : 0.2482          
+##                                           
+##             Sensitivity : 0.9730          
+##             Specificity : 1.0000          
+##          Pos Pred Value : 1.0000          
+##          Neg Pred Value : 0.9516          
+##              Prevalence : 0.6529          
+##          Detection Rate : 0.6353          
+##    Detection Prevalence : 0.6353          
+##       Balanced Accuracy : 0.9865          
+##                                           
+##        'Positive' Class : benigno         
+##
+</code></pre>
+<p>A função confusionMatrix apresenta diversas estatísticas a respeito das
+previsões que realizamos. Note que apenas duas classificações foram
+feitas incorretamente. Todas as outras foram classificadas corretamente.
+Além disso, a acurácia está bastante alta, igual a 0,9882. O Kappa igual
+a 0,974.</p>
+<p>Portanto, podemos concluir este projeto dizendo que fomos bem sucedidos
+ao utilizar o Random Forest para classificar o tipo de câncer de acordo
+com as variáveis dadas.</p>
+<p>Para finalizar, podemos verificar quais foram, dentre as variáveis
+preditoras, aquelas que tiveram a maior importância no modelo.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="nf">varImp</span><span class="p">(</span><span class="n">ajuste_cancer</span><span class="p">))</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/cancer_files/figure-markdown_github/unnamed-chunk-12-1.png"
+        data-srcset="/cancer_files/figure-markdown_github/unnamed-chunk-12-1.png, /cancer_files/figure-markdown_github/unnamed-chunk-12-1.png 1.5x, /cancer_files/figure-markdown_github/unnamed-chunk-12-1.png 2x"
+        data-sizes="auto"
+        alt="/cancer_files/figure-markdown_github/unnamed-chunk-12-1.png"
+        title="/cancer_files/figure-markdown_github/unnamed-chunk-12-1.png" width="672" height="480" /></p>
+<p>Como podemos ver, as variáveis relacionadas ao núcleo e a espessura são
+as mais importantes.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 08-12-2022&nbsp;<a class="git-hash" href="https://github.com/dillonzq/LoveIt/commit/76a3e5079e0a48db8026a68a1d891531c0fa9ffc" target="_blank" title="commit by Jerfson Bruno(jerfson35@gmail.com) 76a3e5079e0a48db8026a68a1d891531c0fa9ffc: atualização 1">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>76a3e50</a></span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/quatro-post/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/terceiro-post/" class="prev" rel="prev" title="Resistência dos vidros (voltagem x temperatura) "><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Resistência dos vidros (voltagem x temperatura) </a>
+            <a href="/primeiro-post/" class="next" rel="next" title="Corona Vírus">Corona Vírus<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Criado por Jerfson Bruno</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span>&nbsp;|&nbsp;<span class="license">MIT</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

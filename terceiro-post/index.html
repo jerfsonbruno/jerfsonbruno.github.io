@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Resistência dos vidros (voltagem x temperatura)  - LoveIt</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Resistência dos vidros (voltagem x temperatura) " />
+<meta property="og:description" content="Relatório do Livro de Gilberto a Paula Questão 7 Na minha graduação fiz vários relatórios, em diversas disciplinas. Aqui, irei apresentar um resumo de um desses relatórios.
+Introdução O objetivo desse trabalho é saber de que forma os níveis de voltagem e temperatura afetam o tempo médio de resistência dos vidros.
+Primeiramente foi feito uma análise descritiva dos dados, mostrando a influencia dos dados sobre a variável resposta. E logo após, o ajuste do modelo para mostrar que as variáveis voltagem e temperatura interferem na resistência dos vidros." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jerfsonbruno.github.io/terceiro-post/" /><meta property="og:image" content="https://jerfsonbruno.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-02-10T21:45:37-03:00" />
+<meta property="article:modified_time" content="2022-12-08T22:30:00-03:00" /><meta property="og:site_name" content="LoveIt" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jerfsonbruno.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="Resistência dos vidros (voltagem x temperatura) "/>
+<meta name="twitter:description" content="Relatório do Livro de Gilberto a Paula Questão 7 Na minha graduação fiz vários relatórios, em diversas disciplinas. Aqui, irei apresentar um resumo de um desses relatórios.
+Introdução O objetivo desse trabalho é saber de que forma os níveis de voltagem e temperatura afetam o tempo médio de resistência dos vidros.
+Primeiramente foi feito uma análise descritiva dos dados, mostrando a influencia dos dados sobre a variável resposta. E logo após, o ajuste do modelo para mostrar que as variáveis voltagem e temperatura interferem na resistência dos vidros."/>
+<meta name="application-name" content="ainda nao sei">
+<meta name="apple-mobile-web-app-title" content="ainda nao sei"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jerfsonbruno.github.io/terceiro-post/" /><link rel="prev" href="https://jerfsonbruno.github.io/segundo-post/" /><link rel="next" href="https://jerfsonbruno.github.io/quatro-post/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Resistência dos vidros (voltagem x temperatura) ",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jerfsonbruno.github.io\/terceiro-post\/"
+        },"image": ["https:\/\/jerfsonbruno.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  1266 ,
+        "url": "https:\/\/jerfsonbruno.github.io\/terceiro-post\/","datePublished": "2020-02-10T21:45:37-03:00","dateModified": "2022-12-08T22:30:00-03:00","publisher": {
+            "@type": "Organization",
+            "name": "Jerfson Bruno","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/jerfsonbruno.github.io\/images\/avatar.png",
+                    "width":  420 ,
+                    "height":  420 
+                }},"author": {
+                "@type": "Person",
+                "name": "Jerfson Bruno"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="LoveIt"><span class="header-title-pre"><i class='fa-solid fa-house'></i></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="LoveIt"><span class="header-title-pre"><i class='fa-solid fa-house'></i></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Resistência dos vidros (voltagem x temperatura) </h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Jerfson Bruno</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="10-02-2020">10-02-2020</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1266 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introdução">Introdução</a></li>
+    <li><a href="#análise-de-dados">Análise de Dados</a></li>
+    <li><a href="#análise-descritiva">Análise Descritiva</a></li>
+    <li><a href="#ajuste-do-modelo">Ajuste do Modelo</a></li>
+    <li><a href="#conclusão">Conclusão</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h1 id="relatório-do-livro-de-gilberto-a-paula-questão-7">Relatório do Livro de Gilberto a Paula Questão 7</h1>
+<p>Na minha graduação fiz vários relatórios, em diversas disciplinas. Aqui, irei apresentar um resumo de um desses relatórios.</p>
+<h2 id="introdução">Introdução</h2>
+<p>O objetivo desse trabalho é saber de que forma os níveis de voltagem e temperatura afetam o tempo médio de resistência dos vidros.</p>
+<p>Primeiramente foi feito uma análise descritiva dos dados, mostrando a influencia dos dados sobre a variável resposta. E logo após, o ajuste do modelo para mostrar que as variáveis voltagem e temperatura interferem na resistência dos vidros.</p>
+<h2 id="análise-de-dados">Análise de Dados</h2>
+<p>Nas tabelas abaixo são apresentados os resultados de um experimento, em que a resistência (em horas) de um determinado tipo de vidro, foi avaliada segundo quatro níveis de voltagem (em kilovolts) e duas temperaturas (em
+graus Celsius).</p>
+<pre><code>    Voltagens com temperatura  de 170c        
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">200kV</th>
+<th style="text-align:center">250kV</th>
+<th style="text-align:center">300kV</th>
+<th style="text-align:center">350kV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">439h</td>
+<td style="text-align:center">572h</td>
+<td style="text-align:center">315h</td>
+<td style="text-align:center">258h</td>
+</tr>
+<tr>
+<td style="text-align:center">904h</td>
+<td style="text-align:center">690h</td>
+<td style="text-align:center">315h</td>
+<td style="text-align:center">258h</td>
+</tr>
+<tr>
+<td style="text-align:center">1092h</td>
+<td style="text-align:center">904h</td>
+<td style="text-align:center">439h</td>
+<td style="text-align:center">347h</td>
+</tr>
+<tr>
+<td style="text-align:center">1105h</td>
+<td style="text-align:center">1090h</td>
+<td style="text-align:center">628h</td>
+<td style="text-align:center">588h</td>
+</tr>
+</tbody>
+</table>
+<pre><code>    Voltagens com temperatura  de 180c  
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">200kV</th>
+<th style="text-align:center">250kV</th>
+<th style="text-align:center">300kV</th>
+<th style="text-align:center">350kV</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">959h</td>
+<td style="text-align:center">216h</td>
+<td style="text-align:center">241h</td>
+<td style="text-align:center">241h</td>
+</tr>
+<tr>
+<td style="text-align:center">1065h</td>
+<td style="text-align:center">315h</td>
+<td style="text-align:center">315h</td>
+<td style="text-align:center">241h</td>
+</tr>
+<tr>
+<td style="text-align:center">1065h</td>
+<td style="text-align:center">455h</td>
+<td style="text-align:center">332h</td>
+<td style="text-align:center">435h</td>
+</tr>
+<tr>
+<td style="text-align:center">1087h</td>
+<td style="text-align:center">473h</td>
+<td style="text-align:center">380h</td>
+<td style="text-align:center">455h</td>
+</tr>
+</tbody>
+</table>
+<h2 id="análise-descritiva">Análise Descritiva</h2>
+<p>Na tabela abaixo são apresentadas as médias, desvios e coeficiente de variação das variáveis Resistência, voltagem e temperatura. Podemos perceber que a resistência média foi de 569,34 ao passo que a voltagem
+e a temperatura apresentaram médias iguais a 275 e 175, respectivamente. O coeficiente de variação da resistência é próximo de 56%, indicando assim, uma alta dispersão nos dados.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">Resistência</th>
+<th style="text-align:center">Voltagem</th>
+<th style="text-align:center">Temperatura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Média</td>
+<td style="text-align:center">569,34</td>
+<td style="text-align:center">275</td>
+<td style="text-align:center">175</td>
+</tr>
+<tr>
+<td>Desvio</td>
+<td style="text-align:center">316,98</td>
+<td style="text-align:center">56,80</td>
+<td style="text-align:center">5,08</td>
+</tr>
+<tr>
+<td>CV</td>
+<td style="text-align:center">55,67%</td>
+<td style="text-align:center">20,65 %</td>
+<td style="text-align:center">2.90 %</td>
+</tr>
+</tbody>
+</table>
+<p>Nas tabelas abaixo, fixando cada uma das co-variáveis, nota-se valores maiores para a resistência média com a menor temperatura (170c) e menor voltagem (200kV). Todavia, o coeficiente de variação apesar de diminuir quando fixa-se as co-variáveis, apresenta uma dispersão média dos dados.</p>
+<pre><code>Resistencia fixando a temperatura:
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Resistência à 170c</th>
+<th style="text-align:center">Resistência à 180c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Média</td>
+<td style="text-align:center">621,50</td>
+<td style="text-align:center">517,19</td>
+</tr>
+<tr>
+<td style="text-align:center">Desvio</td>
+<td style="text-align:center">309,47</td>
+<td style="text-align:center">325,67</td>
+</tr>
+<tr>
+<td style="text-align:center">CV</td>
+<td style="text-align:center">49,80%</td>
+<td style="text-align:center">62,97%</td>
+</tr>
+</tbody>
+</table>
+<pre><code>Resistencia fixando as voltagens:
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Resistência à 200kv</th>
+<th style="text-align:center">Resistência à 250kv</th>
+<th style="text-align:center">Resistência à 300kv</th>
+<th style="text-align:center">Resistência à 350kv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Média</td>
+<td style="text-align:center">964,50</td>
+<td style="text-align:center">589,38</td>
+<td style="text-align:center">370,63</td>
+<td style="text-align:center">352,88</td>
+</tr>
+<tr>
+<td style="text-align:center">Desvio</td>
+<td style="text-align:center">223,94</td>
+<td style="text-align:center">294,31</td>
+<td style="text-align:center">118,67</td>
+<td style="text-align:center">128,47</td>
+</tr>
+<tr>
+<td style="text-align:center">CV</td>
+<td style="text-align:center">23,21%</td>
+<td style="text-align:center">49,93%</td>
+<td style="text-align:center">32,01%</td>
+<td style="text-align:center">36,40%</td>
+</tr>
+</tbody>
+</table>
+<p>Percebe-se que as maiores médias da resistência, foram com
+menor voltagem 200kv e temperatura 170c.</p>
+<p>É possível ver também esses dois fatores acontecendo no gráfico abaixo.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/boxplot.png"
+        data-srcset="/boxplot.png, /boxplot.png 1.5x, /boxplot.png 2x"
+        data-sizes="auto"
+        alt="/boxplot.png"
+        title="/boxplot.png" width="2337" height="1653" />
+Nota-se duas observações discrepantes nos dados, uma com voltagem a 200kV e a outra a 300kV.</p>
+<p>Ainda é possível ver a voltagem e temperatura interagindo sobre a resistência do vidro. Como é mostrado no gráfico abaixo</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/pontos.png"
+        data-srcset="/pontos.png, /pontos.png 1.5x, /pontos.png 2x"
+        data-sizes="auto"
+        alt="/pontos.png"
+        title="/pontos.png" width="2337" height="1653" /></p>
+<p>Ainda, podemos fixar as duas variáveis voltagem e temperatura e ver as estatísticas descritivas para cada uma delas.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Resistência à 200kv e 170c</th>
+<th style="text-align:center">Resistência à 250kv e 170c</th>
+<th style="text-align:center">Resistência à 300kv e 170c</th>
+<th style="text-align:center">Resistência à 350kv e 170c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Média</td>
+<td style="text-align:center">885,00</td>
+<td style="text-align:center">814,00</td>
+<td style="text-align:center">424,25</td>
+<td style="text-align:center">362,75</td>
+</tr>
+<tr>
+<td style="text-align:center">Desvio</td>
+<td style="text-align:center">311,20</td>
+<td style="text-align:center">229,65</td>
+<td style="text-align:center">158,88</td>
+<td style="text-align:center">155,92</td>
+</tr>
+<tr>
+<td style="text-align:center">CV</td>
+<td style="text-align:center">35,16 %</td>
+<td style="text-align:center">28,21%</td>
+<td style="text-align:center">34,85%</td>
+<td style="text-align:center">42,98 %</td>
+</tr>
+</tbody>
+</table>
+<pre><code>-----------------------------------------------------------------------
+</code></pre>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Resistência à 200kv e 180c</th>
+<th style="text-align:center">Resistência à 250kv e 180c</th>
+<th style="text-align:center">Resistência à 300kv e 180c</th>
+<th style="text-align:center">Resistência à 350kv e 180c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Média</td>
+<td style="text-align:center">1,04</td>
+<td style="text-align:center">364,75</td>
+<td style="text-align:center">317,00</td>
+<td style="text-align:center">343,00</td>
+</tr>
+<tr>
+<td style="text-align:center">Desvio</td>
+<td style="text-align:center">5,76</td>
+<td style="text-align:center">121,74</td>
+<td style="text-align:center">57,66</td>
+<td style="text-align:center">118,06</td>
+</tr>
+<tr>
+<td style="text-align:center">CV</td>
+<td style="text-align:center">5,52%</td>
+<td style="text-align:center">33,38%</td>
+<td style="text-align:center">18,19%</td>
+<td style="text-align:center">34,42%</td>
+</tr>
+</tbody>
+</table>
+<p>O mesmo acontece com a análise anterior, a maior média da resistência se
+da pela temperatura a 170c e voltagem 200kV, sendo ela 885,00.</p>
+<p>Já no gráfico de interação, indica-se uma redução da resistência média à medida que aumenta o nível de voltagem. Além disso, há indicação de interação entre voltagem e temperatura.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/interacao.png"
+        data-srcset="/interacao.png, /interacao.png 1.5x, /interacao.png 2x"
+        data-sizes="auto"
+        alt="/interacao.png"
+        title="Gráfico de Interação entre Voltagem e Temperatura sobre a
+Resistência" width="2337" height="1653" /></p>
+<h2 id="ajuste-do-modelo">Ajuste do Modelo</h2>
+<p>Para fazer o ajuste do modelo precisamos saber qual distribuição melhor
+se encaixa com os dados. Para isso o gráfico abaixo mostra se
+existe algum tipo de simetria.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/densidade.png"
+        data-srcset="/densidade.png, /densidade.png 1.5x, /densidade.png 2x"
+        data-sizes="auto"
+        alt="/densidade.png"
+        title="densidadde" width="2337" height="1653" /></p>
+<p>Como o interesse principal desse estudo é comparar as resistências
+médias, é usual neste tipo de estudo, assumir respostas com alguma distribuição assimétrica. Isso foi comprovado na figura acima, que mostrou possuir assimetria a esquerda. Assim, vamos propor que a variável resposta tenha distribuição gama.</p>
+<p>Foram considerado dois ajustes, sem e com interação da voltagem e temperatura.</p>
+<p>Na tabela abaixo são apresentados as estimativas do ajuste sem a
+interação. Todas as estimativas foram bastante significativas.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Estimativas</th>
+<th style="text-align:center">P-valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Intercepto</td>
+<td style="text-align:center">1039,94</td>
+<td style="text-align:center">0.00</td>
+</tr>
+<tr>
+<td style="text-align:center">voltagem2</td>
+<td style="text-align:center">-426,49</td>
+<td style="text-align:center">0.00</td>
+</tr>
+<tr>
+<td style="text-align:center">voltagem3</td>
+<td style="text-align:center">-608,81</td>
+<td style="text-align:center">0.00</td>
+</tr>
+<tr>
+<td style="text-align:center">voltagem4</td>
+<td style="text-align:center">-612,89</td>
+<td style="text-align:center">0.00</td>
+</tr>
+<tr>
+<td style="text-align:center">temperatura2</td>
+<td style="text-align:center">-117,78</td>
+<td style="text-align:center">0.05</td>
+</tr>
+<tr>
+<td style="text-align:center">phi</td>
+<td style="text-align:center">9.49 (2,33)</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+<p>No ajuste com interação, algumas variáveis da interação foram significativas a 5%.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Estimativas</th>
+<th style="text-align:center">P-valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Intercepto</td>
+<td style="text-align:center">885,00</td>
+<td style="text-align:center">0,00</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (250kV)</td>
+<td style="text-align:center">-71,00</td>
+<td style="text-align:center">0,71</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (300kV)</td>
+<td style="text-align:center">-460,75</td>
+<td style="text-align:center">0,01</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (350kV)</td>
+<td style="text-align:center">-522,25</td>
+<td style="text-align:center">0,00</td>
+</tr>
+<tr>
+<td style="text-align:center">Temperatura (180c)</td>
+<td style="text-align:center">159,00</td>
+<td style="text-align:center">0,46</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (250kV) : Temperatura (180c)</td>
+<td style="text-align:center">-608,25</td>
+<td style="text-align:center">0,03</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (300kV) : Temperatura (180c)</td>
+<td style="text-align:center">-266,25</td>
+<td style="text-align:center">0,26</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (350kV) : Temperatura (180c)</td>
+<td style="text-align:center">-178,75</td>
+<td style="text-align:center">0,44</td>
+</tr>
+<tr>
+<td style="text-align:center">phi</td>
+<td style="text-align:center">13,35 (3,30)</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+<p>Para decidir qual ajuste usar, foi feito um teste F utilizando os dois
+ajustes. As hipóteses do teste F são:</p>
+<p>H0: Teste sem interação;</p>
+<p>H1: Teste com interação</p>
+<p>As estimativas do teste F foram:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Teste F</th>
+<th style="text-align:center">P-valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">3.45</td>
+<td style="text-align:center">0.0325</td>
+</tr>
+</tbody>
+</table>
+<p>No qual, foi mostrado que o ajuste com interação é mais apropriado ao
+nível de significância a 5%. Porém a 1% o mesmo deixa de ser
+significativo, nos mostrando que não a diferença de escolha.</p>
+<p>Inicialmente foi feito uma seleção de variáveis através do método
+AKAIKE. Contudo, nenhuma variável deixou de ser significativa, nos
+mostrando que a resistência depende da voltagem e temperatura.</p>
+<p>Na Figura abaixo são apresentados alguns gráficos de diagnóstico, notamos uma discrepância da observação 16, que aparece
+como ponto influente e aberrante. Além disso, notamos indícios de
+heteroscedasticidade, ou seja, uma diminuição da variabilidade com o
+aumento do valor ajustado. Assim, podemos propor um modelo alternativo,
+que ajuste melhor a variância que o modelo Gamma.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/2graficos.png"
+        data-srcset="/2graficos.png, /2graficos.png 1.5x, /2graficos.png 2x"
+        data-sizes="auto"
+        alt="/2graficos.png"
+        title="/2graficos.png" width="1134" height="800" /></p>
+<p>A eliminação desses pontos muda as estimativas, embora não mude a
+inferência. As novas estimativas são:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Estimativas sem a obs. 1</th>
+<th style="text-align:center">Estimativas sem a obs. 16</th>
+<th style="text-align:center">Estimativas sem as obs. 1 e 16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Intercepto</td>
+<td style="text-align:center">1033,67</td>
+<td style="text-align:center">885,00</td>
+<td style="text-align:center">1033,67</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (250kV)</td>
+<td style="text-align:center">-219,67</td>
+<td style="text-align:center">-71,00</td>
+<td style="text-align:center">-219,67</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (300kV)</td>
+<td style="text-align:center">-609,42</td>
+<td style="text-align:center">-460,80</td>
+<td style="text-align:center">-609,42</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (350kV)</td>
+<td style="text-align:center">-670,92</td>
+<td style="text-align:center">-597,30</td>
+<td style="text-align:center">-746,00</td>
+</tr>
+<tr>
+<td style="text-align:center">Temperatura (180c)</td>
+<td style="text-align:center">10,33</td>
+<td style="text-align:center">159,00</td>
+<td style="text-align:center">10,33</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (250kV) e Temperatura (180c)</td>
+<td style="text-align:center">-459,58</td>
+<td style="text-align:center">-608,20</td>
+<td style="text-align:center">-459,58</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (300kV) e Temperatura (180c)</td>
+<td style="text-align:center">-117,58</td>
+<td style="text-align:center">-266,20</td>
+<td style="text-align:center">-117,58</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (350kV) e Temperatura (180c)</td>
+<td style="text-align:center">-30,08</td>
+<td style="text-align:center">-103,70</td>
+<td style="text-align:center">45,00</td>
+</tr>
+<tr>
+<td style="text-align:center">phi</td>
+<td style="text-align:center">16,00 (4,023)</td>
+<td style="text-align:center">15,65 (3,93)</td>
+<td style="text-align:center">19,75 (5,06)</td>
+</tr>
+</tbody>
+</table>
+<p>Ao verificar o impacto que houve na retirada dessas obs. Temos :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Impacto sem a obs. 1</th>
+<th style="text-align:center">Impacto sem a obs. 16</th>
+<th style="text-align:center">Impacto sem as obs.1 e 16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Intercepto</td>
+<td style="text-align:center">-16,80</td>
+<td style="text-align:center">0,00</td>
+<td style="text-align:center">-16,80</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (250kV)</td>
+<td style="text-align:center">-209,39</td>
+<td style="text-align:center">0,00</td>
+<td style="text-align:center">-209,39</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (300kV)</td>
+<td style="text-align:center">-32,27</td>
+<td style="text-align:center">0,00</td>
+<td style="text-align:center">-32,27</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (350kV)</td>
+<td style="text-align:center">-28,47</td>
+<td style="text-align:center">-14,38</td>
+<td style="text-align:center">-42,84</td>
+</tr>
+<tr>
+<td style="text-align:center">Temperatura (180c)</td>
+<td style="text-align:center">93,50</td>
+<td style="text-align:center">0,00</td>
+<td style="text-align:center">93,50</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (250kV) : Temperatura (180c)</td>
+<td style="text-align:center">24,44</td>
+<td style="text-align:center">0,00</td>
+<td style="text-align:center">24,44</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (300kV) : Temperatura (180c)</td>
+<td style="text-align:center">55,84</td>
+<td style="text-align:center">0,00</td>
+<td style="text-align:center">55,84</td>
+</tr>
+<tr>
+<td style="text-align:center">Voltagem (350kV) : Temperatura (180c)</td>
+<td style="text-align:center">83,17</td>
+<td style="text-align:center">42,01</td>
+<td style="text-align:center">125,18</td>
+</tr>
+</tbody>
+</table>
+<p>O impacto é bastante alto, dado que o valor esperado para a retirada das
+duas observações seria de 6,25. Isso acontece pois a adequação do
+modelo e a existência de observações atípicas estão influenciando
+diretamente no ajuste. Essa adequação pode ser vista na figura
+abaixo</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/envelope.png"
+        data-srcset="/envelope.png, /envelope.png 1.5x, /envelope.png 2x"
+        data-sizes="auto"
+        alt="/envelope.png"
+        title="Envelope" width="621" height="614" /></p>
+<p>Não observamos pontos muito fora do envelope, porém observamos pontos
+muito fora do alinhamento. Por conseguinte, há indicação de observações
+atípicas, e que o modelo seja inadequado.</p>
+<h2 id="conclusão">Conclusão</h2>
+<p>O que foi visto na análise descritiva se refletiu no ajuste do modelo,
+as variáveis voltagem e temperatura são extremamente significativas para
+a resistência do vidro. Mesmo o ajuste Gamma não sendo o melhor.</p>
+<p>A voltagem 350kV diminui cerca de 522,25 a resistência do vidro, já
+a temperatura $180$c aumenta a resistência do vidro em 159,00. Porem,
+quando fazemos a interação das duas variáveis que é o que realmente
+interessa, ja que a produção de vidro depende dessas duas variáveis,
+temos que a voltagem 250kV e a temperatura 180c diminui cerca de
+608,25 a resistência do vidro em comparação a voltagem 200kV e a
+temperatura 170c.</p>
+<p>O que podemos afirmar, segundo os dados, que, para se obter uma maior
+resistência dos vidros, devemos manter em temperatura a 170c e a
+voltagem 200kV.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 08-12-2022&nbsp;<a class="git-hash" href="https://github.com/dillonzq/LoveIt/commit/76a3e5079e0a48db8026a68a1d891531c0fa9ffc" target="_blank" title="commit by Jerfson Bruno(jerfson35@gmail.com) 76a3e5079e0a48db8026a68a1d891531c0fa9ffc: atualização 1">
+                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>76a3e50</a></span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/terceiro-post/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/segundo-post/" class="prev" rel="prev" title="Introdução a Visualização de dados com ggplot2"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Introdução a Visualização de dados com ggplot2</a>
+            <a href="/quatro-post/" class="next" rel="next" title="Detecção de Câncer de Mama">Detecção de Câncer de Mama<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Criado por Jerfson Bruno</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span>&nbsp;|&nbsp;<span class="license">MIT</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

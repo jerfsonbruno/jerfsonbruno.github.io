@@ -1,24 +1,48 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - Jerfson Bruno</title>
+        <title>All Posts - LoveIt</title>
         <link>https://jerfsonbruno.github.io/posts/</link>
-        <description>All Posts | Jerfson Bruno</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 08 Dec 2022 20:56:46 -0300</lastBuildDate><atom:link href="https://jerfsonbruno.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Segundo Post</title>
-    <link>https://jerfsonbruno.github.io/segundo-post/</link>
-    <pubDate>Thu, 08 Dec 2022 20:56:46 -0300</pubDate>
-    <author>xxxx</author>
-    <guid>https://jerfsonbruno.github.io/segundo-post/</guid>
-    <description><![CDATA[#Segundo Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.]]></description>
+        <description>All Posts | LoveIt</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 17 Feb 2020 20:36:33 -0300</lastBuildDate><atom:link href="https://jerfsonbruno.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Corona Vírus</title>
+    <link>https://jerfsonbruno.github.io/primeiro-post/</link>
+    <pubDate>Mon, 17 Feb 2020 20:36:33 -0300</pubDate>
+    <author>Jerfson Bruno</author>
+    <guid>https://jerfsonbruno.github.io/primeiro-post/</guid>
+    <description><![CDATA[Um vírus que foi relatado pela primeira vez na cidade chinesa de Wuhan, agora se espalhou para mais de uma dúzia de países em todo o mundo, provocando uma crise econômica e de saúde sem precedentes. A Organização Mundial da Saúde (OMS) declarou o surto do coronavírus uma emergência de saúde pública de interesse mundial.
+Vamos dá uma breve olhada na crise atual e depois nos aprofundaremos no “Novel Corona Virus 2019 Dataset” do Kaggle.]]></description>
 </item>
 <item>
-    <title>Primeiro Post</title>
-    <link>https://jerfsonbruno.github.io/primeiro-post/</link>
-    <pubDate>Thu, 08 Dec 2022 20:36:33 -0300</pubDate>
-    <author>xxxx</author>
-    <guid>https://jerfsonbruno.github.io/primeiro-post/</guid>
-    <description><![CDATA[Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-Titulo Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.]]></description>
+    <title>Detecção de Câncer de Mama</title>
+    <link>https://jerfsonbruno.github.io/quatro-post/</link>
+    <pubDate>Thu, 13 Feb 2020 21:45:46 -0300</pubDate>
+    <author>Jerfson Bruno</author>
+    <guid>https://jerfsonbruno.github.io/quatro-post/</guid>
+    <description><![CDATA[Introdução O principal objetivo deste texto é mostrar como é possível, utilizando apenas recursos gratuitos da internet, realizar um projeto de data science do início ao fim. Vamos treinar um algoritmo de classificação de dados baseado em uma técnica chamada Random Forest, capaz de realizar tanto tarefas de classificação quanto de regressão.
+Há diversas atividades que podem ser feitas com este conjunto de dados. O que farei aqui é tentar prever corretamente qual o tipo de câncer mamário (maligno ou benigno) dado algumas observações.]]></description>
+</item>
+<item>
+    <title>Resistência dos vidros (voltagem x temperatura) </title>
+    <link>https://jerfsonbruno.github.io/terceiro-post/</link>
+    <pubDate>Mon, 10 Feb 2020 21:45:37 -0300</pubDate>
+    <author>Jerfson Bruno</author>
+    <guid>https://jerfsonbruno.github.io/terceiro-post/</guid>
+    <description><![CDATA[Relatório do Livro de Gilberto a Paula Questão 7 Na minha graduação fiz vários relatórios, em diversas disciplinas. Aqui, irei apresentar um resumo de um desses relatórios.
+Introdução O objetivo desse trabalho é saber de que forma os níveis de voltagem e temperatura afetam o tempo médio de resistência dos vidros.
+Primeiramente foi feito uma análise descritiva dos dados, mostrando a influencia dos dados sobre a variável resposta. E logo após, o ajuste do modelo para mostrar que as variáveis voltagem e temperatura interferem na resistência dos vidros.]]></description>
+</item>
+<item>
+    <title>Introdução a Visualização de dados com ggplot2</title>
+    <link>https://jerfsonbruno.github.io/segundo-post/</link>
+    <pubDate>Wed, 05 Feb 2020 20:56:46 -0300</pubDate>
+    <author>Jerfson Bruno</author>
+    <guid>https://jerfsonbruno.github.io/segundo-post/</guid>
+    <description><![CDATA[Objetivo Mostrar um forma de pensar a construção de graficos a partir do gramática do ggplot;
+Aplicar esta teoria usando o pacote ggplot2 e suas extensões implementados no software R.
+Desenvolver grafícos diversos que fujam do tradicional.
+Contrubuir para escrita de textos acadêmicos, em termos de melhoria de qualidade gráfica.
+Gramática dos gráficos Gramática significa, em geral, regras para a arte e a ciência.
+No contexto da analise gráfica, são regras para a construção de gráficos matemáticos e sua representação estética.]]></description>
 </item>
 </channel>
 </rss>
