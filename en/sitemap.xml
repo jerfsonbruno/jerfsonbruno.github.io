@@ -2,7 +2,7 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>https://jerfsonbruno.github.io/</loc><lastmod>2022-12-08T20:36:33-03:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
+            <loc>https://jerfsonbruno.github.io/</loc><lastmod>2022-12-08T20:56:46-03:00</lastmod><changefreq>weekly</changefreq><priority>1</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh-cn"
                         href="https://jerfsonbruno.github.io/zh-cn/"
@@ -15,8 +15,9 @@
                     hreflang="en"
                     href="https://jerfsonbruno.github.io/"
                     /></url><url>
-            <loc>https://jerfsonbruno.github.io/posts/</loc><lastmod>2022-12-08T20:36:33-03:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>https://jerfsonbruno.github.io/primeiro-post/</loc><lastmod>2022-12-08T20:36:33-03:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://jerfsonbruno.github.io/posts/</loc><lastmod>2022-12-08T20:56:46-03:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://jerfsonbruno.github.io/segundo-post/</loc><lastmod>2022-12-08T20:56:46-03:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>https://jerfsonbruno.github.io/primeiro-post/</loc><lastmod>2022-12-08T20:49:12-03:00</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
             <loc>https://jerfsonbruno.github.io/categories/</loc><changefreq>weekly</changefreq><priority>0.5</priority><xhtml:link
                         rel="alternate"
                         hreflang="zh-cn"
