@@ -1,10 +1,56 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>All Posts - LoveIt</title>
+        <title>All Posts - Jerfson Bruno</title>
         <link>https://jerfsonbruno.github.io/posts/</link>
-        <description>All Posts | LoveIt</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 17 Feb 2020 20:36:33 -0300</lastBuildDate><atom:link href="https://jerfsonbruno.github.io/posts/" rel="self" type="application/rss+xml" /><item>
-    <title>Corona Vírus</title>
+        <description>All Posts | Jerfson Bruno</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 06 Jul 2022 01:28:15 -0300</lastBuildDate><atom:link href="https://jerfsonbruno.github.io/posts/" rel="self" type="application/rss+xml" /><item>
+    <title>Classificação não supervisionada no contexto não euclidiano. </title>
+    <link>https://jerfsonbruno.github.io/oitavo-post/</link>
+    <pubDate>Wed, 06 Jul 2022 01:28:15 -0300</pubDate>
+    <author>Jerfson Bruno</author>
+    <guid>https://jerfsonbruno.github.io/oitavo-post/</guid>
+    <description><![CDATA[Este trabalho foi apresentado no CNMAC e Conapesc 2022, e teve orientação da Prof. Dr. Getúlio José Amorim Do Amaral, gjaa@de.ufpe.br.
+Em diversas ocasiões, em análise estatística de forma, é necessário agrupar um conjunto de dados em grupos, de tal maneira, que se tenha grupos com características mais homogêneas. Com isso, ter algoritmos que trabalhem no espaço não euclidiano, como é no caso dos dados de forma ou tamanho e forma, é necessário.]]></description>
+</item>
+<item>
+    <title>Uma Introdução a análise estatística de forma</title>
+    <link>https://jerfsonbruno.github.io/setimo-post/</link>
+    <pubDate>Wed, 06 Jul 2022 01:27:57 -0300</pubDate>
+    <author>Jerfson Bruno</author>
+    <guid>https://jerfsonbruno.github.io/setimo-post/</guid>
+    <description><![CDATA[Este trabalho foi apresentado no CNMAC e Conapesc 2022, e teve orientação da Prof. Dr. Getúlio José Amorim Do Amaral, gjaa@de.ufpe.br.
+O objetivo deste artigo é dá uma introdução sobre análise estatística de forma e posteriormente propor um método de classificação não supervisionado ($K$-médias) para dados de tamanho e forma considerando imagens bidimensionais (formas planas).
+Introdução Com os avanços da tecnologia, a captura de imagens bidimensionais e tridimensionais tem se tornado cada vez mais comum no nosso cotidiano.]]></description>
+</item>
+<item>
+    <title>Previsões e possíveis casos de subnotificação do COVID-19 na síndrome respiratória aguda grave (SRAG).</title>
+    <link>https://jerfsonbruno.github.io/dez-post/</link>
+    <pubDate>Mon, 01 Mar 2021 01:36:46 -0300</pubDate>
+    <author>Jerfson Bruno</author>
+    <guid>https://jerfsonbruno.github.io/dez-post/</guid>
+    <description><![CDATA[Esse trabalho foi apresentado na disciplina de Estatística aplicada ministrada pelo Prof. Dr. Francisco Cribari Neto. E teve como inspiração, um trabalho feito pelo Prof. Dr. Marcus Alexandre Nunes.
+O professor Marcus Nunes tem um blog (https://marcusnunes.me), recomendo fortemente que vocês acessem. Não deve ser surpresa para ninguém as reportagens sobre prováveis subnotificações a respeito dos casos de COVID-19. A fim de verificar se essas suspeitas são mesmo procedentes, decidi comparar os números de casos de Síndrome Respiratória Aguda Grave (SRAG) registrados no Brasil e em Pernambuco nos últimos 10 anos, a fim de tentar detectar se houve um aumento nos casos em 2020/2021.]]></description>
+</item>
+<item>
+    <title>(Ox vs R): Otimização não linear da distribuição Gamma</title>
+    <link>https://jerfsonbruno.github.io/quinto-post/</link>
+    <pubDate>Wed, 02 Sep 2020 23:28:49 -0300</pubDate>
+    <author>Jerfson Bruno</author>
+    <guid>https://jerfsonbruno.github.io/quinto-post/</guid>
+    <description><![CDATA[Esse trabalho foi apresentado na disciplina de Estatística computacional ministrada pelo Prof. Dr. Francisco Cribari Neto.
+A distribuição gama é útil na modelagem de variáveis aleatórias contínuas que são maiores que zero. Ela é comumente usada em estudos de sobrevivência. A distribuição gama também é útil na modelagem de dados com alta variabilidade. Estimar apropriadamente os parâmetros da distribuição gama é vital para o estudo desse e de outras distribuições. Dependendo dos valores de seus parâmetros, a distribuição gama assume várias formas, incluindo curvas em sino semelhante à distribuição normal.]]></description>
+</item>
+<item>
+    <title>Expansões de Edgeworth para a distribuição Lomax</title>
+    <link>https://jerfsonbruno.github.io/sexto-post/</link>
+    <pubDate>Wed, 18 Mar 2020 23:09:35 -0300</pubDate>
+    <author>Jerfson Bruno</author>
+    <guid>https://jerfsonbruno.github.io/sexto-post/</guid>
+    <description><![CDATA[Esse trabalho foi apresentado na disciplina de teoria assintotica ministrada pelo Prof. Dr. Gauss Moutinho Cordeiro. O objetivo deste trabalho é usar uma ferramenta matemática conhecida como expansão de Edgeworth em um conjunto de dados gerados a partir da distribuição lomax. Tal expansão permite obter uma função densidade de probabilidade com assimetria e curtose arbitrárias a partir de uma densidade normal.
+Expansão de Edgeworth: Distribuição Lomax As fórmulas a baixo são as expansões de Edgeworth para as funções densidade e de distribuição de uma soma padronizada $(S_n^*)$, respectivamente.]]></description>
+</item>
+<item>
+    <title>Coronavírus no mundo.</title>
     <link>https://jerfsonbruno.github.io/primeiro-post/</link>
     <pubDate>Mon, 17 Feb 2020 20:36:33 -0300</pubDate>
     <author>Jerfson Bruno</author>
@@ -13,36 +59,23 @@
 Vamos dá uma breve olhada na crise atual e depois nos aprofundaremos no “Novel Corona Virus 2019 Dataset” do Kaggle.]]></description>
 </item>
 <item>
-    <title>Detecção de Câncer de Mama</title>
-    <link>https://jerfsonbruno.github.io/quatro-post/</link>
-    <pubDate>Thu, 13 Feb 2020 21:45:46 -0300</pubDate>
-    <author>Jerfson Bruno</author>
-    <guid>https://jerfsonbruno.github.io/quatro-post/</guid>
-    <description><![CDATA[Introdução O principal objetivo deste texto é mostrar como é possível, utilizando apenas recursos gratuitos da internet, realizar um projeto de data science do início ao fim. Vamos treinar um algoritmo de classificação de dados baseado em uma técnica chamada Random Forest, capaz de realizar tanto tarefas de classificação quanto de regressão.
-Há diversas atividades que podem ser feitas com este conjunto de dados. O que farei aqui é tentar prever corretamente qual o tipo de câncer mamário (maligno ou benigno) dado algumas observações.]]></description>
-</item>
-<item>
     <title>Resistência dos vidros (voltagem x temperatura) </title>
     <link>https://jerfsonbruno.github.io/terceiro-post/</link>
     <pubDate>Mon, 10 Feb 2020 21:45:37 -0300</pubDate>
     <author>Jerfson Bruno</author>
     <guid>https://jerfsonbruno.github.io/terceiro-post/</guid>
-    <description><![CDATA[Relatório do Livro de Gilberto a Paula Questão 7 Na minha graduação fiz vários relatórios, em diversas disciplinas. Aqui, irei apresentar um resumo de um desses relatórios.
+    <description><![CDATA[Na minha graduação fiz vários relatórios, das mais diversas disciplinas. Aqui, irei apresentar um resumo de um desses relatórios. Esse Relatório foi feito na disciplina de MLG, ministrado pela Prof. Dra. Michelli Karinne Barros da Silva.
 Introdução O objetivo desse trabalho é saber de que forma os níveis de voltagem e temperatura afetam o tempo médio de resistência dos vidros.
-Primeiramente foi feito uma análise descritiva dos dados, mostrando a influencia dos dados sobre a variável resposta. E logo após, o ajuste do modelo para mostrar que as variáveis voltagem e temperatura interferem na resistência dos vidros.]]></description>
+Primeiramente foi feito uma análise descritiva dos dados, mostrando a influencia dos dados sobre a variável resposta.]]></description>
 </item>
 <item>
-    <title>Introdução a Visualização de dados com ggplot2</title>
-    <link>https://jerfsonbruno.github.io/segundo-post/</link>
-    <pubDate>Wed, 05 Feb 2020 20:56:46 -0300</pubDate>
+    <title>Desempenho e concordância entre alguns testes De normalidade sob a presença e ausência de outliers.</title>
+    <link>https://jerfsonbruno.github.io/nove-post/</link>
+    <pubDate>Wed, 20 Feb 2019 01:35:33 -0300</pubDate>
     <author>Jerfson Bruno</author>
-    <guid>https://jerfsonbruno.github.io/segundo-post/</guid>
-    <description><![CDATA[Objetivo Mostrar um forma de pensar a construção de graficos a partir do gramática do ggplot;
-Aplicar esta teoria usando o pacote ggplot2 e suas extensões implementados no software R.
-Desenvolver grafícos diversos que fujam do tradicional.
-Contrubuir para escrita de textos acadêmicos, em termos de melhoria de qualidade gráfica.
-Gramática dos gráficos Gramática significa, em geral, regras para a arte e a ciência.
-No contexto da analise gráfica, são regras para a construção de gráficos matemáticos e sua representação estética.]]></description>
+    <guid>https://jerfsonbruno.github.io/nove-post/</guid>
+    <description><![CDATA[Este trabalho foi apresentado no Conapesc 2019, e teve orientação da Prof. Dr. Amanda dos Santos Gomes, amanda.natalia.gomes@gmail.com.
+Temos como objetivo mostrar o desempenho dos mais populares testes de normalidade para dados com e sem a presença de outliers e verificar o nível de concordância dos testes nestes tipos de situações. De maneira geral, verificou-se que o teste de Jarque-Bera é o mais poderoso nas amostras com a presença de outliers.]]></description>
 </item>
 </channel>
 </rss>

@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Expansões de Edgeworth para a distribuição Lomax - Jerfson Bruno</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Expansões de Edgeworth para a distribuição Lomax" />
+<meta property="og:description" content="Esse trabalho foi apresentado na disciplina de teoria assintotica ministrada pelo Prof. Dr. Gauss Moutinho Cordeiro. O objetivo deste trabalho é usar uma ferramenta matemática conhecida como expansão de Edgeworth em um conjunto de dados gerados a partir da distribuição lomax. Tal expansão permite obter uma função densidade de probabilidade com assimetria e curtose arbitrárias a partir de uma densidade normal.
+Expansão de Edgeworth: Distribuição Lomax As fórmulas a baixo são as expansões de Edgeworth para as funções densidade e de distribuição de uma soma padronizada $(S_n^*)$, respectivamente." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jerfsonbruno.github.io/sexto-post/" /><meta property="og:image" content="https://jerfsonbruno.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-03-18T23:09:35-03:00" />
+<meta property="article:modified_time" content="2020-03-18T23:09:35-03:00" /><meta property="og:site_name" content="LoveIt" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jerfsonbruno.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="Expansões de Edgeworth para a distribuição Lomax"/>
+<meta name="twitter:description" content="Esse trabalho foi apresentado na disciplina de teoria assintotica ministrada pelo Prof. Dr. Gauss Moutinho Cordeiro. O objetivo deste trabalho é usar uma ferramenta matemática conhecida como expansão de Edgeworth em um conjunto de dados gerados a partir da distribuição lomax. Tal expansão permite obter uma função densidade de probabilidade com assimetria e curtose arbitrárias a partir de uma densidade normal.
+Expansão de Edgeworth: Distribuição Lomax As fórmulas a baixo são as expansões de Edgeworth para as funções densidade e de distribuição de uma soma padronizada $(S_n^*)$, respectivamente."/>
+<meta name="application-name" content="Jerfson Bruno">
+<meta name="apple-mobile-web-app-title" content="Jerfson Bruno"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jerfsonbruno.github.io/sexto-post/" /><link rel="prev" href="https://jerfsonbruno.github.io/primeiro-post/" /><link rel="next" href="https://jerfsonbruno.github.io/quinto-post/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Expansões de Edgeworth para a distribuição Lomax",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jerfsonbruno.github.io\/sexto-post\/"
+        },"image": ["https:\/\/jerfsonbruno.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  1270 ,
+        "url": "https:\/\/jerfsonbruno.github.io\/sexto-post\/","datePublished": "2020-03-18T23:09:35-03:00","dateModified": "2020-03-18T23:09:35-03:00","publisher": {
+            "@type": "Organization",
+            "name": "Jerfson Bruno","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/jerfsonbruno.github.io\/images\/avatar.png",
+                    "width":  420 ,
+                    "height":  420 
+                }},"author": {
+                "@type": "Person",
+                "name": "Jerfson Bruno"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Jerfson Bruno"><span class="header-title-pre"><i class='fa-solid fa-house'></i></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/sobre/"> Sobre </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Jerfson Bruno"><span class="header-title-pre"><i class='fa-solid fa-house'></i></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/sobre/" title="">Sobre</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Expansões de Edgeworth para a distribuição Lomax</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Jerfson Bruno</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="18-03-2020">18-03-2020</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1270 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;6 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#função-densidade-de-edgeworth">Função densidade de Edgeworth</a></li>
+    <li><a href="#função-de-distribuição-de-edgeworth">Função de distribuição de Edgeworth</a></li>
+    <li><a href="#função-densidade-da-lomax">Função densidade da lomax</a>
+      <ul>
+        <li><a href="#função-densidade-de-edgeworth-aplicada-a-lomax">Função densidade de Edgeworth aplicada a lomax</a></li>
+        <li><a href="#função-distribuição-de-edgeworth-aplicada-a-lomax">Função distribuição de Edgeworth aplicada a lomax</a></li>
+      </ul>
+    </li>
+    <li><a href="#simulação">Simulação</a>
+      <ul>
+        <li><a href="#n10">n=10</a></li>
+        <li><a href="#n50">n=50</a></li>
+        <li><a href="#n100">n=100</a></li>
+        <li><a href="#n200">n=200</a></li>
+      </ul>
+    </li>
+    <li><a href="#algoritmo-para-a-construção-das-funções-densidade-e-de-distribuição">algoritmo para a construção das funções densidade e de distribuição.</a>
+      <ul>
+        <li><a href="#distribuição-lomax">Distribuição Lomax</a></li>
+        <li><a href="#aproximação-normal-pela-expansão-de-edgeworth-para-n-10-25-50-e-100">Aproximação Normal pela expansão de Edgeworth para n= 10, 25, 50 e 100.</a>
+          <ul>
+            <li><a href="#para-n10">Para n=10</a></li>
+            <li><a href="#para-n25">Para n=25</a></li>
+            <li><a href="#para-n50">Para n=50</a></li>
+            <li><a href="#para-n100">Para n=100</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><code>Esse trabalho foi apresentado na disciplina de teoria assintotica ministrada pelo Prof. Dr. Gauss Moutinho Cordeiro. </code></p>
+<p>O objetivo deste trabalho é usar uma ferramenta matemática conhecida
+como expansão de Edgeworth em um conjunto de dados gerados a partir da distribuição lomax. Tal
+expansão permite obter uma função densidade de probabilidade com
+assimetria e curtose arbitrárias a partir de uma densidade normal.</p>
+<h1 id="expansão-de-edgeworth-distribuição-lomax">Expansão de Edgeworth: Distribuição Lomax</h1>
+<p>As fórmulas a baixo são as expansões de Edgeworth para as funções
+densidade e de distribuição de uma soma padronizada $(S_n^*)$,
+respectivamente.</p>
+<h2 id="função-densidade-de-edgeworth">Função densidade de Edgeworth</h2>
+<p>$$f_{S_n^*} (y) = \phi (y) \left\lbrace 1+ \frac{\rho_3}{6\sqrt{n}} H_3 (y) + \frac{\rho_4}{24n} H_4 (y) + \frac{\rho_3^2}{72n} H_6 (y)\right\rbrace + O(n^{-3/2})$$</p>
+<h2 id="função-de-distribuição-de-edgeworth">Função de distribuição de Edgeworth</h2>
+<p>$$  F_{S_n^*} (y) =  \Phi(y) - \phi (y) \left\lbrace 1+ \frac{\rho_3}{6\sqrt{n}} H_2 (y) + \frac{\rho_4}{24n} H_3 (y) + \frac{\rho_3^2}{72n} H_5 (y)\right\rbrace + O(n^{-3/2})$$</p>
+<h2 id="função-densidade-da-lomax">Função densidade da lomax</h2>
+<p>A distribuição Lomax, também chamada de distribuição
+Pareto Tipo II, é uma distribuição de probabilidade de cauda pesada
+usada em negócios, economia, ciência atuarial, teoria de filas e
+modelagem de tráfego da Internet. O criador, Lomax (1987), utilizou a
+distribuição inicialmente em análises de dados de tempo de vida de
+falhas de negócios.</p>
+<p>Uma variável aleatória $(X)$ segue a distribuição de Lomax com
+parâmetros $(\lambda &gt;0)$ e $(\alpha &gt;0)$ se sua função de
+probabilidade for dada por</p>
+<p>$$f(x;\alpha,\lambda)={\alpha \over \lambda }\left[{1+{x \over \lambda }}\right]^{-(\alpha +1)}$$</p>
+<p>A densidade pode ser reescrita de tal forma que mostre
+mais claramente a relação com a distribuição de Pareto Tipo I. Isso é:</p>
+<p>$$f(x;\alpha,\lambda)={{\alpha \lambda ^{\alpha }} \over {(x+\lambda )^{\alpha +1}}}.$$</p>
+<p>Os momentos da distribuição Lomax são obtidos pela Equação (4); É
+possível ver a demonstração analítica em Gradshteyn and Ryzhik (2007).</p>
+<p>$$\mathbf{E}(X^r) = \dfrac{\alpha \lambda^r \Gamma(r+1) \Gamma(\alpha-r)}{\Gamma(\alpha +1)}, \hspace{0.5cm} \alpha&gt;r$$</p>
+<p>Logo, dado a Equação (5) a média e a variância de $(X)$, são,
+respectivamente,
+$$\mathbf{E}(x) = \frac{\lambda}{\alpha-1}, \hspace{0.5cm} \alpha&gt;1$$</p>
+<p>e
+$$Var(x) = {\begin{cases}{\dfrac{\lambda^{2}\alpha}{(\alpha -1)^{2}(\alpha -2)}} \hspace{0.5cm} \alpha &gt;2\end{cases}}.$$</p>
+<p>O coeficiente de assimetria da distribuição Lomax é dado por
+$$\rho_3={\displaystyle {\frac {2(1+\alpha )}{\alpha -3}},{\sqrt {\frac {\alpha -2}{\alpha }}}{\text{ para }}\alpha &gt;3,}$$</p>
+<p>Respeitando a condição de existência, $(\alpha&gt;3)$, a distribuição Lomax
+é sempre assimétrica à direita, independentemente dos valores dos
+parâmetros. O coeficiente de excesso de curtose da distribuição Lomax é
+$$\rho_4= {\displaystyle {\frac {6(\alpha ^{3}+\alpha ^{2}-6\alpha -2)}{\alpha (\alpha -3)(\alpha -4)}}{\text { para }}\alpha &gt;4}$$</p>
+<p>Respeitando a condição de existência, $(\alpha&gt;4)$ a distribuição Lomax
+é leptocúrtico, independentemente dos valores dos parâmetros.</p>
+<p>Além da função densidade há outras formas de se caracterizar as
+distribuições de probabilidade. Para tanto, pode-se utilizar a função
+geratriz de momentos, função de cumulantes ou a função de distribuição;
+vale notar que nem todas as distribuições de probabilidade possuem
+função geratriz de momentos. A função geratriz de momentos de $(X)$ é
+dada por
+$$M_X (t) = \alpha (-t \lambda)^\alpha e^{(-t\lambda)} \Gamma(-\alpha, -t \lambda)$$</p>
+<p>e a função de cumulantes:
+$$K_X(t) = \log(M_Y (t))=  \log (\alpha ) - \alpha \log(t\lambda) - t \lambda + \log(\Gamma(-\alpha, -t\lambda))$$</p>
+<h3 id="função-densidade-de-edgeworth-aplicada-a-lomax">Função densidade de Edgeworth aplicada a lomax</h3>
+<p>$$f_{S_n^*} (y) = \phi (y) \left\lbrace 1+ \frac{{\displaystyle {\frac {2(1+\alpha )}{\alpha -3}},{\sqrt {\frac {\alpha -2}{\alpha }}}}}{6\sqrt{n}} H_3 (y) + \frac{{\displaystyle {\frac {6(\alpha ^{3}+\alpha ^{2}-6\alpha -2)}{\alpha (\alpha -3)(\alpha -4)}}}}{24n} H_4 (y) + \frac{\left({\displaystyle {\frac {2(1+\alpha )}{\alpha -3}},{\sqrt {\frac {\alpha -2}{\alpha }}}} \right)^2}{72n} H_6 (y)\right\rbrace$$</p>
+<h3 id="função-distribuição-de-edgeworth-aplicada-a-lomax">Função distribuição de Edgeworth aplicada a lomax</h3>
+<p>$$F_{S_n^*} (y) =  \Phi(y) - \phi (y) \left\lbrace 1+ \frac{{\displaystyle {\frac {2(1+\alpha )}{\alpha -3}},{\sqrt {\frac {\alpha -2}{\alpha }}}}}{6\sqrt{n}} H_2 (y) + \frac{{\displaystyle {\frac {6(\alpha ^{3}+\alpha ^{2}-6\alpha -2)}{\alpha (\alpha -3)(\alpha -4)}}}}{24n} H_3 (y) + \frac{\left({\displaystyle {\frac {2(1+\alpha )}{\alpha -3}},{\sqrt {\frac {\alpha -2}{\alpha }}}} \right)^2}{72n} H_5 (y)\right\rbrace$$</p>
+<p>Além disso, a lomax tem varias relações com outras distribuições,
+algumas delas:</p>
+<ul>
+<li>
+<p>Pareto</p>
+</li>
+<li>
+<p>Pareto generalizada</p>
+</li>
+<li>
+<p>prime beta</p>
+</li>
+<li>
+<p>distribuição F</p>
+</li>
+<li>
+<p>distribuição q-exponencial</p>
+</li>
+<li>
+<p>distribuição logística</p>
+</li>
+<li>
+<p>Outras</p>
+</li>
+</ul>
+<h2 id="simulação">Simulação</h2>
+<p>Sejam $(X_1,&hellip;,X_n)$ variáveis aleatórias com distribuição Lomax, com
+parâmetros $(\lambda=5)$, $(\alpha=5)$. As expansões de Edgeworth para a
+função densidade com tamanhos n=10, n=50, n=100 e n=200, são
+apresentadas na Figura a seguir.</p>
+<h3 id="n10">n=10</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/n=10.png"
+        data-srcset="/n=10.png, /n=10.png 1.5x, /n=10.png 2x"
+        data-sizes="auto"
+        alt="/n=10.png"
+        title="/n=10.png" width="800" height="556" /></p>
+<h3 id="n50">n=50</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/n=50.png"
+        data-srcset="/n=50.png, /n=50.png 1.5x, /n=50.png 2x"
+        data-sizes="auto"
+        alt="/n=50.png"
+        title="/n=50.png" width="800" height="566" /></p>
+<h3 id="n100">n=100</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/n=100.png"
+        data-srcset="/n=100.png, /n=100.png 1.5x, /n=100.png 2x"
+        data-sizes="auto"
+        alt="/n=100.png"
+        title="/n=100.png" width="800" height="566" /></p>
+<h3 id="n200">n=200</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/n=200.png"
+        data-srcset="/n=200.png, /n=200.png 1.5x, /n=200.png 2x"
+        data-sizes="auto"
+        alt="/n=200.png"
+        title="/n=200.png" width="800" height="566" /></p>
+<h2 id="algoritmo-para-a-construção-das-funções-densidade-e-de-distribuição">algoritmo para a construção das funções densidade e de distribuição.</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">library(EQL)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">fp = function(y,n){
+</span></span><span class="line"><span class="cl">  (sqrt(n)*(n+y*sqrt(n))^(n-1)*exp(-n-y*sqrt(n)))/factorial(n-1)
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">edgeworth = function(y, n, rho3, rho4){
+</span></span><span class="line"><span class="cl">  dnorm(y)*(1+(rho3*hermite(y,3)/(6*sqrt(n)))+((rho4*hermite(y,4))/(24*n))
+</span></span><span class="line"><span class="cl">            +((rho3*rho3*hermite(y,6))/(72*n)))
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="distribuição-lomax">Distribuição Lomax</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">library(Renext)
+</span></span><span class="line"><span class="cl">library(ggplot2)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">n =100
+</span></span><span class="line"><span class="cl">l = 2
+</span></span><span class="line"><span class="cl">a = 5
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mu = l/(a-1)
+</span></span><span class="line"><span class="cl">sigma2 = (a*l^2)/((a-1)^2*(a-2))
+</span></span><span class="line"><span class="cl">rho3 &lt;- log((2*(1+a)*sqrt((a-2)/a))/(a-3))
+</span></span><span class="line"><span class="cl">rho4 &lt;- log((6*(a^3+a^2-6*a-2))/(a*(a-3)*(a-4)))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">x = seq(0.0001, 6, 0.1)
+</span></span><span class="line"><span class="cl">y = dlomax(x, scale = l, shape = a)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dados&lt;-data.frame(x,y)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ggplot(dados, aes(x,y)) + geom_line(color=2)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="aproximação-normal-pela-expansão-de-edgeworth-para-n-10-25-50-e-100">Aproximação Normal pela expansão de Edgeworth para n= 10, 25, 50 e 100.</h3>
+<h4 id="para-n10">Para n=10</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">library(EnvStats)
+</span></span><span class="line"><span class="cl">n=10
+</span></span><span class="line"><span class="cl">m = 1000
+</span></span><span class="line"><span class="cl">obs = rlomax(m*n, scale = l, shape = a)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Distribuição empírica da soma estocástica de Lomax
+</span></span><span class="line"><span class="cl">x = matrix(0, m, n)
+</span></span><span class="line"><span class="cl">for(i in 1:m){
+</span></span><span class="line"><span class="cl">  x[i,] = rlomax(n, scale = l, shape = a)
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sn = apply(x, 1, sum)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#Trabalhando com a soma estocástica padronizada empírica
+</span></span><span class="line"><span class="cl">snp = (sn-n*mu)/(sqrt(n*sigma2))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">x &lt;- qemp(p = seq(0, 1, len = 100), obs = snp)
+</span></span><span class="line"><span class="cl">y &lt;- demp(x, snp)
+</span></span><span class="line"><span class="cl">z &lt;- dnorm(x)
+</span></span><span class="line"><span class="cl">h &lt;- edgeworth(x, n, rho3 = rho3, rho4 = rho4)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dados&lt;-data.frame(x,y,z,h)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ggplot(dados, aes(x,y)) + geom_path(aes(color = &#39;Distribuição empírica&#39;)) + geom_path(aes(x,z, color = &#39;Normal&#39;))+ geom_path(aes(x,h, color = &#39;Expansão Edgeworth&#39;))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="para-n25">Para n=25</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">library(EnvStats)
+</span></span><span class="line"><span class="cl">n=25
+</span></span><span class="line"><span class="cl">m = 1000
+</span></span><span class="line"><span class="cl">obs = rlomax(m*n, scale = l, shape = a)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Distribuição empírica da soma estocástica de Lomax
+</span></span><span class="line"><span class="cl">x = matrix(0, m, n)
+</span></span><span class="line"><span class="cl">for(i in 1:m){
+</span></span><span class="line"><span class="cl">  x[i,] = rlomax(n, scale = l, shape = a)
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sn = apply(x, 1, sum)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#Trabalhando com a soma estocástica padronizada empírica
+</span></span><span class="line"><span class="cl">snp = (sn-n*mu)/(sqrt(n*sigma2))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">x &lt;- qemp(p = seq(0, 1, len = 100), obs = snp)
+</span></span><span class="line"><span class="cl">y &lt;- demp(x, snp)
+</span></span><span class="line"><span class="cl">z &lt;- dnorm(x)
+</span></span><span class="line"><span class="cl">h &lt;- edgeworth(x, n, rho3 = rho3, rho4 = rho4)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dados&lt;-data.frame(x,y,z,h)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ggplot(dados, aes(x,y)) + geom_path(aes(color = &#39;Distribuição empírica&#39;)) + geom_path(aes(x,z, color = &#39;Normal&#39;))+ geom_path(aes(x,h, color = &#39;Expansão Edgeworth&#39;))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="para-n50">Para n=50</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">library(EnvStats)
+</span></span><span class="line"><span class="cl">n=50
+</span></span><span class="line"><span class="cl">m = 1000
+</span></span><span class="line"><span class="cl">obs = rlomax(m*n, scale = l, shape = a)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Distribuição empírica da soma estocástica de Lomax
+</span></span><span class="line"><span class="cl">x = matrix(0, m, n)
+</span></span><span class="line"><span class="cl">for(i in 1:m){
+</span></span><span class="line"><span class="cl">  x[i,] = rlomax(n, scale = l, shape = a)
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sn = apply(x, 1, sum)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#Trabalhando com a soma estocástica padronizada empírica
+</span></span><span class="line"><span class="cl">snp = (sn-n*mu)/(sqrt(n*sigma2))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">x &lt;- qemp(p = seq(0, 1, len = 100), obs = snp)
+</span></span><span class="line"><span class="cl">y &lt;- demp(x, snp)
+</span></span><span class="line"><span class="cl">z &lt;- dnorm(x)
+</span></span><span class="line"><span class="cl">h &lt;- edgeworth(x, n, rho3 = rho3, rho4 = rho4)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dados&lt;-data.frame(x,y,z,h)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ggplot(dados, aes(x,y)) + geom_path(aes(color = &#39;Distribuição empírica&#39;)) + geom_path(aes(x,z, color = &#39;Normal&#39;))+ geom_path(aes(x,h, color = &#39;Expansão Edgeworth&#39;))
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h4 id="para-n100">Para n=100</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">library(EnvStats)
+</span></span><span class="line"><span class="cl">n=100
+</span></span><span class="line"><span class="cl">m = 1000
+</span></span><span class="line"><span class="cl">obs = rlomax(m*n, scale = l, shape = a)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># Distribuição empírica da soma estocástica de Lomax
+</span></span><span class="line"><span class="cl">x = matrix(0, m, n)
+</span></span><span class="line"><span class="cl">for(i in 1:m){
+</span></span><span class="line"><span class="cl">  x[i,] = rlomax(n, scale = l, shape = a)
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sn = apply(x, 1, sum)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#Trabalhando com a soma estocástica padronizada empírico
+</span></span><span class="line"><span class="cl">snp = (sn-n*mu)/(sqrt(n*sigma2))
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">x &lt;- qemp(p = seq(0, 1, len = 100), obs = snp)
+</span></span><span class="line"><span class="cl">y &lt;- demp(x, snp)
+</span></span><span class="line"><span class="cl">z &lt;- dnorm(x)
+</span></span><span class="line"><span class="cl">h &lt;- edgeworth(x, n, rho3 = rho3, rho4 = rho4)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">dados&lt;-data.frame(x,y,z,h)
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">ggplot(dados, aes(x,y)) + geom_path(aes(color = &#39;Distribuição empírica&#39;)) + geom_path(aes(x,z, color = &#39;Normal&#39;))+ geom_path(aes(x,h, color = &#39;Expansão Edgeworth&#39;))
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 18-03-2020</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/sexto-post/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/primeiro-post/" class="prev" rel="prev" title="Coronavírus no mundo."><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Coronavírus no mundo.</a>
+            <a href="/quinto-post/" class="next" rel="next" title="(Ox vs R): Otimização não linear da distribuição Gamma">(Ox vs R): Otimização não linear da distribuição Gamma<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Criado por Jerfson Bruno</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span>&nbsp;|&nbsp;<span class="license">MIT</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

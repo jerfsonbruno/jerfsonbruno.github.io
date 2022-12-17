@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Desempenho e concordância entre alguns testes De normalidade sob a presença e ausência de outliers. - Jerfson Bruno</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Desempenho e concordância entre alguns testes De normalidade sob a presença e ausência de outliers." />
+<meta property="og:description" content="Este trabalho foi apresentado no Conapesc 2019, e teve orientação da Prof. Dr. Amanda dos Santos Gomes, amanda.natalia.gomes@gmail.com.
+Temos como objetivo mostrar o desempenho dos mais populares testes de normalidade para dados com e sem a presença de outliers e verificar o nível de concordância dos testes nestes tipos de situações. De maneira geral, verificou-se que o teste de Jarque-Bera é o mais poderoso nas amostras com a presença de outliers." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jerfsonbruno.github.io/nove-post/" /><meta property="og:image" content="https://jerfsonbruno.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-02-20T01:35:33-03:00" />
+<meta property="article:modified_time" content="2019-02-20T01:35:33-03:00" /><meta property="og:site_name" content="LoveIt" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jerfsonbruno.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="Desempenho e concordância entre alguns testes De normalidade sob a presença e ausência de outliers."/>
+<meta name="twitter:description" content="Este trabalho foi apresentado no Conapesc 2019, e teve orientação da Prof. Dr. Amanda dos Santos Gomes, amanda.natalia.gomes@gmail.com.
+Temos como objetivo mostrar o desempenho dos mais populares testes de normalidade para dados com e sem a presença de outliers e verificar o nível de concordância dos testes nestes tipos de situações. De maneira geral, verificou-se que o teste de Jarque-Bera é o mais poderoso nas amostras com a presença de outliers."/>
+<meta name="application-name" content="Jerfson Bruno">
+<meta name="apple-mobile-web-app-title" content="Jerfson Bruno"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jerfsonbruno.github.io/nove-post/" /><link rel="next" href="https://jerfsonbruno.github.io/terceiro-post/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Desempenho e concordância entre alguns testes De normalidade sob a presença e ausência de outliers.",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jerfsonbruno.github.io\/nove-post\/"
+        },"image": ["https:\/\/jerfsonbruno.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  3939 ,
+        "url": "https:\/\/jerfsonbruno.github.io\/nove-post\/","datePublished": "2019-02-20T01:35:33-03:00","dateModified": "2019-02-20T01:35:33-03:00","publisher": {
+            "@type": "Organization",
+            "name": "Jerfson Bruno","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/jerfsonbruno.github.io\/images\/avatar.png",
+                    "width":  420 ,
+                    "height":  420 
+                }},"author": {
+                "@type": "Person",
+                "name": "Jerfson Bruno"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Jerfson Bruno"><span class="header-title-pre"><i class='fa-solid fa-house'></i></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/sobre/"> Sobre </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Jerfson Bruno"><span class="header-title-pre"><i class='fa-solid fa-house'></i></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/sobre/" title="">Sobre</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Desempenho e concordância entre alguns testes De normalidade sob a presença e ausência de outliers.</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Jerfson Bruno</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="20-02-2019">20-02-2019</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;3939 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;19 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introdução">Introdução</a></li>
+    <li><a href="#metodologia">Metodologia</a></li>
+    <li><a href="#desenvolvimento">Desenvolvimento</a>
+      <ul>
+        <li><a href="#simulação-monte-carlo">Simulação Monte Carlo</a></li>
+        <li><a href="#erro-tipo-i">Erro tipo I</a></li>
+        <li><a href="#poder">Poder</a></li>
+        <li><a href="#concordância">Concordância</a></li>
+      </ul>
+    </li>
+    <li><a href="#resultados-e-discussões">Resultados e Discussões</a>
+      <ul>
+        <li><a href="#sem-a-presença-de-outliers">Sem a Presença de <em>Outliers</em></a>
+          <ul>
+            <li><a href="#coeficiente-kappa-para-amostras-sem-outliers">Coeficiente kappa para amostras sem <em>outliers</em></a></li>
+          </ul>
+        </li>
+        <li><a href="#com-a-presença-de-outliers">Com a presença de <em>outliers</em></a>
+          <ul>
+            <li><a href="#coeficiente-kappa-para-amostras-com-outliers">Coeficiente Kappa para amostras com outliers</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#considerações-finais">Considerações finais</a></li>
+    <li><a href="#r">R</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><strong><code>Este trabalho foi apresentado no Conapesc 2019, e teve orientação da Prof. Dr. Amanda dos Santos Gomes, amanda.natalia.gomes@gmail.com.</code></strong></p>
+<p>Temos como objetivo mostrar o desempenho dos mais populares testes de
+normalidade para dados com e sem a presença de <em>outliers</em> e verificar o
+nível de concordância dos testes nestes tipos de situações. De maneira
+geral, verificou-se que o teste de Jarque-Bera é o mais poderoso nas
+amostras com a presença de <em>outliers</em>. O teste teve o melhor desempenho
+para pequenas e grandes amostras. Nas amostras sem a presença de
+<em>outliers</em>, o teste de Shapiro-Wilk foi o mais poderoso seguido do
+Shapiro-Francia. Aplicou-se o coeficiente Kappa-Fleiss para avaliar a
+concordância na tomada de decisão. Para amostras com <em>outliers</em> os
+testes apresentaram baixa concordância e para amostras sem <em>outliers</em> os
+testes apresentaram forte concordância.</p>
+<h2 id="introdução">Introdução</h2>
+<p>No dia a dia das pessoas que trabalham com dados amostrais ou
+experimentais é bastante comum a suposição de normalidade dos dados,
+isso porque é uma condição exigida para a realização de muitas
+inferências válidas a respeito de parâmetros populacionais.</p>
+<p>A distribuição normal é um modelo probabilístico contínuo, sendo um dos
+mais importantes, pois a maioria dos métodos estatísticos são baseados
+nesse modelo e muitos fenômenos aleatórios podem ser descritos de forma
+aproximada por ele.</p>
+<p>Na inferência há vários pressupostos a serem observados, os pressupostos
+estatísticos mais considerados são normalidade, linearidade e
+homoscedasticidade. Este trabalho focará apenas no pressuposto de
+normalidade visto que exige-se por inúmeros procedimentos estatísticos,
+tais como: construção de intervalos de confiança, testes de hipóteses,
+análise de variância e modelagem estatística. Assim, torna-se importante
+verificar esse pressuposto antes de se prosseguir com os procedimentos
+estatísticos que o exijam.</p>
+<p>O <em>software</em> R disponibiliza diversas maneiras de verificar a
+normalidade dos dados, sendo eles, métodos gráficos, métodos numéricos e
+os testes de normalidade. O mais famoso método gráfico é o <code>QQ-plot</code>, no
+qual o mesmo imprime os pontos sobre uma reta afim de avaliar sua
+normalidade, sendo porém uma técnica subjetiva. Assim, para se obter uma
+conclusão formal é importante efetuar um teste estatístico.</p>
+<p>A motivação para este trabalho surgiu a partir do interesse de avaliar o
+desempenho dos testes de normalidade de Shapiro-Wilk, Anderson-Darling,
+Lilliefors, Jarque-Bera, Shapiro-Francia e Cramer-von Mises para dois
+tipos situações: A primeira para dados sem a presença de <em>outliers</em> e a
+segunda com a presença de <em>outliers</em>. O desempenho será realizado a
+partir das análises da taxas de erro tipo I e poder empírico.</p>
+<h2 id="metodologia">Metodologia</h2>
+<p>Neste trabalho foram consideradas algumas estratégias para avaliar as
+taxas do erro do tipo I, poder e concordância entre esses testes. Foi
+utilizada a simulação de Monte Carlo, e em cada simulação foram
+aplicados os testes de normalidade em um nível de significância
+pré-estabelecido de 5%, sendo verificado se a hipótese nula, de
+que os dados seguem uma distribuição normal, foi ou não rejeitada.</p>
+<p>Caso tenha sido rejeitada a hipótese nula e a amostra tenha sido gerada
+da distribuição normal, foi cometido um erro do tipo I. Da mesma forma
+se a hipótese nula for rejeitada e a amostra foi obtida de uma população
+não-normal, uma decisão correta foi tomada.</p>
+<p>Em cada caso, foi repetido 10.000 vezes e a proporção de decisões
+incorretas no primeiro caso é a taxa de erro tipo I e no segundo caso, a
+proporção de decisões corretas é o poder empírico do teste.</p>
+<p>Os testes de Anderson-Darling, Lilliefors, Shapiro-Francia e Cramer-von Mises foram aplicados utilizando as funções, <code>ad.test()</code>,
+<code>lilli.test()</code>, <code>sf.test()</code> e <code>cvm.test()</code>, respectivamente. Todas essas
+funções são encontradas no pacote <code>nortest</code>. O teste de Shapiro-Wilk foi aplicado utilizando-se a função
+<code>shapiro.test()</code> do pacote <code>stats</code>, e o teste Jarque-Bera com função <code>jb.norm.test()</code> do pacote <code>normtest</code>.</p>
+<h2 id="desenvolvimento">Desenvolvimento</h2>
+<h3 id="simulação-monte-carlo">Simulação Monte Carlo</h3>
+<p>Foram realizados dois experimentos, o primeiro com 10.000 replicas
+de Monte Carlo sob as hipóteses $H_0$ e $H_1$, de diversas
+distribuições de probabilidade, em que foi produzido de cada
+distribuição, amostras de tamanho n, nos quais esses valores
+foram: 10, 20, 30, 50, 100, 200, 300,
+500 e 1.000. E no segundo experimento foi adotada a mesma ideia
+do primeiro, porém, todas as distribuições geradas continham <em>outliers</em>.</p>
+<h3 id="erro-tipo-i">Erro tipo I</h3>
+<p>Foram simuladas 10.000 amostras aleatórias normais de tamanhos $n$
+com a função <code>rnorm</code>, com média 0 e desvio padrão 1.</p>
+<p>Se, ao aplicar os testes, a hipótese nula de normalidade é rejeitada a
+um nível de significância de 5%, então a distribuição dos dados é
+considerada erroneamente como não-normal. A proporção de rejeições
+incorretas foi calculada para cada teste e representam as taxas de erro
+tipo I.</p>
+<h3 id="poder">Poder</h3>
+<p>Foram simuladas amostras aleatórias de distribuições não-normal para
+avaliar o poder dos testes, que é rejeitar a hipótese nula que por
+construção é falsa.</p>
+<p>Em dois experimentos, 10.000 amostras de tamanho $n$ de algumas
+distribuições não-normais, simétricas e assimétricas, foram simuladas.
+No primeiro sem a presença de <em>outliers</em>, e no segundo com a presença de
+<em>outliers</em>.</p>
+<p>As distribuições simétricas foram a <em>uniforme(0,1)</em>, <em>beta(2,2)</em> e
+<em>t-student(10)</em>. Já as distribuições assimétricas foram
+<em>Gamma(2,1)</em>, <em>$\chi^2$(15)</em>, <em>lognormal(0,1)</em>, <em>exponencial(1)</em> e
+<em>weibull(2,1)</em>.</p>
+<p>As distribuições foram simuladas por meio das funções <code>random</code> do
+<em>software R</em>.</p>
+<p>Os testes de normalidade foram aplicados em cada uma das 10.000
+amostras de cada distribuição simulada e a proporção de rejeições
+corretas da hipótese nula foi computada. Os valores obtidos representam
+o poder dos testes que foram comparados entre si.</p>
+<h3 id="concordância">Concordância</h3>
+<p>Os dados foram computados para cada uma das distribuições com n
+tamanhos diferentes. Foi feito um coeficiente Kappa-Fleiss com
+função <code>Kappam.fleiss</code> do pacote <code>irr</code>, para verificar o nível
+concordância entre os testes na tomada de decisão entre rejeitar ou não
+a hipótese nula de normalidade. A concordância foi aplicado apenas nas
+amostras não provenientes da distribuição normal. Com isso,
+verificaremos se o poder dos testes interfere diretamente na
+concordância.</p>
+<h2 id="resultados-e-discussões">Resultados e Discussões</h2>
+<p>Nesta seção serão apresentados os resultados das simulações para
+obtenção do erro do tipo I, poder e concordância dos testes de
+normalidade.</p>
+<h3 id="sem-a-presença-de-outliers">Sem a Presença de <em>Outliers</em></h3>
+<p>Foram avaliados seis testes de normalidade, Anderson-Darling,
+Lilliefors, Shapiro-Francia, Cramer-von Mises, Shapiro-Wilk e
+Jarque-Bera. A Tabela [1] apresenta as taxas de erro tipo
+I para diferentes tamanhos amostrais.</p>
+<p><strong>Tabela 1: Erro do tipo I das amostras sem outliers dos testes Anderson-Darling (AD), Lilliefors (LL), Shapiro-Francia (SF), Cramer-von Mises (CVM), Shapiro-Wilk (SW) e Jarque- Bera (JB)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>Tamanho</strong></th>
+<th style="text-align:center"><strong>SW</strong></th>
+<th style="text-align:center"><strong>AD</strong></th>
+<th style="text-align:center"><strong>CVM</strong></th>
+<th style="text-align:center"><strong>LL</strong></th>
+<th style="text-align:center"><strong>SF</strong></th>
+<th style="text-align:center"><strong>JB</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>10</strong></td>
+<td style="text-align:center">0,0466</td>
+<td style="text-align:center">0,0442</td>
+<td style="text-align:center">0,0424</td>
+<td style="text-align:center">0,0478</td>
+<td style="text-align:center">0,0506</td>
+<td style="text-align:center">0,0484</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>15</strong></td>
+<td style="text-align:center">0,0482</td>
+<td style="text-align:center">0,0502</td>
+<td style="text-align:center">0,0496</td>
+<td style="text-align:center">0,0472</td>
+<td style="text-align:center">0,0528</td>
+<td style="text-align:center">0,0548</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>20</strong></td>
+<td style="text-align:center">0,0496</td>
+<td style="text-align:center">0,0500</td>
+<td style="text-align:center">0,0500</td>
+<td style="text-align:center">0,0506</td>
+<td style="text-align:center">0,0496</td>
+<td style="text-align:center">0,0476</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>30</strong></td>
+<td style="text-align:center">0,0544</td>
+<td style="text-align:center">0,0520</td>
+<td style="text-align:center">0,0514</td>
+<td style="text-align:center">0,0470</td>
+<td style="text-align:center">0,0514</td>
+<td style="text-align:center">0,0514</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>50</strong></td>
+<td style="text-align:center">0,0460</td>
+<td style="text-align:center">0,0512</td>
+<td style="text-align:center">0,0542</td>
+<td style="text-align:center">0,0546</td>
+<td style="text-align:center">0,0482</td>
+<td style="text-align:center">0,0456</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>100</strong></td>
+<td style="text-align:center">0,0512</td>
+<td style="text-align:center">0,0506</td>
+<td style="text-align:center">0,0498</td>
+<td style="text-align:center">0,0530</td>
+<td style="text-align:center">0,0520</td>
+<td style="text-align:center">0,0532</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>200</strong></td>
+<td style="text-align:center">0,0528</td>
+<td style="text-align:center">0,0524</td>
+<td style="text-align:center">0,0530</td>
+<td style="text-align:center">0,0484</td>
+<td style="text-align:center">0,0524</td>
+<td style="text-align:center">0,0480</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>300</strong></td>
+<td style="text-align:center">0,0478</td>
+<td style="text-align:center">0,0480</td>
+<td style="text-align:center">0,0434</td>
+<td style="text-align:center">0,0454</td>
+<td style="text-align:center">0,0488</td>
+<td style="text-align:center">0,0484</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>500</strong></td>
+<td style="text-align:center">0,0514</td>
+<td style="text-align:center">0,0450</td>
+<td style="text-align:center">0,0482</td>
+<td style="text-align:center">0,0472</td>
+<td style="text-align:center">0,0504</td>
+<td style="text-align:center">0,0474</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>1000</strong></td>
+<td style="text-align:center">0,0496</td>
+<td style="text-align:center">0,0468</td>
+<td style="text-align:center">0,0460</td>
+<td style="text-align:center">0,0470</td>
+<td style="text-align:center">0,0520</td>
+<td style="text-align:center">0,0500</td>
+</tr>
+</tbody>
+</table>
+<p>As duas Figuras abaixo são a representação da Tabela <a href="sd" rel="">1</a>.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/normalso.png"
+        data-srcset="/normalso.png, /normalso.png 1.5x, /normalso.png 2x"
+        data-sizes="auto"
+        alt="/normalso.png"
+        title="Fonte: Autor" width="800" height="566" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/normalso1.png"
+        data-srcset="/normalso1.png, /normalso1.png 1.5x, /normalso1.png 2x"
+        data-sizes="auto"
+        alt="/normalso1.png"
+        title="Fonte: Autor" width="800" height="566" /></p>
+<p>Por meio das duas Figuras acima e da Tabela <a href="#tab:normalso" rel="">1</a>
+verificou-se que a taxa de erro do tipo I, para todos os testes, oscilou
+consideravelmente em torno do valor nominal de 5%, para amostras
+pequenas, $n\leq 30$. Ainda pela Figura <a href="#fig:normalso" rel="">1</a>, nota-se que a medida que o tamanho da
+amostra aumenta, os testes de Shapiro-Francia e Shapiro-Wilk vão se
+aproximando mais rápido da taxa nominal de 0,05 tornando-os assim
+testes mais precisos. O teste Jarque-Bera tende a rejeitar menos à
+hipótese nula de normalidade, pois a maioria das suas oscilações estão
+abaixo do nível nominal de 0,05. O teste de Shapiro-Francia pouco
+oscila sobre o valor nominal, o tornando um dos testes mais precisos
+para calcular o erro do tipo I. Os testes de Anderson-Darling,
+Lilliefors e Cramer-von Mises, são os menos precisos, ficando distantes
+do valor nominal. Já o teste de Shapiro-Wilk, é mais poderoso entre eles
+tendo baixas oscilações em torno do valor nominal.</p>
+<p>Pela Tabela <a href="#tab:vari" rel="">2</a> podemos observar a variância dos testes em
+relação ao valor nominal para todas as amostras. Nas Tabelas
+<a href="#tab:vari1" rel="">3</a> e <a href="#tab:vari2" rel="">4</a> podemos observar para pequenas e
+grandes amostras, respectivamente.</p>
+<p><strong>Tabela 2: Variância para todos tamanhos amostrais</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>SW</strong></th>
+<th style="text-align:center"><strong>AD</strong></th>
+<th style="text-align:center"><strong>CVM</strong></th>
+<th style="text-align:center"><strong>LL</strong></th>
+<th style="text-align:center"><strong>SF</strong></th>
+<th style="text-align:center"><strong>JB</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$6,400 \times 10^{-7}$</td>
+<td style="text-align:center">$1,024 \times 10^{-5}$</td>
+<td style="text-align:center">$1,600 \times 10^{-5}$</td>
+<td style="text-align:center">$1,547 \times 10^{-5}$</td>
+<td style="text-align:center">$7,471 \times 10^{-6}$</td>
+<td style="text-align:center">$3,004 \times 10^{-6}$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela 3: Variância para pequenas amostras $n \leq 30$</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>SW</strong></th>
+<th style="text-align:center"><strong>AD</strong></th>
+<th style="text-align:center"><strong>CVM</strong></th>
+<th style="text-align:center"><strong>LL</strong></th>
+<th style="text-align:center"><strong>SF</strong></th>
+<th style="text-align:center"><strong>JB</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$4,800 \times 10^{-7}$</td>
+<td style="text-align:center">$4,320 \times 10^{-6}$</td>
+<td style="text-align:center">$1,452\times 10^{-5}$</td>
+<td style="text-align:center">$1,825\times 10^{-5}$</td>
+<td style="text-align:center">$6,453 \times 10^{-6}$</td>
+<td style="text-align:center">$1,613\times 10^{-6}$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela 4: Variância para grandes amostras $n \geq 50$</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>SW</strong></th>
+<th style="text-align:center"><strong>AD</strong></th>
+<th style="text-align:center"><strong>CVM</strong></th>
+<th style="text-align:center"><strong>LL</strong></th>
+<th style="text-align:center"><strong>SF</strong></th>
+<th style="text-align:center"><strong>JB</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$2,048 \times 10^{-6}$</td>
+<td style="text-align:center">$3,200 \times 10^{-6}$</td>
+<td style="text-align:center">$3,200 \times 10^{-6}$</td>
+<td style="text-align:center">$1,095 \times 10^{-5}$</td>
+<td style="text-align:center">$5,408 \times 10^{-6}$</td>
+<td style="text-align:center">$7,200 \times 10^{-6}$</td>
+</tr>
+</tbody>
+</table>
+<p>Percebe-se que o teste de Shapiro-Wilk seguido do Shapiro-Francia foram
+os mais precisos de uma forma geral. Porém, para pequenas amostras o
+teste de Shapiro-Francia perde a segunda colocação para o teste
+Jarque-Bera, já que mesmo teve menor variância.</p>
+<p>Na Figura abaixo encontramos o poder de cada teste
+para as distribuições simétricas e assimétricas, com diferentes tamanhos
+amostrais.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/poder.png"
+        data-srcset="/poder.png, /poder.png 1.5x, /poder.png 2x"
+        data-sizes="auto"
+        alt="/poder.png"
+        title="Fonte: Autor" width="800" height="486" /></p>
+<p>Para amostras provenientes da distribuição uniforme e beta, percebe-se
+que o teste de Shapiro-Willk tem um comportamento melhor quando se trata
+de amostras pequenas, seguido do teste de Anderson-Darling. Em relação
+aos demais testes, o teste Jarque-Bera apresentou o menor poder nas
+distribuições uniforme e beta para amostras pequenas, para amostras
+maiores que 150 o teste de Lilliefors apresentou menor poder.</p>
+<p>Para a distribuição t-student os testes diferem bastante quanto ao
+poder, mesmo para o maior tamanho amostral. A dificuldade dos testes em
+identificar corretamente a falta de normalidade quando os dados seguem a
+distribuição t-student se deve ao fato das duas distribuições possuírem
+densidades muito parecidas. Levando em consideração todos os tamanhos
+amostrais, o teste que melhor identificou os dados provenientes da
+distribuição t-student foi o Jarque-Bera, seguido do teste
+Shapiro-Francia. O teste Lilliefors apresentou o menor poder na
+distribuição t-student.</p>
+<p>Nas distribuições assimétricas o teste mais poderoso foi o de
+Shapiro-Wilk, seguido do Shapiro-Francia. Nas distribuições weibull e
+$\chi^2$, os mesmos se destacaram para amostras menores que 250,
+ou seja, para pequenas amostras o poder dos testes de Shapiro-Wilk e
+Shapiro-Francia se destacaram em relação aos outros. Todos os testes
+tiveram poder máximo com amostras maiores que 500, exceto pelo teste
+de Lilliefors, que novamente ficou com menor poder em comparação com os
+outros testes.</p>
+<p>Em oposição a isso, tem-se os testes apresentaram ótimos resultados de
+poder para as distribuições, lognormal, exponencial e gamma. Mesmo
+assim, os testes de Shapiro-Wilk e Shapiro-Francia foram superiores em
+todos os casos.</p>
+<h4 id="coeficiente-kappa-para-amostras-sem-outliers">Coeficiente kappa para amostras sem <em>outliers</em></h4>
+<p>Pela Tabela <a href="#123456" rel="">5</a> temos todos os resultados do coeficiente kappa para
+as diferentes distribuições mencionadas anteriormente. Percebe-se que
+para a maioria das distribuições, os testes tiveram forte concordância
+entre rejeitar ou não a hipótese de normalidade. Porém, as distribuições
+beta, $\chi^2$ e t-student obtiveram menor concordância. Isso pode ser
+visto na Figura acima onde os testes tem menor
+precisão na identificação não normalidade. Isso se deve ao fato das
+distribuições possuírem densidades muito parecidas.</p>
+<p><strong>Tabela 5: Coeficiente Kappa</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Gamma</th>
+<th style="text-align:center">Beta</th>
+<th style="text-align:center">Exponencial</th>
+<th style="text-align:center">Lognormal</th>
+<th style="text-align:center">$\chi^2$</th>
+<th style="text-align:center">t-student</th>
+<th style="text-align:center">Uniforme</th>
+<th style="text-align:center">Weibull</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0,90</td>
+<td style="text-align:center">0,38</td>
+<td style="text-align:center">0,93</td>
+<td style="text-align:center">1,00</td>
+<td style="text-align:center">0,66</td>
+<td style="text-align:center">0,40</td>
+<td style="text-align:center">0,86</td>
+<td style="text-align:center">0,81</td>
+</tr>
+</tbody>
+</table>
+<h3 id="com-a-presença-de-outliers">Com a presença de <em>outliers</em></h3>
+<p>A seguir serão apresentados os resultados das simulações com a presença
+de <em>outliers</em> para obtenção do erro do tipo I, poder e concordância dos
+testes de normalidade. Em cada amostra foram adicionados dois
+<em>outliers</em>, sendo um 10% do valor mínimo e o outro 100% do
+valor máximo.</p>
+<p><strong>Tabela 6: Erro do tipo I das amostras com outliers dos testes Anderson-Darling (AD), Lilliefors (LL), Shapiro-Francia (SF), Cramer-von Mises (CVM), Shapiro-Wilk (SW) e Jarque- Bera (JB)</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>Tamanho</strong></th>
+<th style="text-align:center"><strong>SW</strong></th>
+<th style="text-align:center"><strong>AD</strong></th>
+<th style="text-align:center"><strong>CVM</strong></th>
+<th style="text-align:center"><strong>LL</strong></th>
+<th style="text-align:center"><strong>SF</strong></th>
+<th style="text-align:center"><strong>JB</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>10</strong></td>
+<td style="text-align:center">0,16</td>
+<td style="text-align:center">0,15</td>
+<td style="text-align:center">0,15</td>
+<td style="text-align:center">0,14</td>
+<td style="text-align:center">0,20</td>
+<td style="text-align:center">0,27</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>15</strong></td>
+<td style="text-align:center">0,27</td>
+<td style="text-align:center">0,23</td>
+<td style="text-align:center">0,22</td>
+<td style="text-align:center">0,19</td>
+<td style="text-align:center">0,35</td>
+<td style="text-align:center">0,45</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>20</strong></td>
+<td style="text-align:center">0,38</td>
+<td style="text-align:center">0,28</td>
+<td style="text-align:center">0,26</td>
+<td style="text-align:center">0,20</td>
+<td style="text-align:center">0,47</td>
+<td style="text-align:center">0,57</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>30</strong></td>
+<td style="text-align:center">0,49</td>
+<td style="text-align:center">0,32</td>
+<td style="text-align:center">0,28</td>
+<td style="text-align:center">0,22</td>
+<td style="text-align:center">0,60</td>
+<td style="text-align:center">0,71</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>50</strong></td>
+<td style="text-align:center">0,64</td>
+<td style="text-align:center">0,35</td>
+<td style="text-align:center">0,29</td>
+<td style="text-align:center">0,21</td>
+<td style="text-align:center">0,76</td>
+<td style="text-align:center">0,83</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>100</strong></td>
+<td style="text-align:center">0,84</td>
+<td style="text-align:center">0,34</td>
+<td style="text-align:center">0,27</td>
+<td style="text-align:center">0,20</td>
+<td style="text-align:center">0,93</td>
+<td style="text-align:center">0,94</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>200</strong></td>
+<td style="text-align:center">0,96</td>
+<td style="text-align:center">0,31</td>
+<td style="text-align:center">0,23</td>
+<td style="text-align:center">0,16</td>
+<td style="text-align:center">0,99</td>
+<td style="text-align:center">0,97</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>300</strong></td>
+<td style="text-align:center">0,99</td>
+<td style="text-align:center">0,25</td>
+<td style="text-align:center">0,18</td>
+<td style="text-align:center">0,13</td>
+<td style="text-align:center">1,00</td>
+<td style="text-align:center">0,98</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>500</strong></td>
+<td style="text-align:center">1,00</td>
+<td style="text-align:center">0,20</td>
+<td style="text-align:center">0,15</td>
+<td style="text-align:center">0,10</td>
+<td style="text-align:center">1,00</td>
+<td style="text-align:center">0,99</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>1000</strong></td>
+<td style="text-align:center">1,00</td>
+<td style="text-align:center">0,13</td>
+<td style="text-align:center">0,10</td>
+<td style="text-align:center">0,08</td>
+<td style="text-align:center">1,00</td>
+<td style="text-align:center">0,99</td>
+</tr>
+</tbody>
+</table>
+<p>De forma geral, todos os testes apresentaram dificuldades em identificar
+a normalidade dos dados com a presença de <em>outliers</em>. Pelas Figura
+abaixo, nota-se que os testes são sensíveis com a presença
+de <em>outliers</em> se distanciando bastante do valor nominal de 0,05.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/normalco.png"
+        data-srcset="/normalco.png, /normalco.png 1.5x, /normalco.png 2x"
+        data-sizes="auto"
+        alt="/normalco.png"
+        title="Fonte: Autor" width="800" height="566" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/normalco1.png"
+        data-srcset="/normalco1.png, /normalco1.png 1.5x, /normalco1.png 2x"
+        data-sizes="auto"
+        alt="/normalco1.png"
+        title="Fonte: Autor" width="800" height="566" /></p>
+<p>Os testes de Anderson-Darling, Lilliefors e Cramer-von Mises foram os
+menos sensíveis aos <em>outliers</em>, obtendo melhor desempenho se aproximando
+do valor nominal de acordo com a Tabela <a href="#tab:normalco" rel="">6</a>.</p>
+<p>Pela Tabela <a href="#tab:varii" rel="">7</a> podemos observar a variância dos testes em
+relação ao valor nominal para todas as amostras. Nas Tabelas
+<a href="#tab:vari11" rel="">8</a> e <a href="#tab:vari22" rel="">9</a> podemos observar para pequenas e
+grandes amostras.</p>
+<p><strong>Tabela 7: Variância para todos tamanhos amostrais</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>SW</strong></th>
+<th style="text-align:center"><strong>AD</strong></th>
+<th style="text-align:center"><strong>CVM</strong></th>
+<th style="text-align:center"><strong>LL</strong></th>
+<th style="text-align:center"><strong>SF</strong></th>
+<th style="text-align:center"><strong>JB</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">4,313</td>
+<td style="text-align:center">0,472</td>
+<td style="text-align:center">0,295</td>
+<td style="text-align:center">0,142</td>
+<td style="text-align:center">5,138</td>
+<td style="text-align:center">5,760</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela 8: Variância para pequenas amostras $n \leq 30$</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>SW</strong></th>
+<th style="text-align:center"><strong>AD</strong></th>
+<th style="text-align:center"><strong>CVM</strong></th>
+<th style="text-align:center"><strong>LL</strong></th>
+<th style="text-align:center"><strong>SF</strong></th>
+<th style="text-align:center"><strong>JB</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0,4033333</td>
+<td style="text-align:center">0,2028</td>
+<td style="text-align:center">0,1680333</td>
+<td style="text-align:center">0,1008333</td>
+<td style="text-align:center">0,6721333</td>
+<td style="text-align:center">1,08</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela 9: Variância para grandes amostras $n \geq 50$</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>SW</strong></th>
+<th style="text-align:center"><strong>AD</strong></th>
+<th style="text-align:center"><strong>CVM</strong></th>
+<th style="text-align:center"><strong>LL</strong></th>
+<th style="text-align:center"><strong>SF</strong></th>
+<th style="text-align:center"><strong>JB</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">6,20498</td>
+<td style="text-align:center">0,4805</td>
+<td style="text-align:center">0,2645</td>
+<td style="text-align:center">0,1125</td>
+<td style="text-align:center">7,03298</td>
+<td style="text-align:center">7,34472</td>
+</tr>
+</tbody>
+</table>
+<p>Percebe-se que os testes de Anderson-Darling, Cramer-von Mises e
+Lilliefors foram os mais precisos de uma forma geral. Para pequenas e
+grandes amostras o teste de Lilliefors ficou com a menor variância,
+seguido do teste de Cramer-von Mises. O teste Jarque-Bera foi o mais
+sensível de todos tendo uma alta variação.</p>
+<p>O poder para as distribuições simétricas e assimétricas geradas com a
+presença de <em>outliers</em>, pode ser observado pela Figura
+<a href="#fig:poderout" rel="">6</a>.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/poderout.png"
+        data-srcset="/poderout.png, /poderout.png 1.5x, /poderout.png 2x"
+        data-sizes="auto"
+        alt="/poderout.png"
+        title="Fonte: Autor" width="800" height="486" /></p>
+<p>Para amostras provenientes da distribuição uniforme, percebe-se que o
+teste Jarque-Bera tem o melhor comportamento quando se trata de amostras
+pequenas, seguido do teste de Shapiro-Francia. A partir de amostras
+maiores que 250, o teste mais poderoso foi o de Shapiro-Francia, seguido
+do Shapiro-Wilk. Os mesmos se tornam melhores opções, pois não há
+oscilações como o teste Jarque-Bera. Em relação aos demais testes, o
+teste de Lilliefors apresentou menor poder.</p>
+<p>Nas amostras provenientes da distribuição beta, o teste Jarque-Bera tem
+o melhor poder para amostras pequenas. O mesmo ganha poder rapidamente
+seguido do teste Shapiro-Francia. Os demais testes apresentaram
+oscilações a medida que as amostras aumentam, porém, essas oscilações
+tendem a ser crescentes tornando os testes mais poderosos. O teste de
+Lilliefors mais uma vez, foi o menos poderoso, mesmo para grandes
+amostras.</p>
+<p>Para amostras com <em>outliers</em> provenientes da distribuição t-student, os
+testes seguem com a mesma dificuldade apresentadas na seção anterior. A
+dificuldade dos testes em identificarem corretamente a falta de
+normalidade dos dados se deve ao fato das duas distribuições possuírem
+densidades muito parecidas. Em consideração a todos os tamanhos
+amostrais, o teste com melhor desempenho na distribuição t-student com a
+presença de <em>outliers</em> foi o Jarque-Bera, seguido do teste
+Shapiro-Francia. O teste Lilliefors apresentou o menor poder na
+distribuição t-student.</p>
+<p>Nas amostras provenientes das distribuições gamma, exponencial,
+lognormal e $\chi^2$ os testes apresentaram ótimos resultados de
+poder, inclusive o teste de Lilliefors. Mesmo assim, os testes de
+Shapiro-Wilk e Shapiro-Francia foram superiores em todos os casos.</p>
+<h4 id="coeficiente-kappa-para-amostras-com-outliers">Coeficiente Kappa para amostras com outliers</h4>
+<p>Pela Tabela <a href="d" rel="">10</a> temos todos os resultados do coeficiente kappa para
+as diferentes distribuições com a presença de <em>outliers</em>. Percebe-se que
+quase todas as distribuições, os testes tiveram fraca concordância entre
+rejeitar ou não a hipótese de normalidade. Porém, as distribuições
+exponencial e lognormal obtiveram concordância máxima. As outras
+distribuições tiveram fraca concordância, isso pode ser visto na Figura acima, onde os testes tem menor precisão na identificação da
+normalidade.</p>
+<p><strong>Tabela 10: Coeficiente Kappa</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Gamma</th>
+<th style="text-align:center">Beta</th>
+<th style="text-align:center">Exponencial</th>
+<th style="text-align:center">Lognormal</th>
+<th style="text-align:center">$\chi^2$</th>
+<th style="text-align:center">t-student</th>
+<th style="text-align:center">Uniforme</th>
+<th style="text-align:center">Weibull</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">0,43</td>
+<td style="text-align:center">0,06</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0,37</td>
+<td style="text-align:center">0,52</td>
+<td style="text-align:center">0,15</td>
+<td style="text-align:center">0,19</td>
+</tr>
+</tbody>
+</table>
+<h2 id="considerações-finais">Considerações finais</h2>
+<p>Para dados de distribuição normal sem a presença de <em>outliers</em>, os
+testes avaliados foram bem precisos tendo pouca variação em torno do
+valor nominal de 5%, onde os melhores testes para a taxa de erro tipo I
+foram o Shapiro-Wilk seguido do Shapiro-Francia. Em relação aos dados de
+distribuição normal com a presença de <em>outliers</em>, os melhores testes
+para a taxa de erro tipo I foram o Lilliefors seguido do Cramer-von
+Mises. Vale ressaltar as dificuldades de todos os testes para amostras
+com a presença de <em>outliers</em> os mesmos tiveram alta variação em relação
+ao valor nominal.</p>
+<p>Em relação ao poder, os testes de Shapiro-Wilk seguido do
+Shapiro-Francia tiveram melhor desempenho para as distribuições geradas
+sem a presença de <em>outliers</em>, tornando-os testes mais
+poderosos/adequados para esse tipo de dados. Nas distribuições geradas
+com a presença de <em>outliers</em>, o teste Jarque-Bera foi o que obteve
+melhor desempenho seguido do teste de Shapiro-Wilk.</p>
+<h2 id="r">R</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
+</span><span class="lnt">216
+</span><span class="lnt">217
+</span><span class="lnt">218
+</span><span class="lnt">219
+</span><span class="lnt">220
+</span><span class="lnt">221
+</span><span class="lnt">222
+</span><span class="lnt">223
+</span><span class="lnt">224
+</span><span class="lnt">225
+</span><span class="lnt">226
+</span><span class="lnt">227
+</span><span class="lnt">228
+</span><span class="lnt">229
+</span><span class="lnt">230
+</span><span class="lnt">231
+</span><span class="lnt">232
+</span><span class="lnt">233
+</span><span class="lnt">234
+</span><span class="lnt">235
+</span><span class="lnt">236
+</span><span class="lnt">237
+</span><span class="lnt">238
+</span><span class="lnt">239
+</span><span class="lnt">240
+</span><span class="lnt">241
+</span><span class="lnt">242
+</span><span class="lnt">243
+</span><span class="lnt">244
+</span><span class="lnt">245
+</span><span class="lnt">246
+</span><span class="lnt">247
+</span><span class="lnt">248
+</span><span class="lnt">249
+</span><span class="lnt">250
+</span><span class="lnt">251
+</span><span class="lnt">252
+</span><span class="lnt">253
+</span><span class="lnt">254
+</span><span class="lnt">255
+</span><span class="lnt">256
+</span><span class="lnt">257
+</span><span class="lnt">258
+</span><span class="lnt">259
+</span><span class="lnt">260
+</span><span class="lnt">261
+</span><span class="lnt">262
+</span><span class="lnt">263
+</span><span class="lnt">264
+</span><span class="lnt">265
+</span><span class="lnt">266
+</span><span class="lnt">267
+</span><span class="lnt">268
+</span><span class="lnt">269
+</span><span class="lnt">270
+</span><span class="lnt">271
+</span><span class="lnt">272
+</span><span class="lnt">273
+</span><span class="lnt">274
+</span><span class="lnt">275
+</span><span class="lnt">276
+</span><span class="lnt">277
+</span><span class="lnt">278
+</span><span class="lnt">279
+</span><span class="lnt">280
+</span><span class="lnt">281
+</span><span class="lnt">282
+</span><span class="lnt">283
+</span><span class="lnt">284
+</span><span class="lnt">285
+</span><span class="lnt">286
+</span><span class="lnt">287
+</span><span class="lnt">288
+</span><span class="lnt">289
+</span><span class="lnt">290
+</span><span class="lnt">291
+</span><span class="lnt">292
+</span><span class="lnt">293
+</span><span class="lnt">294
+</span><span class="lnt">295
+</span><span class="lnt">296
+</span><span class="lnt">297
+</span><span class="lnt">298
+</span><span class="lnt">299
+</span><span class="lnt">300
+</span><span class="lnt">301
+</span><span class="lnt">302
+</span><span class="lnt">303
+</span><span class="lnt">304
+</span><span class="lnt">305
+</span><span class="lnt">306
+</span><span class="lnt">307
+</span><span class="lnt">308
+</span><span class="lnt">309
+</span><span class="lnt">310
+</span><span class="lnt">311
+</span><span class="lnt">312
+</span><span class="lnt">313
+</span><span class="lnt">314
+</span><span class="lnt">315
+</span><span class="lnt">316
+</span><span class="lnt">317
+</span><span class="lnt">318
+</span><span class="lnt">319
+</span><span class="lnt">320
+</span><span class="lnt">321
+</span><span class="lnt">322
+</span><span class="lnt">323
+</span><span class="lnt">324
+</span><span class="lnt">325
+</span><span class="lnt">326
+</span><span class="lnt">327
+</span><span class="lnt">328
+</span><span class="lnt">329
+</span><span class="lnt">330
+</span><span class="lnt">331
+</span><span class="lnt">332
+</span><span class="lnt">333
+</span><span class="lnt">334
+</span><span class="lnt">335
+</span><span class="lnt">336
+</span><span class="lnt">337
+</span><span class="lnt">338
+</span><span class="lnt">339
+</span><span class="lnt">340
+</span><span class="lnt">341
+</span><span class="lnt">342
+</span><span class="lnt">343
+</span><span class="lnt">344
+</span><span class="lnt">345
+</span><span class="lnt">346
+</span><span class="lnt">347
+</span><span class="lnt">348
+</span><span class="lnt">349
+</span><span class="lnt">350
+</span><span class="lnt">351
+</span><span class="lnt">352
+</span><span class="lnt">353
+</span><span class="lnt">354
+</span><span class="lnt">355
+</span><span class="lnt">356
+</span><span class="lnt">357
+</span><span class="lnt">358
+</span><span class="lnt">359
+</span><span class="lnt">360
+</span><span class="lnt">361
+</span><span class="lnt">362
+</span><span class="lnt">363
+</span><span class="lnt">364
+</span><span class="lnt">365
+</span><span class="lnt">366
+</span><span class="lnt">367
+</span><span class="lnt">368
+</span><span class="lnt">369
+</span><span class="lnt">370
+</span><span class="lnt">371
+</span><span class="lnt">372
+</span><span class="lnt">373
+</span><span class="lnt">374
+</span><span class="lnt">375
+</span><span class="lnt">376
+</span><span class="lnt">377
+</span><span class="lnt">378
+</span><span class="lnt">379
+</span><span class="lnt">380
+</span><span class="lnt">381
+</span><span class="lnt">382
+</span><span class="lnt">383
+</span><span class="lnt">384
+</span><span class="lnt">385
+</span><span class="lnt">386
+</span><span class="lnt">387
+</span><span class="lnt">388
+</span><span class="lnt">389
+</span><span class="lnt">390
+</span><span class="lnt">391
+</span><span class="lnt">392
+</span><span class="lnt">393
+</span><span class="lnt">394
+</span><span class="lnt">395
+</span><span class="lnt">396
+</span><span class="lnt">397
+</span><span class="lnt">398
+</span><span class="lnt">399
+</span><span class="lnt">400
+</span><span class="lnt">401
+</span><span class="lnt">402
+</span><span class="lnt">403
+</span><span class="lnt">404
+</span><span class="lnt">405
+</span><span class="lnt">406
+</span><span class="lnt">407
+</span><span class="lnt">408
+</span><span class="lnt">409
+</span><span class="lnt">410
+</span><span class="lnt">411
+</span><span class="lnt">412
+</span><span class="lnt">413
+</span><span class="lnt">414
+</span><span class="lnt">415
+</span><span class="lnt">416
+</span><span class="lnt">417
+</span><span class="lnt">418
+</span><span class="lnt">419
+</span><span class="lnt">420
+</span><span class="lnt">421
+</span><span class="lnt">422
+</span><span class="lnt">423
+</span><span class="lnt">424
+</span><span class="lnt">425
+</span><span class="lnt">426
+</span><span class="lnt">427
+</span><span class="lnt">428
+</span><span class="lnt">429
+</span><span class="lnt">430
+</span><span class="lnt">431
+</span><span class="lnt">432
+</span><span class="lnt">433
+</span><span class="lnt">434
+</span><span class="lnt">435
+</span><span class="lnt">436
+</span><span class="lnt">437
+</span><span class="lnt">438
+</span><span class="lnt">439
+</span><span class="lnt">440
+</span><span class="lnt">441
+</span><span class="lnt">442
+</span><span class="lnt">443
+</span><span class="lnt">444
+</span><span class="lnt">445
+</span><span class="lnt">446
+</span><span class="lnt">447
+</span><span class="lnt">448
+</span><span class="lnt">449
+</span><span class="lnt">450
+</span><span class="lnt">451
+</span><span class="lnt">452
+</span><span class="lnt">453
+</span><span class="lnt">454
+</span><span class="lnt">455
+</span><span class="lnt">456
+</span><span class="lnt">457
+</span><span class="lnt">458
+</span><span class="lnt">459
+</span><span class="lnt">460
+</span><span class="lnt">461
+</span><span class="lnt">462
+</span><span class="lnt">463
+</span><span class="lnt">464
+</span><span class="lnt">465
+</span><span class="lnt">466
+</span><span class="lnt">467
+</span><span class="lnt">468
+</span><span class="lnt">469
+</span><span class="lnt">470
+</span><span class="lnt">471
+</span><span class="lnt">472
+</span><span class="lnt">473
+</span><span class="lnt">474
+</span><span class="lnt">475
+</span><span class="lnt">476
+</span><span class="lnt">477
+</span><span class="lnt">478
+</span><span class="lnt">479
+</span><span class="lnt">480
+</span><span class="lnt">481
+</span><span class="lnt">482
+</span><span class="lnt">483
+</span><span class="lnt">484
+</span><span class="lnt">485
+</span><span class="lnt">486
+</span><span class="lnt">487
+</span><span class="lnt">488
+</span><span class="lnt">489
+</span><span class="lnt">490
+</span><span class="lnt">491
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">nortest</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">normtest</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">moments</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">alpha</span><span class="o">=</span><span class="m">0.05</span>
+</span></span><span class="line"><span class="cl"><span class="n">m</span><span class="o">&lt;-</span><span class="m">10000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">shap</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">and</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">cvm</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">lilli</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">sf</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">jb</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">m</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">amostra</span> <span class="o">&lt;-</span> <span class="nf">rbeta</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">shap[i]</span><span class="o">&lt;-</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">and[i]</span><span class="o">&lt;-</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cvm[i]</span><span class="o">&lt;-</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lilli[i]</span><span class="o">&lt;-</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sf[i]</span><span class="o">&lt;-</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">jb[i]</span><span class="o">&lt;-</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">power.shapiro</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">shap</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.ad</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">and</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.cvm</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">cvm</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.lillie</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">lilli</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.sf</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">sf</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.jbr</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">jb</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">poder</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">power.shapiro</span><span class="p">,</span><span class="n">power.ad</span><span class="p">,</span><span class="n">power.cvm</span><span class="p">,</span><span class="n">power.lillie</span><span class="p">,</span><span class="n">power.sf</span><span class="p">,</span><span class="n">power.jbr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">testedenormalidade</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">nomes</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">method</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pvalores</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tamanho</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">amostra</span><span class="p">),</span><span class="nf">length</span><span class="p">(</span><span class="n">pvalores</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Testes</span><span class="o">=</span> <span class="n">nomes</span> <span class="p">,</span><span class="n">Pvalor</span> <span class="o">=</span> <span class="n">pvalores</span><span class="p">,</span> <span class="n">RejeitaH0</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">pvalores</span><span class="o">&lt;=</span><span class="n">alpha</span><span class="p">,</span><span class="s">&#39;SIM&#39;</span><span class="p">,</span><span class="s">&#39;NAO&#39;</span><span class="p">),</span><span class="n">Poder</span> <span class="o">=</span> <span class="n">poder</span><span class="p">,</span> <span class="n">Tamanho</span><span class="o">=</span><span class="n">tamanho</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">save</span><span class="o">&lt;-</span><span class="nf">testedenormalidade</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">write.csv</span><span class="p">(</span><span class="n">save</span><span class="p">,</span> <span class="s">&#39;exp10.txt&#39;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">###########################################################################################################</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">shap</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">and</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">cvm</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">lilli</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">sf</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">jb</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">m</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">amostra</span> <span class="o">&lt;-</span> <span class="nf">rbeta</span><span class="p">(</span><span class="m">15</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">shap[i]</span><span class="o">&lt;-</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">and[i]</span><span class="o">&lt;-</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cvm[i]</span><span class="o">&lt;-</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lilli[i]</span><span class="o">&lt;-</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sf[i]</span><span class="o">&lt;-</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">jb[i]</span><span class="o">&lt;-</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">power.shapiro</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">shap</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.ad</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">and</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.cvm</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">cvm</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.lillie</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">lilli</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.sf</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">sf</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.jbr</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">jb</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">poder</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">power.shapiro</span><span class="p">,</span><span class="n">power.ad</span><span class="p">,</span><span class="n">power.cvm</span><span class="p">,</span><span class="n">power.lillie</span><span class="p">,</span><span class="n">power.sf</span><span class="p">,</span><span class="n">power.jbr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">testedenormalidade</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">nomes</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">method</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pvalores</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tamanho</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">amostra</span><span class="p">),</span><span class="nf">length</span><span class="p">(</span><span class="n">pvalores</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Testes</span><span class="o">=</span> <span class="n">nomes</span> <span class="p">,</span><span class="n">Pvalor</span> <span class="o">=</span> <span class="n">pvalores</span><span class="p">,</span> <span class="n">RejeitaH0</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">pvalores</span><span class="o">&lt;=</span><span class="n">alpha</span><span class="p">,</span><span class="s">&#39;SIM&#39;</span><span class="p">,</span><span class="s">&#39;NAO&#39;</span><span class="p">),</span><span class="n">Poder</span> <span class="o">=</span> <span class="n">poder</span><span class="p">,</span> <span class="n">Tamanho</span><span class="o">=</span><span class="n">tamanho</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">save</span><span class="o">&lt;-</span><span class="nf">testedenormalidade</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">write.csv</span><span class="p">(</span><span class="n">save</span><span class="p">,</span> <span class="s">&#39;exp15.txt&#39;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">###########################################################################################################</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">shap</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">and</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">cvm</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">lilli</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">sf</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">jb</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">m</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">amostra</span> <span class="o">&lt;-</span> <span class="nf">rbeta</span><span class="p">(</span><span class="m">20</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">shap[i]</span><span class="o">&lt;-</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">and[i]</span><span class="o">&lt;-</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cvm[i]</span><span class="o">&lt;-</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lilli[i]</span><span class="o">&lt;-</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sf[i]</span><span class="o">&lt;-</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">jb[i]</span><span class="o">&lt;-</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">power.shapiro</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">shap</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.ad</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">and</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.cvm</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">cvm</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.lillie</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">lilli</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.sf</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">sf</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.jbr</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">jb</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">poder</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">power.shapiro</span><span class="p">,</span><span class="n">power.ad</span><span class="p">,</span><span class="n">power.cvm</span><span class="p">,</span><span class="n">power.lillie</span><span class="p">,</span><span class="n">power.sf</span><span class="p">,</span><span class="n">power.jbr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">testedenormalidade</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">nomes</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">method</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pvalores</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tamanho</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">amostra</span><span class="p">),</span><span class="nf">length</span><span class="p">(</span><span class="n">pvalores</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Testes</span><span class="o">=</span> <span class="n">nomes</span> <span class="p">,</span><span class="n">Pvalor</span> <span class="o">=</span> <span class="n">pvalores</span><span class="p">,</span> <span class="n">RejeitaH0</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">pvalores</span><span class="o">&lt;=</span><span class="n">alpha</span><span class="p">,</span><span class="s">&#39;SIM&#39;</span><span class="p">,</span><span class="s">&#39;NAO&#39;</span><span class="p">),</span><span class="n">Poder</span> <span class="o">=</span> <span class="n">poder</span><span class="p">,</span> <span class="n">Tamanho</span><span class="o">=</span><span class="n">tamanho</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">save</span><span class="o">&lt;-</span><span class="nf">testedenormalidade</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">write.csv</span><span class="p">(</span><span class="n">save</span><span class="p">,</span> <span class="s">&#39;exp20.txt&#39;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">###########################################################################################################</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">shap</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">and</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">cvm</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">lilli</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">sf</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">jb</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">m</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">amostra</span> <span class="o">&lt;-</span> <span class="nf">rbeta</span><span class="p">(</span><span class="m">30</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">shap[i]</span><span class="o">&lt;-</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">and[i]</span><span class="o">&lt;-</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cvm[i]</span><span class="o">&lt;-</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lilli[i]</span><span class="o">&lt;-</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sf[i]</span><span class="o">&lt;-</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">jb[i]</span><span class="o">&lt;-</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">power.shapiro</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">shap</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.ad</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">and</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.cvm</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">cvm</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.lillie</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">lilli</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.sf</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">sf</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.jbr</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">jb</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">poder</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">power.shapiro</span><span class="p">,</span><span class="n">power.ad</span><span class="p">,</span><span class="n">power.cvm</span><span class="p">,</span><span class="n">power.lillie</span><span class="p">,</span><span class="n">power.sf</span><span class="p">,</span><span class="n">power.jbr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">testedenormalidade</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">nomes</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">method</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pvalores</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tamanho</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">amostra</span><span class="p">),</span><span class="nf">length</span><span class="p">(</span><span class="n">pvalores</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Testes</span><span class="o">=</span> <span class="n">nomes</span> <span class="p">,</span><span class="n">Pvalor</span> <span class="o">=</span> <span class="n">pvalores</span><span class="p">,</span> <span class="n">RejeitaH0</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">pvalores</span><span class="o">&lt;=</span><span class="n">alpha</span><span class="p">,</span><span class="s">&#39;SIM&#39;</span><span class="p">,</span><span class="s">&#39;NAO&#39;</span><span class="p">),</span><span class="n">Poder</span> <span class="o">=</span> <span class="n">poder</span><span class="p">,</span> <span class="n">Tamanho</span><span class="o">=</span><span class="n">tamanho</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">save</span><span class="o">&lt;-</span><span class="nf">testedenormalidade</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">write.csv</span><span class="p">(</span><span class="n">save</span><span class="p">,</span> <span class="s">&#39;exp30.txt&#39;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">###########################################################################################################</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">shap</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">and</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">cvm</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">lilli</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">sf</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">jb</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">m</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">amostra</span> <span class="o">&lt;-</span> <span class="nf">rbeta</span><span class="p">(</span><span class="m">50</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">shap[i]</span><span class="o">&lt;-</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">and[i]</span><span class="o">&lt;-</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cvm[i]</span><span class="o">&lt;-</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lilli[i]</span><span class="o">&lt;-</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sf[i]</span><span class="o">&lt;-</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">jb[i]</span><span class="o">&lt;-</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">power.shapiro</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">shap</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.ad</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">and</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.cvm</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">cvm</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.lillie</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">lilli</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.sf</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">sf</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.jbr</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">jb</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">poder</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">power.shapiro</span><span class="p">,</span><span class="n">power.ad</span><span class="p">,</span><span class="n">power.cvm</span><span class="p">,</span><span class="n">power.lillie</span><span class="p">,</span><span class="n">power.sf</span><span class="p">,</span><span class="n">power.jbr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">testedenormalidade</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">nomes</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">method</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pvalores</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tamanho</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">amostra</span><span class="p">),</span><span class="nf">length</span><span class="p">(</span><span class="n">pvalores</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Testes</span><span class="o">=</span> <span class="n">nomes</span> <span class="p">,</span><span class="n">Pvalor</span> <span class="o">=</span> <span class="n">pvalores</span><span class="p">,</span> <span class="n">RejeitaH0</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">pvalores</span><span class="o">&lt;=</span><span class="n">alpha</span><span class="p">,</span><span class="s">&#39;SIM&#39;</span><span class="p">,</span><span class="s">&#39;NAO&#39;</span><span class="p">),</span><span class="n">Poder</span> <span class="o">=</span> <span class="n">poder</span><span class="p">,</span> <span class="n">Tamanho</span><span class="o">=</span><span class="n">tamanho</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">save</span><span class="o">&lt;-</span><span class="nf">testedenormalidade</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">write.csv</span><span class="p">(</span><span class="n">save</span><span class="p">,</span> <span class="s">&#39;exp50.txt&#39;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">###########################################################################################################</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">shap</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">and</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">cvm</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">lilli</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">sf</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">jb</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">m</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">amostra</span> <span class="o">&lt;-</span> <span class="nf">rbeta</span><span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">shap[i]</span><span class="o">&lt;-</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">and[i]</span><span class="o">&lt;-</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cvm[i]</span><span class="o">&lt;-</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lilli[i]</span><span class="o">&lt;-</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sf[i]</span><span class="o">&lt;-</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">jb[i]</span><span class="o">&lt;-</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">power.shapiro</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">shap</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.ad</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">and</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.cvm</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">cvm</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.lillie</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">lilli</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.sf</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">sf</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.jbr</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">jb</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">poder</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">power.shapiro</span><span class="p">,</span><span class="n">power.ad</span><span class="p">,</span><span class="n">power.cvm</span><span class="p">,</span><span class="n">power.lillie</span><span class="p">,</span><span class="n">power.sf</span><span class="p">,</span><span class="n">power.jbr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">testedenormalidade</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">nomes</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">method</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pvalores</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tamanho</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">amostra</span><span class="p">),</span><span class="nf">length</span><span class="p">(</span><span class="n">pvalores</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Testes</span><span class="o">=</span> <span class="n">nomes</span> <span class="p">,</span><span class="n">Pvalor</span> <span class="o">=</span> <span class="n">pvalores</span><span class="p">,</span> <span class="n">RejeitaH0</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">pvalores</span><span class="o">&lt;=</span><span class="n">alpha</span><span class="p">,</span><span class="s">&#39;SIM&#39;</span><span class="p">,</span><span class="s">&#39;NAO&#39;</span><span class="p">),</span><span class="n">Poder</span> <span class="o">=</span> <span class="n">poder</span><span class="p">,</span> <span class="n">Tamanho</span><span class="o">=</span><span class="n">tamanho</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">save</span><span class="o">&lt;-</span><span class="nf">testedenormalidade</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">write.csv</span><span class="p">(</span><span class="n">save</span><span class="p">,</span> <span class="s">&#39;exp100.txt&#39;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">###########################################################################################################</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">shap</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">and</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">cvm</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">lilli</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">sf</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">jb</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">m</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">amostra</span> <span class="o">&lt;-</span> <span class="nf">rbeta</span><span class="p">(</span><span class="m">200</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">shap[i]</span><span class="o">&lt;-</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">and[i]</span><span class="o">&lt;-</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cvm[i]</span><span class="o">&lt;-</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lilli[i]</span><span class="o">&lt;-</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sf[i]</span><span class="o">&lt;-</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">jb[i]</span><span class="o">&lt;-</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">power.shapiro</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">shap</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.ad</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">and</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.cvm</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">cvm</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.lillie</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">lilli</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.sf</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">sf</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.jbr</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">jb</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">poder</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">power.shapiro</span><span class="p">,</span><span class="n">power.ad</span><span class="p">,</span><span class="n">power.cvm</span><span class="p">,</span><span class="n">power.lillie</span><span class="p">,</span><span class="n">power.sf</span><span class="p">,</span><span class="n">power.jbr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">testedenormalidade</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">nomes</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">method</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pvalores</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tamanho</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">amostra</span><span class="p">),</span><span class="nf">length</span><span class="p">(</span><span class="n">pvalores</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Testes</span><span class="o">=</span> <span class="n">nomes</span> <span class="p">,</span><span class="n">Pvalor</span> <span class="o">=</span> <span class="n">pvalores</span><span class="p">,</span> <span class="n">RejeitaH0</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">pvalores</span><span class="o">&lt;=</span><span class="n">alpha</span><span class="p">,</span><span class="s">&#39;SIM&#39;</span><span class="p">,</span><span class="s">&#39;NAO&#39;</span><span class="p">),</span><span class="n">Poder</span> <span class="o">=</span> <span class="n">poder</span><span class="p">,</span> <span class="n">Tamanho</span><span class="o">=</span><span class="n">tamanho</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">save</span><span class="o">&lt;-</span><span class="nf">testedenormalidade</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">write.csv</span><span class="p">(</span><span class="n">save</span><span class="p">,</span> <span class="s">&#39;exp200.txt&#39;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">###########################################################################################################</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">shap</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">and</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">cvm</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">lilli</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">sf</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl"><span class="n">jb</span><span class="o">&lt;-</span><span class="kc">NULL</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">for</span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="n">m</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">amostra</span> <span class="o">&lt;-</span> <span class="nf">rbeta</span><span class="p">(</span><span class="m">300</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">shap[i]</span><span class="o">&lt;-</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">and[i]</span><span class="o">&lt;-</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">cvm[i]</span><span class="o">&lt;-</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lilli[i]</span><span class="o">&lt;-</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">sf[i]</span><span class="o">&lt;-</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">  <span class="n">jb[i]</span><span class="o">&lt;-</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">power.shapiro</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">shap</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.ad</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">and</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.cvm</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">cvm</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.lillie</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">lilli</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.sf</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">sf</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">power.jbr</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">jb</span><span class="o">&lt;</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">poder</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">power.shapiro</span><span class="p">,</span><span class="n">power.ad</span><span class="p">,</span><span class="n">power.cvm</span><span class="p">,</span><span class="n">power.lillie</span><span class="p">,</span><span class="n">power.sf</span><span class="p">,</span><span class="n">power.jbr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">testedenormalidade</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span><span class="o">&lt;-</span><span class="nf">shapiro.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span><span class="o">&lt;-</span><span class="nf">ad.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">c</span><span class="o">&lt;-</span><span class="nf">cvm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">d</span><span class="o">&lt;-</span><span class="nf">lillie.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">e</span><span class="o">&lt;-</span><span class="nf">sf.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>  
+</span></span><span class="line"><span class="cl">  <span class="n">f</span><span class="o">&lt;-</span><span class="nf">jb.norm.test</span><span class="p">(</span><span class="n">amostra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="n">nomes</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">method</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">method</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">pvalores</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">a</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">b</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">c</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">d</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">e</span><span class="o">$</span><span class="n">p.value</span><span class="p">,</span><span class="n">f</span><span class="o">$</span><span class="n">p.value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">tamanho</span><span class="o">&lt;-</span><span class="nf">rep</span><span class="p">(</span><span class="nf">length</span><span class="p">(</span><span class="n">amostra</span><span class="p">),</span><span class="nf">length</span><span class="p">(</span><span class="n">pvalores</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">Testes</span><span class="o">=</span> <span class="n">nomes</span> <span class="p">,</span><span class="n">Pvalor</span> <span class="o">=</span> <span class="n">pvalores</span><span class="p">,</span> <span class="n">RejeitaH0</span><span class="o">=</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">pvalores</span><span class="o">&lt;=</span><span class="n">alpha</span><span class="p">,</span><span class="s">&#39;SIM&#39;</span><span class="p">,</span><span class="s">&#39;NAO&#39;</span><span class="p">),</span><span class="n">Poder</span> <span class="o">=</span> <span class="n">poder</span><span class="p">,</span> <span class="n">Tamanho</span><span class="o">=</span><span class="n">tamanho</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">save</span><span class="o">&lt;-</span><span class="nf">testedenormalidade</span><span class="p">(</span><span class="n">amostra</span><span class="p">,</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">write.csv</span><span class="p">(</span><span class="n">save</span><span class="p">,</span> <span class="s">&#39;exp300.txt&#39;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">####</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">gridExtra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">d10</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp10.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d15</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp15.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d20</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp20.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d30</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp30.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d50</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp50.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d100</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp100.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d200</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp200.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d300</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp300.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d500</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp500.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d1000</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp1000.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">grafico</span><span class="o">&lt;-</span><span class="nf">cbind</span><span class="p">(</span><span class="n">d10</span><span class="p">,</span><span class="n">d15</span><span class="p">,</span><span class="n">d20</span><span class="p">,</span><span class="n">d30</span><span class="p">,</span><span class="n">d50</span><span class="p">,</span><span class="n">d100</span><span class="p">,</span><span class="n">d200</span><span class="p">,</span><span class="n">d300</span><span class="p">,</span><span class="n">d500</span><span class="p">,</span><span class="n">d1000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">attach</span><span class="p">(</span><span class="n">grafico</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="o">&lt;-</span><span class="nf">ggplot</span><span class="p">(</span><span class="n">grafico</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Tamanho</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span> <span class="n">Poder</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span> <span class="n">Testes</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="n">Testes</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span> <span class="o">+</span> <span class="nf">geom_line</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">linetype</span><span class="o">=</span><span class="n">Testes</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>  <span class="o">+</span> <span class="nf">xlab</span><span class="p">(</span><span class="s">&#34;Tamanho das Amostras (n)&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#34;Poder&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="o">&lt;-</span><span class="n">a</span><span class="o">+</span><span class="nf">theme_grey</span><span class="p">(</span><span class="n">base_size</span> <span class="o">=</span> <span class="m">22</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="o">&lt;-</span><span class="n">a</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0.7</span><span class="p">,</span> <span class="m">0.2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">&lt;-</span><span class="nf">ggplot</span><span class="p">(</span><span class="n">grafico</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Tamanho</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span> <span class="n">Poder</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span> <span class="n">Testes</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="n">Testes</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>  <span class="o">+</span> <span class="nf">geom_line</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">linetype</span><span class="o">=</span><span class="n">Testes</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">)</span> <span class="o">+</span> <span class="nf">xlab</span><span class="p">(</span><span class="s">&#34;Tamanho das Amostras (n)&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#34;Poder&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">Testes</span> <span class="o">~</span> <span class="n">.)</span> <span class="o">+</span><span class="nf">theme_grey</span><span class="p">(</span><span class="n">base_size</span> <span class="o">=</span> <span class="m">15</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">&lt;-</span><span class="n">d</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">strip.text</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span><span class="n">legend.position</span><span class="o">=</span><span class="s">&#34;none&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">d10</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp10out.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d15</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp15out.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d20</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp20out.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d30</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp30out.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d50</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp50out.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d100</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp100out.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d200</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp200out.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d300</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp300out.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d500</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp500out.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d1000</span><span class="o">&lt;-</span><span class="nf">read.table</span><span class="p">(</span><span class="s">&#39;exp1000out.txt&#39;</span><span class="p">,</span><span class="n">header</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;,&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">grafico</span><span class="o">&lt;-</span><span class="nf">rbind</span><span class="p">(</span><span class="n">d10</span><span class="p">,</span><span class="n">d15</span><span class="p">,</span><span class="n">d20</span><span class="p">,</span><span class="n">d30</span><span class="p">,</span><span class="n">d50</span><span class="p">,</span><span class="n">d100</span><span class="p">,</span><span class="n">d200</span><span class="p">,</span><span class="n">d300</span><span class="p">,</span><span class="n">d500</span><span class="p">,</span><span class="n">d1000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">attach</span><span class="p">(</span><span class="n">grafico</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="o">&lt;-</span><span class="nf">ggplot</span><span class="p">(</span><span class="n">grafico</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Tamanho</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span> <span class="n">Poder</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span> <span class="n">Testes</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="n">Testes</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span> <span class="o">+</span> <span class="nf">geom_line</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">linetype</span><span class="o">=</span><span class="n">Testes</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>  <span class="o">+</span> <span class="nf">xlab</span><span class="p">(</span><span class="s">&#34;Tamanho das Amostras (n)&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#34;Poder&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="o">&lt;-</span><span class="n">a</span><span class="o">+</span><span class="nf">theme_grey</span><span class="p">(</span><span class="n">base_size</span> <span class="o">=</span> <span class="m">22</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="o">&lt;-</span><span class="n">a</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">legend.position</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0.7</span><span class="p">,</span> <span class="m">0.2</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">&lt;-</span><span class="nf">ggplot</span><span class="p">(</span><span class="n">grafico</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Tamanho</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span> <span class="n">Poder</span><span class="p">,</span> <span class="n">colour</span><span class="o">=</span> <span class="n">Testes</span><span class="p">,</span><span class="n">shape</span><span class="o">=</span><span class="n">Testes</span><span class="p">))</span> <span class="o">+</span> <span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>  <span class="o">+</span> <span class="nf">geom_line</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">linetype</span><span class="o">=</span><span class="n">Testes</span><span class="p">),</span><span class="n">size</span><span class="o">=</span><span class="m">1</span><span class="p">)</span> <span class="o">+</span> <span class="nf">xlab</span><span class="p">(</span><span class="s">&#34;Tamanho das Amostras (n)&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#34;Poder&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">facet_grid</span><span class="p">(</span><span class="n">Testes</span> <span class="o">~</span> <span class="n">.)</span> <span class="o">+</span><span class="nf">theme_grey</span><span class="p">(</span><span class="n">base_size</span> <span class="o">=</span> <span class="m">15</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">&lt;-</span><span class="n">d</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">strip.text</span> <span class="o">=</span> <span class="nf">element_blank</span><span class="p">(),</span><span class="n">legend.position</span><span class="o">=</span><span class="s">&#34;none&#34;</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 20-02-2019</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/nove-post/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/terceiro-post/" class="next" rel="next" title="Resistência dos vidros (voltagem x temperatura) ">Resistência dos vidros (voltagem x temperatura) <i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Criado por Jerfson Bruno</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span>&nbsp;|&nbsp;<span class="license">MIT</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

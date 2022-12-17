@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Classificação não supervisionada no contexto não euclidiano.  - Jerfson Bruno</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Classificação não supervisionada no contexto não euclidiano. " />
+<meta property="og:description" content="Este trabalho foi apresentado no CNMAC e Conapesc 2022, e teve orientação da Prof. Dr. Getúlio José Amorim Do Amaral, gjaa@de.ufpe.br.
+Em diversas ocasiões, em análise estatística de forma, é necessário agrupar um conjunto de dados em grupos, de tal maneira, que se tenha grupos com características mais homogêneas. Com isso, ter algoritmos que trabalhem no espaço não euclidiano, como é no caso dos dados de forma ou tamanho e forma, é necessário." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jerfsonbruno.github.io/oitavo-post/" /><meta property="og:image" content="https://jerfsonbruno.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-06T01:28:15-03:00" />
+<meta property="article:modified_time" content="2022-07-06T01:28:15-03:00" /><meta property="og:site_name" content="LoveIt" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jerfsonbruno.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="Classificação não supervisionada no contexto não euclidiano. "/>
+<meta name="twitter:description" content="Este trabalho foi apresentado no CNMAC e Conapesc 2022, e teve orientação da Prof. Dr. Getúlio José Amorim Do Amaral, gjaa@de.ufpe.br.
+Em diversas ocasiões, em análise estatística de forma, é necessário agrupar um conjunto de dados em grupos, de tal maneira, que se tenha grupos com características mais homogêneas. Com isso, ter algoritmos que trabalhem no espaço não euclidiano, como é no caso dos dados de forma ou tamanho e forma, é necessário."/>
+<meta name="application-name" content="Jerfson Bruno">
+<meta name="apple-mobile-web-app-title" content="Jerfson Bruno"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jerfsonbruno.github.io/oitavo-post/" /><link rel="prev" href="https://jerfsonbruno.github.io/setimo-post/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Classificação não supervisionada no contexto não euclidiano. ",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jerfsonbruno.github.io\/oitavo-post\/"
+        },"image": ["https:\/\/jerfsonbruno.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  1586 ,
+        "url": "https:\/\/jerfsonbruno.github.io\/oitavo-post\/","datePublished": "2022-07-06T01:28:15-03:00","dateModified": "2022-07-06T01:28:15-03:00","publisher": {
+            "@type": "Organization",
+            "name": "Jerfson Bruno","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/jerfsonbruno.github.io\/images\/avatar.png",
+                    "width":  420 ,
+                    "height":  420 
+                }},"author": {
+                "@type": "Person",
+                "name": "Jerfson Bruno"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Jerfson Bruno"><span class="header-title-pre"><i class='fa-solid fa-house'></i></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/sobre/"> Sobre </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Jerfson Bruno"><span class="header-title-pre"><i class='fa-solid fa-house'></i></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/sobre/" title="">Sobre</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Classificação não supervisionada no contexto não euclidiano. </h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Jerfson Bruno</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="06-07-2022">06-07-2022</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;1586 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#classificação-não-supervisionada">Classificação Não Supervisionada</a></li>
+    <li><a href="#validação-do-cluster">Validação do Cluster</a>
+      <ul>
+        <li><a href="#índice-interno">Índice Interno</a></li>
+        <li><a href="#índice-externo">Índice Externo</a></li>
+        <li><a href="#acurácia">Acurácia</a></li>
+      </ul>
+    </li>
+    <li><a href="#aplicação-e-resultados">Aplicação e Resultados</a>
+      <ul>
+        <li><a href="#cenário-1-grupos-homogêneos">Cenário 1: grupos homogêneos.</a></li>
+        <li><a href="#cenário-2-grupos-heterogêneo">Cenário 2: grupos heterogêneo.</a></li>
+      </ul>
+    </li>
+    <li><a href="#dados-reais">Dados Reais</a>
+      <ul>
+        <li><a href="#vértebras-torácicas-t2-de-camundongos">Vértebras torácicas T2 de camundongos.</a></li>
+      </ul>
+    </li>
+    <li><a href="#ressonância-magnética-de-pessoas-com-esquizofrenia">Ressonância magnética de pessoas com esquizofrenia</a></li>
+    <li><a href="#conclusões">Conclusões</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><strong><code>Este trabalho foi apresentado no CNMAC e Conapesc 2022, e teve orientação da Prof. Dr. Getúlio José Amorim Do Amaral, gjaa@de.ufpe.br.</code></strong></p>
+<p>Em diversas ocasiões, em análise estatística de forma, é necessário
+agrupar um conjunto de dados em grupos, de tal maneira, que se tenha
+grupos com características mais homogêneas. Com isso, ter algoritmos que
+trabalhem no espaço não euclidiano, como é no caso dos dados de forma ou
+tamanho e forma, é necessário.</p>
+<h2 id="classificação-não-supervisionada">Classificação Não Supervisionada</h2>
+<p>Algoritmos de agrupamento por particionamento encontram uma partição que
+maximiza ou minimiza algum critério numérico. Este trabalho tenta
+adaptar para os dados de tamanho e forma, o algoritmo $K$-médias
+proposto por .</p>
+<p>Uma descrição do algoritmo $K$-médias introduzido por , usa uma
+partição inicial e depois o valor médio dos objetos em um grupo como o
+protótipo de partição.</p>
+<p>Ao trabalharmos com dados de tamanho e forma, a distância, normalmente
+Euclidiana, é substituída pela distância de procrustes no espaço de
+tamanho e forma, e ela é dada pela Equação abaixo:</p>
+<p>$$ d_S (Y_1, Y_2) = \sqrt{S_1^2 + S_2^2 - 2S_1S_2 \cos \rho(Y_1,Y_2)}$$</p>
+<p>em que $S_1$, $S_2$ são os tamanhos dos centroides de $Y_1$, $Y_2$, e $\rho$ é a distância Riemannian.
+Para mais detalhes veja minha <a href="https://repositorio.ufpe.br/bitstream/123456789/44679/1/DISSERTA%c3%87%c3%83O%20Jerfson%20Bruno%20do%20Nascimento%20Hon%c3%b3rio.pdf" target="_blank" rel="noopener noreffer ">dissertação</a>.</p>
+<p>A medida de dissimilaridade utilizada no $K$-médias, é a soma dos
+quadrados totais. A mesma modificada para os
+dados de tamanho e forma é definida como:
+$$ J= \sum_{m=1}^{\pi_m} \sum_{n=1}^{n_m} d_S(Y_{mn},\mu_{m})$$
+em que $Y_{mn}$ é o $n$-ésima observação do grupo $m$ e $\mu$ é a média do grupo.</p>
+<p>Com isso, o algoritmo $K$-médias para tamanho e forma tem os seguintes
+passos:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">$K$-means modificado para dados de tamanho e forma</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Passo 1:</strong> <strong>Dados de Entrada</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>1.1</strong> Seja $\Omega = 1,&hellip;, n$ um conjunto de dados descrito pela matriz de configuração $\mathbf{Y}$.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>1.2</strong> Calcule os dados de tamanho e forma $\mathbf{Y_C}$.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>1.3</strong> Escolha $K$ centroides e gere uma partição inicial $\pi_K$</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>1.4</strong> Fixe o número de iterações $T=100$ e um erro $\varepsilon &gt; 0$; Faça $t = 1$.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>1.5</strong> Calcule as médias $\mu_{K_t}$ dos grupos $\pi_{K_t}$.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Passo 2:</strong> <strong>Atribuindo os objetos aos grupos</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2.1</strong> Calcule a distância de cada objeto em relação a média $\mu_{K_t}$ e atribua esse objeto ao novo grupo $\pi_{K_{t+1}}$ mais próximo.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2.1</strong> Calcule as médias dos novos grupos $\pi_{K_{t+1}}$ formados.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Passo 3:</strong> <strong>Critério de Parada</strong></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>3.1</strong> Se |$\pi_{K_{t+1}} - \pi_{K_{t}}|&lt; \varepsilon$ ou $t&gt;T$, então <strong>Pare</strong>. Caso contrário, faça $t=t+1$ e volte para o passo $2$.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="validação-do-cluster">Validação do Cluster</h2>
+<p>A validade de um estudo refere-se a quão bem os resultados encontrados
+representam resultados verdadeiros para indivíduos semelhantes fora do
+estudo. Este conceito de validade se aplica a todos os tipos de estudos,
+seja ele clínicos, sobre prevalência, associações, intervenções e
+diagnóstico. A validade de um estudo de pesquisa inclui dois domínios:
+a validade interna e a validade externa.</p>
+<h3 id="índice-interno">Índice Interno</h3>
+<p>A validade interna é definida como a extensão em que os resultados
+observados representam uma possível verdade para a população. Em nosso
+trabalho, usaremos o índice residual de Procrustes, já que o mesmo é
+muito utilizado em análise estatística de forma. Para mais detalhes veja minha <a href="https://repositorio.ufpe.br/bitstream/123456789/44679/1/DISSERTA%c3%87%c3%83O%20Jerfson%20Bruno%20do%20Nascimento%20Hon%c3%b3rio.pdf" target="_blank" rel="noopener noreffer ">dissertação</a>.</p>
+<p>O Índice Residual Procrustes é útil para encontrar o número ideal de
+grupos, e também avaliar a qualidade do ajuste em um conjunto de dados
+em análise estatística de formas.</p>
+<p>Após obter a alocação dos indivíduos do conjunto de dados pelo o
+algoritmo $K$-médias. Calcula-se a norma quadrática dos resíduos de
+cada indivíduo dentro do seu grupo $(r_{in})$ e fora do seu grupo
+$(r_{out})$.</p>
+<p>Com isso, o índice residual Procrustes $pr(i)$ para cada indivíduo do
+conjunto de dados é dado como</p>
+<p>$$pr(i) = \frac{r_{out} (i) -r_{int} (i)}{\max(r_{out} (i),r_{int} (i))}$$</p>
+<p>em que $-1 \leq   pr(i) \leq 1$. Valores próximos de $1$ indicam que
+o indivíduo $i$ possui dissimilaridade menor dentro do grupo
+comparando com outro grupo, logo o indivíduo está agrupado
+apropriadamente. Valores negativos ou próximos de $-1$ indicam que o
+indivíduo $i$ pode ter sido alocado no grupo errado.</p>
+<p>Para se obter um índice de validação geral de Procrutes, é feito a média
+de todos os $pr(i)$: $$PR = \frac{1}{n} \sum_{i=1}^{n} pr(i)$$</p>
+<p>Uma Tabela de interpretação para os resultados do $PR$, é baseada na
+tabela de interpretação do índice silhueta, que pode ser visto <a href="https://repositorio.ufpe.br/bitstream/123456789/44679/1/DISSERTA%c3%87%c3%83O%20Jerfson%20Bruno%20do%20Nascimento%20Hon%c3%b3rio.pdf" target="_blank" rel="noopener noreffer ">Aqui</a>.</p>
+<h3 id="índice-externo">Índice Externo</h3>
+<p>Feito por , o índice Rand ou medida Rand em estatística, é uma medida da
+similaridade entre agrupamentos de dados. Do ponto de vista matemático,
+o índice de Rand está relacionado à precisão, mas é aplicável mesmo
+quando os rótulos de classe não são usados.</p>
+<p>Denotado por $R$, o índice Rand é calculado como: $$ R=\frac{a+b}{C_{n,2}}$$</p>
+<p>em que, $a$, é o número de vezes que um par de elementos pertence ao mesmo cluster; $b$ é o
+número de vezes que um par de elementos pertence a grupos de
+diferentes; e $C_{n,2}$ é número de pares não ordenados em um conjunto
+de $n$ elementos.</p>
+<p>Valores próximos de $1$ indicam que o agrupamento está bem definido,
+logo foi agrupado apropriadamente. Valores próximos de $0$ indicam que
+o agrupamento pode ter sido definido de forma errada.</p>
+<h3 id="acurácia">Acurácia</h3>
+<p>Quando se fala em tecnologia atualmente, um termo que tem se tornado
+cada vez comum é o da acurácia. Usada muitas vezes quase como um
+sinônimo de precisão e eficiência. Em outras palavras, a acurácia serve
+para ver a porcentagem de acertos do algoritmo de agrupamento.</p>
+<h2 id="aplicação-e-resultados">Aplicação e Resultados</h2>
+<p>Para verificar o comportamento do algoritmo proposto, foram criados
+dados artificiais de tamanho e forma contendo dois grupos. Nesses dados
+simulados, gerados a partir da distribuição normal complexa central,
+propomos dois cenários possíveis: O primeiro para grupos
+homogêneos e o segundo para dois grupos heterogêneo.</p>
+<h3 id="cenário-1-grupos-homogêneos">Cenário 1: grupos homogêneos.</h3>
+<p>No primeiro cenário, ao construirmos o tamanho dos centroides de cada
+grupo, podemos ver o quanto eles são semelhantes. Neste cenário, o algoritmo teve um pouco de dificuldade
+para realizar o agrupamento. Porém, seus índices interno e externos,
+além da acurácia, comprovam que o algoritmo teve boa performance.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/s1.png"
+        data-srcset="/s1.png, /s1.png 1.5x, /s1.png 2x"
+        data-sizes="auto"
+        alt="/s1.png"
+        title="Cenário 1" width="800" height="566" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:center"><strong>Índice de Rand</strong></th>
+<th style="text-align:center"><strong>Índice de Procrustes</strong></th>
+<th style="text-align:center"><strong>Acurácia</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$K$-médias</td>
+<td style="text-align:center">0,809</td>
+<td style="text-align:center">0,495</td>
+<td style="text-align:center">89,58%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="cenário-2-grupos-heterogêneo">Cenário 2: grupos heterogêneo.</h3>
+<p>No segundo cenário, ao construirmos o tamanho dos centroides de cada
+grupo, podemos ver que os grupo são bastantes diferentes. Nesse cenário, o algoritmo teve melhor desempenho
+se comparado ao primeiro cenário.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/s2.png"
+        data-srcset="/s2.png, /s2.png 1.5x, /s2.png 2x"
+        data-sizes="auto"
+        alt="/s2.png"
+        title="Cenário 2" width="800" height="566" /></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:center"><strong>Índice de Rand</strong></th>
+<th style="text-align:center"><strong>Índice de Procrustes</strong></th>
+<th style="text-align:right"><strong>Acurácia</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$K$-médias</td>
+<td style="text-align:center">0,958</td>
+<td style="text-align:center">0,627</td>
+<td style="text-align:right">97,92%</td>
+</tr>
+</tbody>
+</table>
+<p>Com isso, concluímos que à medida que o tamanho dos centroides dos
+grupos diferem, o algoritmo vai tendo mais facilidade em realizar o
+agrupamento. Além disso, provamos que o algoritmo é eficiente para
+tratar dados de tamanho e forma.</p>
+<h2 id="dados-reais">Dados Reais</h2>
+<p>Após a validação com os dados artificiais, aplicaremos o algoritmo
+$K$-médias modificado para duas bases de dados reais. As mesmas podem
+ser encontradas no pacote <code>shapes</code> do <em>software</em></p>
+<h3 id="vértebras-torácicas-t2-de-camundongos">Vértebras torácicas T2 de camundongos.</h3>
+<p>A base de dados das vértebras torácicas T2 de camundongos possui 6
+marcos em 2 dimensões, e possui um total de 76 indivíduos. Esses
+indivíduos foram classificados em 3 grupos: controle(<strong>c</strong>)=30,
+grandes(<strong>l</strong>)=23 e pequenos(<strong>s</strong>)=23. Os 6 pontos de referência foram
+obtidos usando um método semi-automático em pontos de alta curvatura, em
+que, é mostrado com mais detalhes <a href="https://repositorio.ufpe.br/bitstream/123456789/44679/1/DISSERTA%c3%87%c3%83O%20Jerfson%20Bruno%20do%20Nascimento%20Hon%c3%b3rio.pdf" target="_blank" rel="noopener noreffer ">aqui</a>.</p>
+<p>Para ter uma ideia inicial de como os algoritmos se comportarão, foi
+feito o boxplot do tamanho dos centroides de cada grupo. Pela Figura
+abaixo, podemos ver que apenas um grupo difere dos demais,
+além da presença de <em>outliers</em> em dois grupos. Com isso, podemos supor a
+partir dos resultados dos dados simulados, que o algoritmo terá uma boa
+performance para realizar os agrupamentos.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/ratos.png"
+        data-srcset="/ratos.png, /ratos.png 1.5x, /ratos.png 2x"
+        data-sizes="auto"
+        alt="/ratos.png"
+        title="dados das vértebras de camundongos." width="800" height="566" /></p>
+<p>A Tabela abaixo mostra os resultados do algoritmo, com ela,
+podemos ver que os resultados a performance de cada índice. De modo
+geral, os índices interno e externo de validação tiveram bons
+resultados, indicando assim que os agrupamentos foram bem definidos e
+posteriormente, validando os agrupamentos.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:center"><strong>Índice de Rand</strong></th>
+<th style="text-align:center"><strong>Índice de Procrustes</strong></th>
+<th style="text-align:right"><strong>Acurácia</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$K$-médias</td>
+<td style="text-align:center">0,737</td>
+<td style="text-align:center">0,592</td>
+<td style="text-align:right">75,0%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ressonância-magnética-de-pessoas-com-esquizofrenia">Ressonância magnética de pessoas com esquizofrenia</h2>
+<p>A esquizofrenia é um transtorno mental grave que muda o modo como a
+pessoa pensa, sente e se comporta socialmente. A base de dados das
+ressonâncias magnéticas de pessoas com esquizofrenia possui 13 marcos em
+2 dimensões, e possui um total de 28 indivíduos. Esses indivíduos foram
+classificados em 2 grupos: controle(<strong>con</strong>)=14 e
+esquizofrênico(<strong>scz</strong>)=14. Para mais detalhes sobre a base de dados,
+ver .</p>
+<p>Novamente, para ter uma ideia inicial de como os algoritmos se
+comportarão, foi feito o boxplot do tamanho dos centroides de cada
+grupo. Pela Figura abaixo, podemos ver que os dois grupos
+estão bem separados, porém, existe a presença de outliers nos dois
+grupos. Com isso, podemos supor a partir dos resultados dos dados
+simulados, que os algoritmos terão uma boa performance para realizar os
+agrupamentos.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/sqzz.png"
+        data-srcset="/sqzz.png, /sqzz.png 1.5x, /sqzz.png 2x"
+        data-sizes="auto"
+        alt="/sqzz.png"
+        title="dados das ressonâncias magnéticas de pessoas com esquizofrenia." width="800" height="566" /></p>
+<p>A Tabela abaixo mostra os resultados do algoritmo, com ela,
+novamente, podemos ver que os resultados e a performance de cada índice.
+Os índices interno e externo de validação tiveram bons resultados,
+indicando assim que os agrupamentos foram bem definidos e
+posteriormente, validando os agrupamentos.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th style="text-align:center"><strong>Índice de Rand</strong></th>
+<th style="text-align:center"><strong>Índice de Procrustes</strong></th>
+<th style="text-align:right"><strong>Acurácia</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">$K$-médias</td>
+<td style="text-align:center">0,696</td>
+<td style="text-align:center">0,419</td>
+<td style="text-align:right">82,1%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conclusões">Conclusões</h2>
+<p>Neste trabalho, apresentamos uma introdução a análise estatística de
+formas e classificação não supervisionada no espaço não euclidiano.</p>
+<p>No geral, os resultados obtidos mostraram que o algoritmo proposto
+obteve bom desempenho, para realizar os agrupamentos, usando dados de
+tamanho e forma.</p>
+<p>Se tratando dos dados simulados e reais, o algoritmo foi eficiente para
+todos os cenários propostos. Para o cenário em que os os grupos eram
+mais homogêneos, o algoritmo perdeu um pouco de eficiência, para grupos
+mais heterogêneos o algoritmo foi mais eficiente.</p>
+<p>Assim, este trabalho contribuiu para a literatura teórica dos métodos de
+agrupamento para dados de análise estatística de tamanho e forma.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 06-07-2022</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/oitavo-post/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/setimo-post/" class="prev" rel="prev" title="Uma Introdução a análise estatística de forma"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Uma Introdução a análise estatística de forma</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Criado por Jerfson Bruno</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span>&nbsp;|&nbsp;<span class="license">MIT</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

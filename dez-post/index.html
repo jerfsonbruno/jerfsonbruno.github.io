@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Previsões e possíveis casos de subnotificação do COVID-19 na síndrome respiratória aguda grave (SRAG). - Jerfson Bruno</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Previsões e possíveis casos de subnotificação do COVID-19 na síndrome respiratória aguda grave (SRAG)." />
+<meta property="og:description" content="Esse trabalho foi apresentado na disciplina de Estatística aplicada ministrada pelo Prof. Dr. Francisco Cribari Neto. E teve como inspiração, um trabalho feito pelo Prof. Dr. Marcus Alexandre Nunes.
+O professor Marcus Nunes tem um blog (https://marcusnunes.me), recomendo fortemente que vocês acessem. Não deve ser surpresa para ninguém as reportagens sobre prováveis subnotificações a respeito dos casos de COVID-19. A fim de verificar se essas suspeitas são mesmo procedentes, decidi comparar os números de casos de Síndrome Respiratória Aguda Grave (SRAG) registrados no Brasil e em Pernambuco nos últimos 10 anos, a fim de tentar detectar se houve um aumento nos casos em 2020/2021." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jerfsonbruno.github.io/dez-post/" /><meta property="og:image" content="https://jerfsonbruno.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-03-01T01:36:46-03:00" />
+<meta property="article:modified_time" content="2021-03-01T01:36:46-03:00" /><meta property="og:site_name" content="LoveIt" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jerfsonbruno.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="Previsões e possíveis casos de subnotificação do COVID-19 na síndrome respiratória aguda grave (SRAG)."/>
+<meta name="twitter:description" content="Esse trabalho foi apresentado na disciplina de Estatística aplicada ministrada pelo Prof. Dr. Francisco Cribari Neto. E teve como inspiração, um trabalho feito pelo Prof. Dr. Marcus Alexandre Nunes.
+O professor Marcus Nunes tem um blog (https://marcusnunes.me), recomendo fortemente que vocês acessem. Não deve ser surpresa para ninguém as reportagens sobre prováveis subnotificações a respeito dos casos de COVID-19. A fim de verificar se essas suspeitas são mesmo procedentes, decidi comparar os números de casos de Síndrome Respiratória Aguda Grave (SRAG) registrados no Brasil e em Pernambuco nos últimos 10 anos, a fim de tentar detectar se houve um aumento nos casos em 2020/2021."/>
+<meta name="application-name" content="Jerfson Bruno">
+<meta name="apple-mobile-web-app-title" content="Jerfson Bruno"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jerfsonbruno.github.io/dez-post/" /><link rel="prev" href="https://jerfsonbruno.github.io/quinto-post/" /><link rel="next" href="https://jerfsonbruno.github.io/setimo-post/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Previsões e possíveis casos de subnotificação do COVID-19 na síndrome respiratória aguda grave (SRAG).",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jerfsonbruno.github.io\/dez-post\/"
+        },"image": ["https:\/\/jerfsonbruno.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  4474 ,
+        "url": "https:\/\/jerfsonbruno.github.io\/dez-post\/","datePublished": "2021-03-01T01:36:46-03:00","dateModified": "2021-03-01T01:36:46-03:00","publisher": {
+            "@type": "Organization",
+            "name": "Jerfson Bruno","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/jerfsonbruno.github.io\/images\/avatar.png",
+                    "width":  420 ,
+                    "height":  420 
+                }},"author": {
+                "@type": "Person",
+                "name": "Jerfson Bruno"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Jerfson Bruno"><span class="header-title-pre"><i class='fa-solid fa-house'></i></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/sobre/"> Sobre </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Jerfson Bruno"><span class="header-title-pre"><i class='fa-solid fa-house'></i></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/sobre/" title="">Sobre</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Previsões e possíveis casos de subnotificação do COVID-19 na síndrome respiratória aguda grave (SRAG).</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Jerfson Bruno</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="01-03-2021">01-03-2021</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;4474 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;22 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introdução">Introdução</a></li>
+    <li><a href="#revisão-da-literatura">Revisão da Literatura</a>
+      <ul>
+        <li><a href="#srag">SRAG</a></li>
+        <li><a href="#holt-winters">Holt-Winters</a>
+          <ul>
+            <li><a href="#aditivo">Aditivo</a></li>
+            <li><a href="#multiplicativo">Multiplicativo</a></li>
+          </ul>
+        </li>
+        <li><a href="#arima">ARIMA</a></li>
+      </ul>
+    </li>
+    <li><a href="#aplicação">Aplicação</a>
+      <ul>
+        <li><a href="#análise-descritiva">Análise Descritiva</a></li>
+        <li><a href="#série-temporal">Série Temporal</a></li>
+        <li><a href="#algoritmo-hotz-winters">Algoritmo Hotz-Winters</a></li>
+        <li><a href="#modelo-arima">Modelo ARIMA</a></li>
+        <li><a href="#comparação-holt-winters-x-arima">Comparação Holt-Winters x ARIMA</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusão">Conclusão</a>
+      <ul>
+        <li><a href="#código-r">Código R</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><code>Esse trabalho foi apresentado na disciplina de Estatística aplicada ministrada pelo Prof. Dr. Francisco Cribari Neto. E teve como inspiração, um trabalho feito pelo Prof. Dr. Marcus Alexandre Nunes.</code></p>
+<p><code>O professor Marcus Nunes tem um blog (https://marcusnunes.me), recomendo fortemente que vocês acessem. </code></p>
+<p>Não deve ser surpresa para ninguém as reportagens sobre prováveis
+subnotificações a respeito dos casos de COVID-19. A fim de verificar se
+essas suspeitas são mesmo procedentes, decidi comparar os números de
+casos de Síndrome Respiratória Aguda Grave (SRAG) registrados no Brasil
+e em Pernambuco nos últimos 10 anos, a fim de tentar detectar se houve
+um aumento nos casos em 2020/2021.</p>
+<p>Com a análise inicial, já foi possível ver tanto no Brasil como em
+Pernambuco um aumento extraordinário no ano de 2020/2021. Foi feito
+também uma análise sobre a média de casos em relação ao ano de 2020,
+vendo assim um valor alarmante do ano de 2020. Assim, temos altos
+indícios de que existe subnotificação do COVID-19.</p>
+<p>Fizemos dois métodos de previsão, o primeiro usando o algoritmo de
+Holt-Winters e o segundo usando o modelo ARIMA. Fizemos uma previsão
+para as próximas seis semanas e comparamos com o valor real. Tivemos um
+erro menor no modelo ARIMA, indicando assim como um modelo mais preciso
+para a série SRAG.</p>
+<h2 id="introdução">Introdução</h2>
+<p>Não deve ser surpresa para ninguém as reportagens sobre prováveis
+subnotificações a respeito dos casos de COVID-19. A fim de verificar se
+essas suspeitas são mesmo procedentes, decidi comparar os números de
+casos de Síndrome Respiratória Aguda Grave (SRAG) registrados no Brasil
+e em Pernambuco nos últimos 10 anos, a fim de tentar detectar se houve
+um aumento nos casos em 2020/2021.</p>
+<p>Como sabemos, infelizmente, não há testes de COVID-19 para todos os
+suspeitos. A Síndrome Respiratória Aguda Grave (SRAG) possui sintomas
+muito parecidos com aqueles do COVID-19. Com isso, acredito que, com o
+avanço da pandemia, é importante que a população tenha noção da
+quantidade de casos da doença que estão por aí.</p>
+<p>Temos um bom acesso a casos registrados de SRAG no site da Fiocruz. Eles
+desenvolveram uma excelente ferramenta de divulgação chamada , no qual
+obtive os dados aqui divulgados.</p>
+<p>Com isso, faremos uma análise para a série temporal, para tentar
+identificar se os modelos usuais servem para prever se a um aumento ou
+decrescimento nos futuros casos registrados de SRAG.</p>
+<h2 id="revisão-da-literatura">Revisão da Literatura</h2>
+<h3 id="srag">SRAG</h3>
+<p>Segundo o , existe duas variações, sendo elas:</p>
+<ul>
+<li>
+<p><strong>Síndrome Gripal (SG):</strong> Indivíduo com quadro respiratório agudo,
+caracterizado por pelo menos dois (2) dos seguintes sinais e
+sintomas: febre (mesmo que referida), calafrios, dor de garganta,
+dor de cabeça, tosse, coriza, distúrbios olfativos ou distúrbios
+gustativos.</p>
+</li>
+<li>
+<p><strong>Síndrome Respiratória Aguda Grave (SRAG):</strong> Indivíduo com SG que
+apresente: dispneia/desconforto respiratório ou pressão persistente
+no tórax ou saturação de O2 menor que 95% em ar ambiente ou
+coloração azulada dos lábios ou rosto.</p>
+</li>
+</ul>
+<p>Em casos de COVID-19, existem três critérios parar confirmar a doença:</p>
+<ul>
+<li>
+<p><strong>Por Critério Clínico:</strong> Caso de SG ou SRAG com confirmação clínica
+associado a anosmia (disfunção olfativa) ou ageusia (disfunção
+gustatória) aguda sem outra causa pregressa.</p>
+</li>
+<li>
+<p><strong>Por Critério Clínico-Epidemiológico:</strong> Caso de SG ou SRAG com
+histórico de contato próximo ou domiciliar, nos 14 dias anteriores
+ao aparecimento dos sinais e sintomas com caso confirmado para
+COVID-19.</p>
+</li>
+<li>
+<p><strong>Por Critério Clínico-Imagem:</strong> Caso de SG ou SRAG ou óbito por
+SRAG que não foi possível confirmar por critério laboratorial e que
+apresente algumas alterações tomografias.</p>
+</li>
+</ul>
+<p>Com essas informações, fica claro que pode haver casos de
+subnotificações do COVID-19 nos dados do SRAG.</p>
+<h3 id="holt-winters">Holt-Winters</h3>
+<p>O método de alisamento exponencial Holt-Winters, ou simplesmente
+algoritmo Holt-Winters, compreende a equação de previsão e três
+equações de suavização</p>
+<ul>
+<li>
+<p>Uma para o nível $l_t$,</p>
+</li>
+<li>
+<p>Uma para a tendência $b_t$,</p>
+</li>
+<li>
+<p>E uma para a componente sazonal $s_t$.</p>
+</li>
+</ul>
+<p>com os parâmetros de suavização $\alpha$, $\beta$ e $\gamma$ .</p>
+<p>Existem duas variações desse método que diferem na natureza do
+componente sazonal. O método aditivo é preferido quando as variações
+sazonais são aproximadamente constantes ao longo da série, enquanto o
+método multiplicativo é preferido quando as variações sazonais estão
+mudando proporcionalmente ao nível da série. Com o método aditivo, a
+componente sazonal é expressa em termos absolutos na escala das séries
+observadas e na equação de nível a série é ajustada sazonalmente
+subtraindo a componente sazonal. Dentro de cada ano, o componente
+sazonal somará aproximadamente zero. Com o método multiplicativo, a
+componente sazonal é expressa em termos relativos (percentagens) e a
+série é ajustada sazonalmente pela divisão pela componente sazonal.</p>
+<p>As Equações abaixo correspondem aos métodos aditivo e multiplicativo respectivamente:</p>
+<h4 id="aditivo">Aditivo</h4>
+<p>$$\text{Equação de Nivel: }\hspace{0.5cm} l_t = \alpha(y_t -s_{t-m}) + (1-\alpha) (l_{t-1} + b_{t-1})$$
+$$\text{Equação de Tendência:        }\hspace{0.5cm} b_t = \beta^* (l_t - l_{t-1}) + (1-\beta^*)b_{t-1}$$
+$$\text{Equação de Sazonalidade:     }\hspace{0.5cm} s_t = \gamma (y_t - l_{t-1}-b_{t-1}) + (1-\gamma)s_{t-m}$$</p>
+<h4 id="multiplicativo">Multiplicativo</h4>
+<p>$$\text{Equação de Nivel:        } \hspace{0.5cm}l_t = \alpha(\frac{y_t}{s_{t-m}} ) + (1-\alpha) (l_{t-1} + b_{t-1})$$
+$$\text{Equação de Tendência:        }\hspace{0.5cm} b_t = \beta^* (l_t - l_{t-1}) + (1-\beta^*)b_{t-1}$$
+$$\text{Equação de Sazonalidade:     }\hspace{0.5cm} s_t = \gamma (\frac{y_t}{l_{t-1}-b_{t-1}} ) + (1-\gamma)s_{t-m}$$</p>
+<p>A equação de previsão é dado por $$ \text{Equação de previsão:} \hspace{0.5cm} \hat{y}_{t+h|t} = l_t +hb_t + s_w$$ em que $w=t+h-m(k+1)$</p>
+<h3 id="arima">ARIMA</h3>
+<p>Os modelos ARIMA fornecem outra abordagem para a previsão de séries
+temporais. A suavização exponencial e os modelos ARIMA são as duas
+abordagens mais amplamente utilizadas para a previsão de séries
+temporais e fornecem abordagens complementares para o problema. Enquanto
+os modelos de suavização exponencial são baseados em uma descrição da
+tendência e sazonalidade dos dados, os modelos ARIMA visam descrever as
+autocorrelações nos dados.</p>
+<p>Em um modelo de regressão múltipla, prevemos a variável de interesse
+usando uma combinação linear de preditores. Em um modelo de
+autorregressão, prevemos a variável de interesse usando uma combinação
+linear de valores anteriores da variável. O termo autorregressão indica
+que é uma regressão da variável contra si mesma.</p>
+<p>Define-se um modelo autorregressivo de ordem $p$, $AR(p)$, como:</p>
+<p>$$ y_t = c+\phi_1 y_{t-1} + \phi_2 y_{t-2} + \cdots + \phi_p y_{t-p} + \varepsilon_t$$</p>
+<p>em que $\varepsilon_t$ é um ruído branco com distribuição
+$N(0,\sigma^2)$. Isso é como uma regressão múltipla, mas com valores
+defasados de $y_t$ como preditores.</p>
+<p>Também é possível em vez de usar valores anteriores da variável de
+previsão em uma regressão, usar um modelo de média móvel para os erros
+de previsão. Chamamos esse método como modelo de médias móveis, dado
+pela equação:</p>
+<p>$$y_t = c+\varepsilon_t + \theta_1 y_{t-1} +\theta_2 \varepsilon_{t-2} + \cdots + \theta_p \varepsilon_{t-p},  $$</p>
+<p>onde $\varepsilon_t$ é um ruído branco. Referimos a isso como um
+modelo de média móvel de ordem $q$, $MA(q)$.</p>
+<p>Se combinarmos com autorregressão e um modelo de média móvel, obtemos um
+modelo ARMA. O modelo ARMA, pode ser estendido para o modelo ARIMA, em
+que ARIMA é um acrônimo para <em>AutoRegressive Integrated Moving Average</em>
+(neste contexto, “integração” é o reverso de diferenciação).</p>
+<p>O modelo ARIMA$(p, q, d)$, tem as seguintes nomenclaturas:</p>
+<p>$$ p= \text{Ordem da parte autoregressiva}$$
+$$d= \text{Números de diferenças feitas}$$
+$$q= \text{Ordem da parte de médias móveis}$$</p>
+<p>Percebe-se que,</p>
+<ul>
+<li>
+<p>Se $p\neq0$ e $q=0$, temos um modelo $AR(p)$,</p>
+</li>
+<li>
+<p>Se $q\neq0$ e $p=0$, temos um modelo $MA(q)$,</p>
+</li>
+<li>
+<p>A ordem $d$, depende se a série for estacionária ou não.</p>
+</li>
+</ul>
+<h2 id="aplicação">Aplicação</h2>
+<p>Os dados analisados foram coletados pelo . Os dados são semanais, do ano
+de 2011 até 2021. Faremos uma análise descritiva, e em seguida
+ajustaremos os métodos de previsão de séries temporais usuais e os
+compararemos.</p>
+<p>Para visualizar e comparar um potencial modelo, separamos os dados em
+treinamento e teste. O treinamento são dados da primeira semana de 2011
+até a quadragésima nona a semana do ano de 2020. Os modelos serão
+construídos com base nos dados de treinamento.</p>
+<p>A base de testes é da quadragésima nona semana de 2020 até a terceira
+semana de 2021. A mesma serve para comparar o valor verdadeiro com o
+valor predito.</p>
+<p>Lembrando que analisaremos duas séries temporais, a série SRAG do Brasil
+e a série SRAG do estado de Pernambuco.</p>
+<h3 id="análise-descritiva">Análise Descritiva</h3>
+<p>Podemos ver pelas Tabelas (<a href="#t1" rel="">1</a>) e (<a href="#t2" rel="">2</a>) algumas estatísticas
+sobre as séries temporais. Na Tabela (<a href="#t1" rel="">1</a>) podemos ver que o valor
+mínimo de casos ocorridos em uma semana no Brasil foi $14$, e que como
+a média se difere bastante da mediana e o terceiro quartil, observando
+então, um grande aumento no número de casos nas semanas finais dos
+dados. O valor máximo de casos em uma semana foi de $17943$.</p>
+<p><strong>Tabela 1 - Algumas Estatísticas para a série SRAG Brasil.</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Min</th>
+<th style="text-align:center">1Q</th>
+<th style="text-align:center">Mediana</th>
+<th style="text-align:center">Média</th>
+<th style="text-align:center">3Q</th>
+<th style="text-align:center">Máx</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">14</td>
+<td style="text-align:center">151,2</td>
+<td style="text-align:center">313,5</td>
+<td style="text-align:center">1270,5</td>
+<td style="text-align:center">710</td>
+<td style="text-align:center">17943</td>
+</tr>
+</tbody>
+</table>
+<p>Na Tabela (<a href="#t2" rel="">2</a>) podemos ver também que como a média se difere
+bastante da mediana e do terceiro quartil, tendo novamente, um grande
+aumento no número de casos nas ultimas semanas. O valor máximo de casos
+em uma semana foi de $1312$.</p>
+<p><strong>Tabela 2 - Algumas Estatísticas para a série SRAG Pernambuco.</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Min</th>
+<th style="text-align:center">1Q</th>
+<th style="text-align:center">Mediana</th>
+<th style="text-align:center">Média</th>
+<th style="text-align:center">3Q</th>
+<th style="text-align:center">Máx</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">22</td>
+<td style="text-align:center">64,66</td>
+<td style="text-align:center">42</td>
+<td style="text-align:center">1312</td>
+</tr>
+</tbody>
+</table>
+<p>A partir dessa primeira análise, foi feito um gráfico mostrando o número
+de casos ao longo das semanas, filtrados pelos anos. Com isso, podemos
+ver os primeiros indícios de subnotificação do COVID-19.</p>
+<p>Tanto na Figura (<a href="#ea" rel="">1</a>) envolvendo todo o Brasil, como na Figura
+(<a href="#edd" rel="">2</a>) envolvendo todo o estado de Pernambuco, o ano de 2020 está
+claramente destacado por conter uma curva muito superior a todos os
+outros anos.</p>
+<p>O segundo destaque é o ano de 2016. Em 2016 rolou uma grande epidemia de
+Influenza A (H1N1), com isso, o aumento da curva de 2016 pode ser
+justificada.</p>
+<p>Claramente está ocorrendo algum &ldquo;fenômeno&rdquo; que fez as notificações de
+SRAG aumentarem no ano de 2020. Com isso, temos indícios de
+subnotificação do COVID-19.</p>
+<p><strong>Figura 1 – Número de Casos ao Longo das Semanas Filtrado Pelos Anos Para a Série SRAG Brasil.</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/numero_casos_BR.png"
+        data-srcset="/numero_casos_BR.png, /numero_casos_BR.png 1.5x, /numero_casos_BR.png 2x"
+        data-sizes="auto"
+        alt="/numero_casos_BR.png"
+        title="/numero_casos_BR.png" width="800" height="566" /></p>
+<p><strong>Figura 2 – Número de Casos ao Longo das Semanas Filtrado Pelos Anos Para a Série SRAG Pernambuco.</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/numero_casos_PE.png"
+        data-srcset="/numero_casos_PE.png, /numero_casos_PE.png 1.5x, /numero_casos_PE.png 2x"
+        data-sizes="auto"
+        alt="/numero_casos_PE.png"
+        title="/numero_casos_PE.png" width="800" height="566" /></p>
+<p>Para melhorar, ou dar mais evidências das subnotificações, foi
+construído um gráfico para comparar o ano de 2020 com a média histórica
+dos anos de 2011 a 2019. A partir disso, podemos observar nas Figuras
+(<a href="#m1" rel="">3</a>) e (<a href="#m2" rel="">4</a>) uma diferença absurdas entres as curvas.</p>
+<p><strong>Figura 3 – Número de Casos ao Longo das Semanas do ano 2020 em Comparação Com Média dos Anos de 2011 a 2019 para a Série SRAG Brasil.</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/numero_casos_medio_BR.png"
+        data-srcset="/numero_casos_medio_BR.png, /numero_casos_medio_BR.png 1.5x, /numero_casos_medio_BR.png 2x"
+        data-sizes="auto"
+        alt="/numero_casos_medio_BR.png"
+        title="/numero_casos_medio_BR.png" width="800" height="566" /></p>
+<p><strong>Figura 4 – Número de Casos ao Longo das Semanas do ano 2020 em Comparação Com Média dos Anos de 2011 a 2019 para a Série SRAG Pernambuco.</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/numero_casos_medio_PE.png"
+        data-srcset="/numero_casos_medio_PE.png, /numero_casos_medio_PE.png 1.5x, /numero_casos_medio_PE.png 2x"
+        data-sizes="auto"
+        alt="/numero_casos_medio_PE.png"
+        title="/numero_casos_medio_PE.png" width="800" height="566" /></p>
+<p>Finalizado essa breve análise, partiremos para ver o comportamento das
+previsões dos métodos usuais de séries temporais com a série SRAG
+(Brasil e Pernambuco).</p>
+<h3 id="série-temporal">Série Temporal</h3>
+<p>Para tentar fazer previsões com o máximo de fidelidade ao valor real,
+tentamos ajustar o algoritmo Holt-Winters e o modelo ARIMA, para ver o
+comportamento deles com as séries, e compará-los entre si.</p>
+<p>A série do SRAG (Brasil e Pernambuco) com dados semanais, ao longo dos
+anos pode ser vista na Figura (<a href="#series" rel="">5</a>). Não podemos ver com
+clareza se as séries possui tendência ou sazonalidade, mais podemos ver
+com clareza, nas duas séries, uma quebra estrutural. Isso foi visto
+anteriormente, como indícios de subnotificações do COVID-19.</p>
+<p><strong>Figura 5A – Série Temporal da SARG Brasil:</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/serie_br.png"
+        data-srcset="/serie_br.png, /serie_br.png 1.5x, /serie_br.png 2x"
+        data-sizes="auto"
+        alt="/serie_br.png"
+        title="/serie_br.png" width="800" height="566" /></p>
+<p><strong>Figura 5B – Série Temporal da SARG Pernambuco:</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/serie_pe.png"
+        data-srcset="/serie_pe.png, /serie_pe.png 1.5x, /serie_pe.png 2x"
+        data-sizes="auto"
+        alt="/serie_pe.png"
+        title="/serie_pe.png" width="800" height="566" /></p>
+<p>Os dois gráficos são bem parecidos, o que é normal, já que estamos
+apenas filtrando a base de dados do Brasil, para um único estado,
+Pernambuco.</p>
+<p>Usando a média de casos por semanas ao longo do anos, é possível tentar
+identificar se a indícios de sazonalidade.</p>
+<p><strong>Figura 6A – Média de casos por Semanas ao Longo do Anos no Brasil.</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/casos_semanas_br.png"
+        data-srcset="/casos_semanas_br.png, /casos_semanas_br.png 1.5x, /casos_semanas_br.png 2x"
+        data-sizes="auto"
+        alt="/casos_semanas_br.png"
+        title="/casos_semanas_br.png" width="800" height="566" />
+<strong>Figura 6B – Média de casos por Semanas ao Longo do Anos em Pernambuco.</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/casos_semanas_pe.png"
+        data-srcset="/casos_semanas_pe.png, /casos_semanas_pe.png 1.5x, /casos_semanas_pe.png 2x"
+        data-sizes="auto"
+        alt="/casos_semanas_pe.png"
+        title="/casos_semanas_pe.png" width="800" height="566" /></p>
+<p>Como existe uma quebra estrutural em ambas as séries, visto na Figura
+(<a href="#series" rel="">5</a>), é possível ver uma diferença nas medinas ao longo dos
+anos. Porém, não é possível saber de forma visual se essa diferença é
+por uma sazonalidade ou pela quebra estrutural.</p>
+<p>Fazendo a decomposição das séries em componentes não-observáveis,
+podemos perceber que não existe indícios de sazonalidade multiplicativa.
+Também é possível ver certa tendência em ambas as série. A decomposição
+das séries pode ser vista na Figura (<a href="#series3" rel="">7</a>).</p>
+<p><strong>Figura 7A – Decomposição das Séries em Componentes Não-Observáveis no Brasil.</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/decomposicao_br.png"
+        data-srcset="/decomposicao_br.png, /decomposicao_br.png 1.5x, /decomposicao_br.png 2x"
+        data-sizes="auto"
+        alt="/decomposicao_br.png"
+        title="/decomposicao_br.png" width="800" height="566" /></p>
+<p><strong>Figura 7B – Decomposição das Séries em Componentes Não-Observáveis em Pernambuco.</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/decomposicao_pe.png"
+        data-srcset="/decomposicao_pe.png, /decomposicao_pe.png 1.5x, /decomposicao_pe.png 2x"
+        data-sizes="auto"
+        alt="/decomposicao_pe.png"
+        title="/decomposicao_pe.png" width="800" height="566" /></p>
+<p>Fazendo os gráficos da função autocorrelação(ACF) e da função de
+autocorrelação parcial(PACF) para as séries Brasil e Pernambuco, podemos
+ver um decrescimento lento no Gráfico da ACF, em ambos gráficos. Dando
+indícios que a série tem raiz unitária e precisa ser diferenciada.
+Também temos indícios que a série não contém sazonalidade aleatória já
+que não temos alternâncias de picos no gráfico ACF.</p>
+<p><strong>Figura 8 – Função de Autocorrelação e Função de Autocorrelação Parcial para a Série SRAG Brasil.</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/acf_br.png"
+        data-srcset="/acf_br.png, /acf_br.png 1.5x, /acf_br.png 2x"
+        data-sizes="auto"
+        alt="/acf_br.png"
+        title="/acf_br.png" width="800" height="566" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/pacf_br.png"
+        data-srcset="/pacf_br.png, /pacf_br.png 1.5x, /pacf_br.png 2x"
+        data-sizes="auto"
+        alt="/pacf_br.png"
+        title="/pacf_br.png" width="800" height="566" /></p>
+<p><strong>Figura 9 – Função de Autocorrelação e Função de Autocorrelação Parcial para a Série SRAG Pernambuco.</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/acf_pe.png"
+        data-srcset="/acf_pe.png, /acf_pe.png 1.5x, /acf_pe.png 2x"
+        data-sizes="auto"
+        alt="/acf_pe.png"
+        title="/acf_pe.png" width="800" height="566" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/pacf_pe.png"
+        data-srcset="/pacf_pe.png, /pacf_pe.png 1.5x, /pacf_pe.png 2x"
+        data-sizes="auto"
+        alt="/pacf_pe.png"
+        title="/pacf_pe.png" width="800" height="566" /></p>
+<p>Com os indícios de raiz unitária, foi feito um teste ADF[2], onde
+obtemos o valor da estatística de teste</p>
+<ul>
+<li>
+<p>Valor da estatística de teste para a série Brasil: $-1.5546$</p>
+</li>
+<li>
+<p>Valor da estatística de teste para a série Pernambuco: $-3.0419$</p>
+</li>
+</ul>
+<p>onde a região critica é dada pela Tabela (<a href="#sd" rel="">3</a>)</p>
+<p><strong>Tabela 3 – Valores Críticos para o Teste ADF.</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">1%</th>
+<th style="text-align:center">5%</th>
+<th style="text-align:center">10%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">-2,58</td>
+<td style="text-align:center">-1,95</td>
+<td style="text-align:center">-1,62</td>
+</tr>
+</tbody>
+</table>
+<p>Como os dois valores da estatística de teste deram menor que o valor
+tabelado de $1%$, temos que as duas séries precisam ser diferenciada
+ao nível de $1%$.</p>
+<p>A partir de agora, ajustaremos os métodos usuais propostos, faremos
+previsões, e em seguida usaremos algumas medidas de erros para verificar
+qual dos dois modelos obteve melhor estimativa.</p>
+<h3 id="algoritmo-hotz-winters">Algoritmo Hotz-Winters</h3>
+<p>O primeiro método de previsão a ser usado foi a classe de algoritmos de
+alisamento exponencial, o algoritmo de Holt-Winters.</p>
+<p>As estimativas dos ajustes para as duas séries podem ser vistas na
+Tabela (<a href="#t3" rel="">4</a>).</p>
+<p><strong>Tabela 4A – Valores Estimados Para os Parâmetros de Suavização no Brasil.</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">$\alpha$</th>
+<th style="text-align:center">$\beta$</th>
+<th style="text-align:center">$\gamma$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0.2692</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela 4B – Valores Estimados Para os Parâmetros de Suavização em Pernambuco.</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">$\alpha$</th>
+<th style="text-align:center">$\beta$</th>
+<th style="text-align:center">$\gamma$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
+<p>Após as estimativas geradas a partir do algoritmo Holt-Winters, foram
+feitas previsões para 6 semanas em ambas as séries (Brasil e
+Pernambuco).</p>
+<p>Podemos ver as previsões pelas Tabelas (<a href="#t6" rel="">5</a>) e (<a href="#t7" rel="">6</a>). Com ela,
+podemos comparar o valor previsto com o valor verdadeiro.</p>
+<p><strong>Tabela 5 – Previsões para as próximas 6 semanas para a série SRAG Brasil.</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Data (Ano/Semana)</th>
+<th style="text-align:center">Valor Real</th>
+<th style="text-align:center">Previsão</th>
+<th style="text-align:center">LI 95%</th>
+<th style="text-align:center">LS 95%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">2020/50</td>
+<td style="text-align:center">10568</td>
+<td style="text-align:center">10034.03</td>
+<td style="text-align:center">9164.793</td>
+<td style="text-align:center">10903.26</td>
+</tr>
+<tr>
+<td style="text-align:center">2020/51</td>
+<td style="text-align:center">9484</td>
+<td style="text-align:center">10486.67</td>
+<td style="text-align:center">9082.166</td>
+<td style="text-align:center">11891.17</td>
+</tr>
+<tr>
+<td style="text-align:center">2020/52</td>
+<td style="text-align:center">8670</td>
+<td style="text-align:center">10951.84</td>
+<td style="text-align:center">9012.596</td>
+<td style="text-align:center">12891.08</td>
+</tr>
+<tr>
+<td style="text-align:center">2021/1</td>
+<td style="text-align:center">9148</td>
+<td style="text-align:center">11438.39</td>
+<td style="text-align:center">8942.565</td>
+<td style="text-align:center">13934.22</td>
+</tr>
+<tr>
+<td style="text-align:center">2021/2</td>
+<td style="text-align:center">10223</td>
+<td style="text-align:center">11880.07</td>
+<td style="text-align:center">8799.878</td>
+<td style="text-align:center">14960.26</td>
+</tr>
+<tr>
+<td style="text-align:center">2021/3</td>
+<td style="text-align:center">9759</td>
+<td style="text-align:center">12351.32</td>
+<td style="text-align:center">8657.342</td>
+<td style="text-align:center">16045.29</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela 6 – Previsões para as próximas 6 semanas para a série SRAG Pernambuco.</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Data (Ano/Semana)</th>
+<th style="text-align:center">Valor Real</th>
+<th style="text-align:center">Previsão</th>
+<th style="text-align:center">LI 95%</th>
+<th style="text-align:center">LS 95%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">2020/50</td>
+<td style="text-align:center">391</td>
+<td style="text-align:center">327.0263</td>
+<td style="text-align:center">260.9630</td>
+<td style="text-align:center">393.0897</td>
+</tr>
+<tr>
+<td style="text-align:center">2020/51</td>
+<td style="text-align:center">400</td>
+<td style="text-align:center">325.0623</td>
+<td style="text-align:center">231.6346</td>
+<td style="text-align:center">418.4899</td>
+</tr>
+<tr>
+<td style="text-align:center">2020/52</td>
+<td style="text-align:center">322</td>
+<td style="text-align:center">325.1078</td>
+<td style="text-align:center">210.6827</td>
+<td style="text-align:center">439.5329</td>
+</tr>
+<tr>
+<td style="text-align:center">2021/1</td>
+<td style="text-align:center">281</td>
+<td style="text-align:center">326.1437</td>
+<td style="text-align:center">194.0170</td>
+<td style="text-align:center">458.2705</td>
+</tr>
+<tr>
+<td style="text-align:center">2021/2</td>
+<td style="text-align:center">283</td>
+<td style="text-align:center">325.1604</td>
+<td style="text-align:center">177.4383</td>
+<td style="text-align:center">472.8826</td>
+</tr>
+<tr>
+<td style="text-align:center">2021/3</td>
+<td style="text-align:center">265</td>
+<td style="text-align:center">325.1771</td>
+<td style="text-align:center">163.3556</td>
+<td style="text-align:center">486.9987</td>
+</tr>
+</tbody>
+</table>
+<p>Uma observação importante, é que esses intervalos de confiança gerados
+não são bem definidos por serem construídos a partir da distribuição
+normal.</p>
+<p>Para facilitar a visualização das Tabelas (<a href="#t6" rel="">5</a>) e (<a href="#t7" rel="">6</a>), foi
+construído dois gráficos afim de representar as mesmas.</p>
+<p>Podemos notar pela Figura (<a href="#fig:previbra" rel="">10</a>) que apenas um valor
+ficou fora do intervalo de confiança. Já na Figura
+(<a href="#fig:previpea" rel="">11</a>), todos os intervalos continham o valor verdadeiro.</p>
+<p><strong>Figura 10 – Representação da Tabela (5)</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/previ_BR_A.png"
+        data-srcset="/previ_BR_A.png, /previ_BR_A.png 1.5x, /previ_BR_A.png 2x"
+        data-sizes="auto"
+        alt="/previ_BR_A.png"
+        title="/previ_BR_A.png" width="800" height="566" /></p>
+<p><strong>Figura 11 – Representação da Tabela (6)</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/previ_PE_A.png"
+        data-srcset="/previ_PE_A.png, /previ_PE_A.png 1.5x, /previ_PE_A.png 2x"
+        data-sizes="auto"
+        alt="/previ_PE_A.png"
+        title="/previ_PE_A.png" width="800" height="566" /></p>
+<h3 id="modelo-arima">Modelo ARIMA</h3>
+<p>Foram ajustados vários modelos para as séries SRAG, Brasil e Pernambuco,
+e os modelos escolhidos foram os que continham menor AICc[3], e que
+passaram na análise de diagnóstico.</p>
+<p>Para a série SRAG Brasil, foi escolhido o modelo ARIMA(9,1,2). Como
+vimos anteriormente, a série continha raiz unitária e precisava ser
+diferenciada. As estimativas e erro padrão podem ser visto na Tabela
+(<a href="#t8" rel="">7</a>).</p>
+<p><strong>Tabela 7 – Valores Estimados para o Modelo ARIMA(9,1,2) para a série SRAG Brasil.</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">AR1</th>
+<th style="text-align:center">AR2</th>
+<th style="text-align:center">AR3</th>
+<th style="text-align:center">AR4</th>
+<th style="text-align:center">AR5</th>
+<th style="text-align:center">AR6</th>
+<th style="text-align:center">AR7</th>
+<th style="text-align:center">AR8</th>
+<th style="text-align:center">AR9</th>
+<th style="text-align:center">MA1</th>
+<th style="text-align:center">MA2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">0.547</td>
+<td style="text-align:center">-0.810</td>
+<td style="text-align:center">0.172</td>
+<td style="text-align:center">0.202</td>
+<td style="text-align:center">0.156</td>
+<td style="text-align:center">-0.075</td>
+<td style="text-align:center">0.176</td>
+<td style="text-align:center">-0.087</td>
+<td style="text-align:center">-0.099</td>
+<td style="text-align:center">-0.305</td>
+<td style="text-align:center">0.940</td>
+</tr>
+<tr>
+<td style="text-align:center">e.p</td>
+<td style="text-align:center">0.055</td>
+<td style="text-align:center">0.072</td>
+<td style="text-align:center">0.062</td>
+<td style="text-align:center">0.063</td>
+<td style="text-align:center">0.063</td>
+<td style="text-align:center">0.063</td>
+<td style="text-align:center">0.063</td>
+<td style="text-align:center">0.053</td>
+<td style="text-align:center">0.053</td>
+<td style="text-align:center">0.034</td>
+<td style="text-align:center">0.050</td>
+</tr>
+</tbody>
+</table>
+<p>Ao fazer a análise de diagnóstico, podemos perceber pela Figura
+(<a href="#fig:diagbr" rel="">12</a>) que é possível ver alguns ruídos no gráfico dos
+erros padrões. Esses ruídos são no ano de 2016 e 2020, como falado na
+análise descritiva, esses anos tiveram uma epidemia e uma pandemia
+respectivamente.</p>
+<p>No gráfico da ACF dos resíduos, podemos perceber que nem todos os <em>lags</em>
+estão dentro do intervalo. Porém, pelo gráfico da estatística de
+Ljung-Box, não temos nenhum <em>lag</em> significativo, mostrando assim que o
+modelo escolhido está ajustado.</p>
+<p><strong>Figura 12 – Diagnostico do Modelo ARIMA(9,1,2) para a série SRAG Brasil</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/diagbr.png"
+        data-srcset="/diagbr.png, /diagbr.png 1.5x, /diagbr.png 2x"
+        data-sizes="auto"
+        alt="/diagbr.png"
+        title="/diagbr.png" width="800" height="566" /></p>
+<p>Depois do ajuste e da análise de diagnostico do modelo, partiremos para
+as previsões das próximas seis semanas e compararemos com o valor
+verdadeiro da série. A Tabela (<a href="#f1" rel="">8</a>) mostra as previsões, valor real
+e intervalos de confiança.</p>
+<p><strong>Tabela 8 – Previsões para as próximas 6 semanas para a série SRAG Brasil.</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Data (Ano/Semana)</th>
+<th style="text-align:center">Valor Real</th>
+<th style="text-align:center">Previsão</th>
+<th style="text-align:center">LI 95%</th>
+<th style="text-align:center">LS 95%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">2020/50</td>
+<td style="text-align:center">10568</td>
+<td style="text-align:center">9764.18</td>
+<td style="text-align:center">9011.91</td>
+<td style="text-align:center">10516.44</td>
+</tr>
+<tr>
+<td style="text-align:center">2020/51</td>
+<td style="text-align:center">9484</td>
+<td style="text-align:center">10043.05</td>
+<td style="text-align:center">8843.67</td>
+<td style="text-align:center">11242.42</td>
+</tr>
+<tr>
+<td style="text-align:center">2020/52</td>
+<td style="text-align:center">8670</td>
+<td style="text-align:center">10349.78</td>
+<td style="text-align:center">8701.34</td>
+<td style="text-align:center">11998.22</td>
+</tr>
+<tr>
+<td style="text-align:center">2021/1</td>
+<td style="text-align:center">9148</td>
+<td style="text-align:center">10767.93</td>
+<td style="text-align:center">8717.09</td>
+<td style="text-align:center">12818.78</td>
+</tr>
+<tr>
+<td style="text-align:center">2021/2</td>
+<td style="text-align:center">10223</td>
+<td style="text-align:center">10713.95</td>
+<td style="text-align:center">8289.58</td>
+<td style="text-align:center">13138.32</td>
+</tr>
+<tr>
+<td style="text-align:center">2021/3</td>
+<td style="text-align:center">9759</td>
+<td style="text-align:center">10535.22</td>
+<td style="text-align:center">7711.05</td>
+<td style="text-align:center">13359.39</td>
+</tr>
+</tbody>
+</table>
+<p>Novamente, uma observação importante é que esses intervalos de confiança
+gerados não são bem definidos por serem construídos a partir da
+distribuição normal. Para mais detalhes ver: .</p>
+<p>Para facilitar o entendimento da Tabela (<a href="#f1" rel="">8</a>), foi construído um
+gráfico, Figura (<a href="#fig:previbr" rel="">13</a>), para visualizar a distancia do
+valor real para o estimado.</p>
+<p>Podemos perceber pela Figura (<a href="#fig:previbr" rel="">13</a>), que apenas dois
+intervalos de confiança não continham o valor verdadeiro.</p>
+<p><strong>Figura 13 – Representação da Tabela (8)</strong></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/previ_BR.png"
+        data-srcset="/previ_BR.png, /previ_BR.png 1.5x, /previ_BR.png 2x"
+        data-sizes="auto"
+        alt="/previ_BR.png"
+        title="/previ_BR.png" width="800" height="566" /></p>
+<p>Agora, fazendo o ajuste para a série SRAG Pernambuco, foram ajustados
+vários modelos, e foi escolhido o que continha menor AICc, e que passou
+na análise de diagnóstico.</p>
+<p>O modelo escolhido foi um ARIMA(5,1,10). Como vimos anteriormente, a
+série continha raiz unitária e precisava ser diferenciada. As
+estimativas e erro padrão podem ser visto na Tabela (<a href="#f3" rel="">9</a>).</p>
+<p>**Tabela 9 – Valores Estimados para o Modelo ARIMA(5,1,10) para a série SRAG Pernambuco.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">AR1</th>
+<th style="text-align:center">AR2</th>
+<th style="text-align:center">AR3</th>
+<th style="text-align:center">AR4</th>
+<th style="text-align:center">AR5</th>
+<th style="text-align:center">MA1</th>
+<th style="text-align:center">MA2</th>
+<th style="text-align:center">MA3</th>
+<th style="text-align:center">MA4</th>
+<th style="text-align:center">MA5</th>
+<th style="text-align:center">MA6</th>
+<th style="text-align:center">MA7</th>
+<th style="text-align:center">MA8</th>
+<th style="text-align:center">MA9</th>
+<th style="text-align:center">MA10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">-0.056</td>
+<td style="text-align:center">-0.199</td>
+<td style="text-align:center">0.223</td>
+<td style="text-align:center">-0.037</td>
+<td style="text-align:center">0.534</td>
+<td style="text-align:center">0.275</td>
+<td style="text-align:center">0.627</td>
+<td style="text-align:center">0.088</td>
+<td style="text-align:center">0.361</td>
+<td style="text-align:center">-0.549</td>
+<td style="text-align:center">-0.307</td>
+<td style="text-align:center">-0.474</td>
+<td style="text-align:center">-0.173</td>
+<td style="text-align:center">-0.479</td>
+<td style="text-align:center">-0.114</td>
+</tr>
+<tr>
+<td style="text-align:center">s.e.</td>
+<td style="text-align:center">0.163</td>
+<td style="text-align:center">0.118</td>
+<td style="text-align:center">0.100</td>
+<td style="text-align:center">0.087</td>
+<td style="text-align:center">0.115</td>
+<td style="text-align:center">0.164</td>
+<td style="text-align:center">0.107</td>
+<td style="text-align:center">0.092</td>
+<td style="text-align:center">0.087</td>
+<td style="text-align:center">0.097</td>
+<td style="text-align:center">0.063</td>
+<td style="text-align:center">0.064</td>
+<td style="text-align:center">0.066</td>
+<td style="text-align:center">0.060</td>
+<td style="text-align:center">0.074</td>
+</tr>
+</tbody>
+</table>
+<p>Ao fazer a análise de diagnóstico, podemos perceber pela Figura
+(<a href="#fig:diagpe" rel="">14</a>) que é possível ver alguns ruídos no gráfico dos
+erros padrões. Esses ruídos são mais notórios no ano de 2020, dando mais
+indícios de subnotificação do COVID-19.</p>
+<p>No gráfico da ACF dos resíduos, não percebemos nenhum <em>lags</em> fora dentro
+do intervalo. E ainda, pelo gráfico da estatística de Ljung-Box, não
+temos nenhum <em>lag</em> significativo, mostrando assim que o modelo escolhido
+está ajustado.</p>
+<p><strong>Figura 14 – Diagnostico do Modelo ARIMA(5,1,10) para a série SRAG Pernambuco.</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/diagpe.png"
+        data-srcset="/diagpe.png, /diagpe.png 1.5x, /diagpe.png 2x"
+        data-sizes="auto"
+        alt="/diagpe.png"
+        title="/diagpe.png" width="800" height="566" /></p>
+<p>Depois do ajuste e da análise de diagnostico do modelo, partiremos para
+as previsões das próximas seis semanas e compararemos com o valor
+verdadeiro da série. A Tabela (<a href="#f2" rel="">10</a>) mostra as previsões, valor
+real e intervalos de confiança.</p>
+<p><strong>Tabela 10 – Previsões para as próximas 6 semanas para a série SRAG Pernambuco.</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Data (Ano/Semana)</th>
+<th style="text-align:center">Valor Real</th>
+<th style="text-align:center">Previsão</th>
+<th style="text-align:center">LI 95%</th>
+<th style="text-align:center">LS 95%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">2020/50</td>
+<td style="text-align:center">391</td>
+<td style="text-align:center">324.78</td>
+<td style="text-align:center">276.18</td>
+<td style="text-align:center">373.38</td>
+</tr>
+<tr>
+<td style="text-align:center">2020/51</td>
+<td style="text-align:center">400</td>
+<td style="text-align:center">303.45</td>
+<td style="text-align:center">226.83</td>
+<td style="text-align:center">380.07</td>
+</tr>
+<tr>
+<td style="text-align:center">2020/52</td>
+<td style="text-align:center">322</td>
+<td style="text-align:center">293.39</td>
+<td style="text-align:center">183.02</td>
+<td style="text-align:center">403.75</td>
+</tr>
+<tr>
+<td style="text-align:center">2021/1</td>
+<td style="text-align:center">281</td>
+<td style="text-align:center">287.20</td>
+<td style="text-align:center">143.94</td>
+<td style="text-align:center">430.46</td>
+</tr>
+<tr>
+<td style="text-align:center">2021/2</td>
+<td style="text-align:center">283</td>
+<td style="text-align:center">279.18</td>
+<td style="text-align:center">101.70</td>
+<td style="text-align:center">456.67</td>
+</tr>
+<tr>
+<td style="text-align:center">2021/3</td>
+<td style="text-align:center">265</td>
+<td style="text-align:center">286.11</td>
+<td style="text-align:center">79.88</td>
+<td style="text-align:center">492.35</td>
+</tr>
+</tbody>
+</table>
+<p>Para facilitar o entendimento da Tabela (<a href="#f2" rel="">10</a>), foi construído um
+gráfico, Figura (<a href="#fig:previpe" rel="">15</a>), para visualizar a distancia do
+valor real para o estimado.</p>
+<p>Podemos perceber pela Figura (<a href="#fig:previpe" rel="">15</a>), que apenas os dois
+primeiros intervalos de confiança não continham o valor verdadeiro.</p>
+<p><strong>Figura 15 – Representação da Tabela (10)</strong>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/previ_PE.png"
+        data-srcset="/previ_PE.png, /previ_PE.png 1.5x, /previ_PE.png 2x"
+        data-sizes="auto"
+        alt="/previ_PE.png"
+        title="/previ_PE.png" width="800" height="566" /></p>
+<h3 id="comparação-holt-winters-x-arima">Comparação Holt-Winters x ARIMA</h3>
+<p>A partir de algumas medidas de erros, iremos comparar os dois métodos de
+previsões e definir qual se adequar melhor os dados.</p>
+<p>As Tabelas (<a href="#l4" rel="">11</a>) e (<a href="#k3" rel="">12</a>) mostram algumas medidas de erro, e
+assim como foi mencionando anteriormente, os intervalos de confiança
+gerados não são bem definidos, por serem construídos a partir da
+distribuição normal. Com isso, as medidas de erro servem para da uma
+comparação e precisão dos ajustes.</p>
+<p>Podemos perceber que tanto o RMSE e MAE do modelo ARIMA é
+menor que o do algoritmo de Holt-Winters, mostrando assim, que o modelo
+ARIMA é superior (nas séries analisadas) que o algoritmo de
+Holt-Winters, tanto no dados de treinamento como no de previsão.</p>
+<p><strong>Tabela 11A – Medidas de erro, SRAG Brasil (ARIMA).</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">RMSE</th>
+<th style="text-align:center">MAE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Treinamento</td>
+<td style="text-align:center">379.33</td>
+<td style="text-align:center">132.31</td>
+</tr>
+<tr>
+<td style="text-align:center">Previsão</td>
+<td style="text-align:center">1099.09</td>
+<td style="text-align:center">988.29</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela 11B – Medidas de erro, SRAG Brasil (Holt-Winters).</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">RMSE</th>
+<th style="text-align:center">MAE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Treinamento</td>
+<td style="text-align:center">443.03</td>
+<td style="text-align:center">163.75</td>
+</tr>
+<tr>
+<td style="text-align:center">Previsão</td>
+<td style="text-align:center">1880.12</td>
+<td style="text-align:center">1726.38</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela 12A – Medidas de erro, SRAG Pernambuco (ARIMA).</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">RMSE</th>
+<th style="text-align:center">MAE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Treinamento</td>
+<td style="text-align:center">24.41</td>
+<td style="text-align:center">11.16</td>
+</tr>
+<tr>
+<td style="text-align:center">Previsão</td>
+<td style="text-align:center">50.04</td>
+<td style="text-align:center">37.09</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tabela 12B – Medidas de erro, SRAG Pernambuco (Holt-Winters).</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">RMSE</th>
+<th style="text-align:center">MAE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Treinamento</td>
+<td style="text-align:center">33.68</td>
+<td style="text-align:center">12.79</td>
+</tr>
+<tr>
+<td style="text-align:center">Previsão</td>
+<td style="text-align:center">53.47</td>
+<td style="text-align:center">48.25</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conclusão">Conclusão</h2>
+<p>Como virmos desde a análise descritiva, temos grandes indícios que
+existe sim subnotificações do COVID-19. Com o ajuste dos modelos,
+fizemos previsões das próximas seis semanas e o comparamos com o valor
+real. Vimos que o modelo ARIMA tem melhor ajuste, já que o mesmo contém
+menor erro.</p>
+<h3 id="código-r">Código R</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
+</span><span class="lnt">157
+</span><span class="lnt">158
+</span><span class="lnt">159
+</span><span class="lnt">160
+</span><span class="lnt">161
+</span><span class="lnt">162
+</span><span class="lnt">163
+</span><span class="lnt">164
+</span><span class="lnt">165
+</span><span class="lnt">166
+</span><span class="lnt">167
+</span><span class="lnt">168
+</span><span class="lnt">169
+</span><span class="lnt">170
+</span><span class="lnt">171
+</span><span class="lnt">172
+</span><span class="lnt">173
+</span><span class="lnt">174
+</span><span class="lnt">175
+</span><span class="lnt">176
+</span><span class="lnt">177
+</span><span class="lnt">178
+</span><span class="lnt">179
+</span><span class="lnt">180
+</span><span class="lnt">181
+</span><span class="lnt">182
+</span><span class="lnt">183
+</span><span class="lnt">184
+</span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
+</span><span class="lnt">188
+</span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
+</span><span class="lnt">192
+</span><span class="lnt">193
+</span><span class="lnt">194
+</span><span class="lnt">195
+</span><span class="lnt">196
+</span><span class="lnt">197
+</span><span class="lnt">198
+</span><span class="lnt">199
+</span><span class="lnt">200
+</span><span class="lnt">201
+</span><span class="lnt">202
+</span><span class="lnt">203
+</span><span class="lnt">204
+</span><span class="lnt">205
+</span><span class="lnt">206
+</span><span class="lnt">207
+</span><span class="lnt">208
+</span><span class="lnt">209
+</span><span class="lnt">210
+</span><span class="lnt">211
+</span><span class="lnt">212
+</span><span class="lnt">213
+</span><span class="lnt">214
+</span><span class="lnt">215
+</span><span class="lnt">216
+</span><span class="lnt">217
+</span><span class="lnt">218
+</span><span class="lnt">219
+</span><span class="lnt">220
+</span><span class="lnt">221
+</span><span class="lnt">222
+</span><span class="lnt">223
+</span><span class="lnt">224
+</span><span class="lnt">225
+</span><span class="lnt">226
+</span><span class="lnt">227
+</span><span class="lnt">228
+</span><span class="lnt">229
+</span><span class="lnt">230
+</span><span class="lnt">231
+</span><span class="lnt">232
+</span><span class="lnt">233
+</span><span class="lnt">234
+</span><span class="lnt">235
+</span><span class="lnt">236
+</span><span class="lnt">237
+</span><span class="lnt">238
+</span><span class="lnt">239
+</span><span class="lnt">240
+</span><span class="lnt">241
+</span><span class="lnt">242
+</span><span class="lnt">243
+</span><span class="lnt">244
+</span><span class="lnt">245
+</span><span class="lnt">246
+</span><span class="lnt">247
+</span><span class="lnt">248
+</span><span class="lnt">249
+</span><span class="lnt">250
+</span><span class="lnt">251
+</span><span class="lnt">252
+</span><span class="lnt">253
+</span><span class="lnt">254
+</span><span class="lnt">255
+</span><span class="lnt">256
+</span><span class="lnt">257
+</span><span class="lnt">258
+</span><span class="lnt">259
+</span><span class="lnt">260
+</span><span class="lnt">261
+</span><span class="lnt">262
+</span><span class="lnt">263
+</span><span class="lnt">264
+</span><span class="lnt">265
+</span><span class="lnt">266
+</span><span class="lnt">267
+</span><span class="lnt">268
+</span><span class="lnt">269
+</span><span class="lnt">270
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">theme_set</span><span class="p">(</span><span class="nf">theme_bw</span><span class="p">()</span> <span class="o">+</span> <span class="nf">theme</span><span class="p">(</span><span class="n">axis.title</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span><span class="m">20</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="n">axis.text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">16</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="n">legend.text</span><span class="o">=</span><span class="nf">element_text</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">14</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">reshape2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">require</span><span class="p">(</span><span class="n">readxl</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">require</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">require</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">require</span><span class="p">(</span><span class="n">ggfortify</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">require</span><span class="p">(</span><span class="n">tseries</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">require</span><span class="p">(</span><span class="n">urca</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">require</span><span class="p">(</span><span class="n">forecast</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">require</span><span class="p">(</span><span class="n">gridExtra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">zoo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">xtable</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dados</span><span class="o">&lt;-</span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&#34;Downloads/Dados_InfoGripe_serie_temporal_com_estimativas_recentes.csv&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">sep</span> <span class="o">=</span> <span class="s">&#34;;&#34;</span><span class="p">,</span> <span class="n">dec</span> <span class="o">=</span> <span class="s">&#34;,&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">dados</span><span class="o">&lt;-</span><span class="n">dados[</span><span class="p">,</span><span class="m">2</span><span class="o">:</span><span class="m">10</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;UF&#34;</span><span class="p">,</span> <span class="s">&#34;Unidade.da.Federação&#34;</span><span class="p">,</span> <span class="s">&#34;Tipo&#34;</span><span class="p">,</span> <span class="s">&#34;dado&#34;</span><span class="p">,</span> <span class="s">&#34;escala&#34;</span><span class="p">,</span> <span class="s">&#34;ano&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="s">&#34;epiweek&#34;</span><span class="p">,</span><span class="s">&#34;Situação.do.dado&#34;</span><span class="p">,</span> <span class="s">&#34;casos&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#### GRAFICO</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">srag_filtrado_brasil</span> <span class="o">&lt;-</span> <span class="n">dados</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">Unidade.da.Federa</span>çã<span class="n">o</span><span class="o">==</span><span class="s">&#34;Brasil&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">dado</span><span class="o">==</span><span class="s">&#34;srag&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">escala</span><span class="o">==</span><span class="s">&#34;casos&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">ano</span> <span class="o">&gt;=</span> <span class="m">2011</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">ano</span> <span class="o">&lt;=</span> <span class="m">2020</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">srag_filtrado_brasil</span><span class="o">$</span><span class="n">ano</span><span class="o">&lt;-</span><span class="nf">as.factor</span><span class="p">(</span><span class="n">srag_filtrado_brasil</span><span class="o">$</span><span class="n">ano</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">srag_filtrado_PE</span> <span class="o">&lt;-</span> <span class="n">dados</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">Unidade.da.Federa</span>çã<span class="n">o</span><span class="o">==</span><span class="s">&#34;Pernambuco&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">dado</span><span class="o">==</span><span class="s">&#34;srag&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">escala</span><span class="o">==</span><span class="s">&#34;casos&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">ano</span> <span class="o">&gt;=</span> <span class="m">2011</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">ano</span> <span class="o">&lt;=</span> <span class="m">2020</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">srag_filtrado_PE</span><span class="o">$</span><span class="n">ano</span><span class="o">&lt;-</span><span class="nf">as.factor</span><span class="p">(</span><span class="n">srag_filtrado_PE</span><span class="o">$</span><span class="n">ano</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">srag_filtrado_brasil</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">epiweek</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">casos</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">group</span> <span class="o">=</span> <span class="n">ano</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">ano</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">scale_colour_viridis_d</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Semana&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Número de Casos&#34;</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="s">&#34;Ano&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span><span class="o">=</span><span class="s">&#34;Número de Casos de Síndrome Respiratória Aguda Grave por Ano no Brasil&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">srag_filtrado_PE</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">epiweek</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">casos</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="n">ano</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">ano</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">scale_colour_viridis_d</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Semana&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Número de Casos&#34;</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="s">&#34;Ano&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span><span class="o">=</span><span class="s">&#34;Número de Casos de Síndrome Respiratória Aguda Grave por Ano em Pernambuco&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">srag_medio_BR</span> <span class="o">&lt;-</span> <span class="n">srag_filtrado_brasil</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">ano</span> <span class="o">!=</span> <span class="s">&#34;2020&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">group_by</span><span class="p">(</span><span class="n">epiweek</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summarise</span><span class="p">(</span><span class="n">media</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">casos</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">full_join</span><span class="p">(</span><span class="n">srag_medio_BR</span><span class="p">,</span> <span class="nf">filter</span><span class="p">(</span><span class="n">srag_filtrado_brasil</span><span class="p">,</span> <span class="n">ano</span> <span class="o">==</span> <span class="s">&#34;2020&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">select</span><span class="p">(</span><span class="n">epiweek</span><span class="p">,</span> <span class="n">media</span><span class="p">,</span> <span class="n">casos</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">melt</span><span class="p">(</span><span class="n">id.var</span><span class="o">=</span><span class="s">&#34;epiweek&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">mutate</span><span class="p">(</span><span class="n">variable</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">variable</span> <span class="o">==</span> <span class="s">&#34;media&#34;</span><span class="p">,</span> <span class="s">&#34;Média: 2011-2019&#34;</span><span class="p">,</span> <span class="s">&#34;2020&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">.,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">epiweek</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="n">variable</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">variable</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">scale_colour_viridis_d</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Semana&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Número de Casos&#34;</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="s">&#34;Grupo&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span><span class="o">=</span><span class="s">&#34;Número de Casos de Síndrome Respiratória Aguda Grave no Brasil&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">srag_medio_PE</span> <span class="o">&lt;-</span> <span class="n">srag_filtrado_PE</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">ano</span> <span class="o">!=</span> <span class="s">&#34;2020&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">group_by</span><span class="p">(</span><span class="n">epiweek</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">summarise</span><span class="p">(</span><span class="n">media</span> <span class="o">=</span> <span class="nf">mean</span><span class="p">(</span><span class="n">casos</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">full_join</span><span class="p">(</span><span class="n">srag_medio_PE</span><span class="p">,</span> <span class="nf">filter</span><span class="p">(</span><span class="n">srag_filtrado_PE</span><span class="p">,</span> <span class="n">ano</span> <span class="o">==</span> <span class="s">&#34;2020&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">select</span><span class="p">(</span><span class="n">epiweek</span><span class="p">,</span> <span class="n">media</span><span class="p">,</span> <span class="n">casos</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">melt</span><span class="p">(</span><span class="n">id.var</span><span class="o">=</span><span class="s">&#34;epiweek&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">mutate</span><span class="p">(</span><span class="n">variable</span> <span class="o">=</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">variable</span> <span class="o">==</span> <span class="s">&#34;media&#34;</span><span class="p">,</span> <span class="s">&#34;Média: 2011-2019&#34;</span><span class="p">,</span> <span class="s">&#34;2020&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">.,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">epiweek</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">value</span><span class="p">,</span> <span class="n">group</span> <span class="o">=</span> <span class="n">variable</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="n">variable</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_line</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">scale_colour_viridis_d</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Semana&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Número de Casos&#34;</span><span class="p">,</span> <span class="n">colour</span> <span class="o">=</span> <span class="s">&#34;Grupo&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span><span class="o">=</span><span class="s">&#34;Número de Casos de Síndrome Respiratória Aguda Grave em Pernambuco&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#### SERIE TEMPORAL</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">srag_filtrado_brasil_completa</span> <span class="o">&lt;-</span> <span class="n">dados</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">Unidade.da.Federa</span>çã<span class="n">o</span><span class="o">==</span><span class="s">&#34;Brasil&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">dado</span><span class="o">==</span><span class="s">&#34;srag&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">escala</span><span class="o">==</span><span class="s">&#34;casos&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">ano</span> <span class="o">&gt;=</span> <span class="m">2011</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">srag_filtrado_brasil_completa</span><span class="o">&lt;-</span><span class="n">srag_filtrado_brasil_completa[1</span><span class="o">:</span><span class="m">524</span><span class="p">,</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">srag_filtrado_PE_completa</span> <span class="o">&lt;-</span> <span class="n">dados</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">Unidade.da.Federa</span>çã<span class="n">o</span><span class="o">==</span><span class="s">&#34;Pernambuco&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">dado</span><span class="o">==</span><span class="s">&#34;srag&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">escala</span><span class="o">==</span><span class="s">&#34;casos&#34;</span><span class="p">)</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">filter</span><span class="p">(</span><span class="n">ano</span> <span class="o">&gt;=</span> <span class="m">2011</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">srag_filtrado_PE_completa</span><span class="o">&lt;-</span><span class="n">srag_filtrado_PE_completa[1</span><span class="o">:</span><span class="m">524</span><span class="p">,</span><span class="n">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">serie_brasil_completa</span><span class="o">&lt;-</span><span class="nf">ts</span><span class="p">(</span><span class="n">srag_filtrado_brasil_completa</span><span class="o">$</span><span class="n">casos</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">start</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2011</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="n">frequency</span> <span class="o">=</span> <span class="m">52</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">serie_brasil_treino</span><span class="o">&lt;-</span><span class="nf">window</span><span class="p">(</span><span class="n">serie_brasil_completa</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">start</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2011</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="m">49</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">serie_brasil_teste</span><span class="o">&lt;-</span><span class="nf">window</span><span class="p">(</span><span class="n">serie_brasil_completa</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">start</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="m">50</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">serie_PE_completa</span><span class="o">&lt;-</span><span class="nf">ts</span><span class="p">(</span><span class="n">srag_filtrado_PE_completa</span><span class="o">$</span><span class="n">casos</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">start</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2011</span><span class="p">,</span><span class="m">1</span><span class="p">),</span><span class="n">frequency</span> <span class="o">=</span> <span class="m">52</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">serie_PE_treino</span><span class="o">&lt;-</span><span class="nf">window</span><span class="p">(</span><span class="n">serie_PE_completa</span><span class="p">,</span><span class="n">start</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">2011</span><span class="p">,</span><span class="m">1</span><span class="p">),</span>
+</span></span><span class="line"><span class="cl"><span class="n">end</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="m">49</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">serie_PE_teste</span><span class="o">&lt;-</span><span class="nf">window</span><span class="p">(</span><span class="n">serie_PE_completa</span><span class="p">,</span><span class="n">start</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">2020</span><span class="p">,</span><span class="m">50</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">autoplot</span><span class="p">(</span><span class="n">serie_brasil_completa</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&#34;Número de Casos&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">ylab</span> <span class="o">=</span> <span class="s">&#34;Tempo&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Série Temporal do Número de Casos de Síndrome Respiratória Aguda Grave no Brasil&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span> <span class="o">+</span> <span class="nf">scale_colour_viridis_d</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">autoplot</span><span class="p">(</span><span class="n">serie_PE_completa</span><span class="p">,</span><span class="n">xlab</span> <span class="o">=</span> <span class="s">&#34;Número de Casos&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">ylab</span> <span class="o">=</span> <span class="s">&#34;Tempo&#34;</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Série Temporal do Número de Casos de Síndrome Respiratória Aguda Grave em Pernambuco&#34;</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span> <span class="o">+</span> <span class="nf">scale_colour_viridis_d</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggtsdisplay</span><span class="p">(</span><span class="n">serie_brasil_completa</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggtsdisplay</span><span class="p">(</span><span class="n">serie_PE_completa</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggAcf</span><span class="p">(</span><span class="n">serie_brasil_completa</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Função de Autocorrelação&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggPacf</span><span class="p">(</span><span class="n">serie_brasil_completa</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Função de Autocorrelação Parcial&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggAcf</span><span class="p">(</span><span class="n">serie_PE_completa</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Função de Autocorrelação&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggPacf</span><span class="p">(</span><span class="n">serie_PE_completa</span><span class="p">,</span> <span class="n">main</span> <span class="o">=</span> <span class="s">&#34;Função de Autocorrelação Parcial&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">serie_brasil_treino</span> <span class="o">%&gt;%</span> <span class="nf">decompose</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">autoplot</span><span class="p">(</span><span class="n">main</span><span class="o">=</span><span class="s">&#34;Decomposição da Série Temporal Aditiva&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">serie_brasil_treino</span> <span class="o">%&gt;%</span> <span class="nf">ur.df</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="nf">summary</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">serie_brasil_treino</span> <span class="o">%&gt;%</span> <span class="nf">ggsubseriesplot</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">90</span><span class="p">,</span> <span class="n">vjust</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> <span class="n">hjust</span><span class="o">=</span><span class="m">1</span><span class="p">))</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Semana&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Número de Casos&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">serie_PE_treino</span> <span class="o">%&gt;%</span> <span class="nf">decompose</span><span class="p">()</span> <span class="o">%&gt;%</span>
+</span></span><span class="line"><span class="cl"><span class="nf">autoplot</span><span class="p">(</span><span class="n">main</span><span class="o">=</span><span class="s">&#34;Decomposição da Série Temporal aditiva&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">serie_PE_treino</span> <span class="o">%&gt;%</span> <span class="nf">ur.df</span><span class="p">()</span> <span class="o">%&gt;%</span> <span class="nf">summary</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl"><span class="n">serie_PE_treino</span> <span class="o">%&gt;%</span> <span class="nf">ggsubseriesplot</span><span class="p">()</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.x</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span> <span class="o">=</span> <span class="m">90</span><span class="p">,</span> <span class="n">vjust</span> <span class="o">=</span> <span class="m">0.5</span><span class="p">,</span> <span class="n">hjust</span><span class="o">=</span><span class="m">1</span><span class="p">))</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">labs</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s">&#34;Semana&#34;</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s">&#34;Número de Casos&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">title</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ajuste_brasil</span><span class="o">&lt;-</span><span class="nf">auto.arima</span><span class="p">(</span><span class="n">serie_brasil_treino</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">stepwise</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">trace</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">max.p</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">max.q</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">max.P</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">max.Q</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">max.D</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">=</span><span class="m">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">max.order</span> <span class="o">=</span> <span class="m">20</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggtsdiag</span><span class="p">(</span><span class="n">ajuste_brasil</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ajuste_PE</span><span class="o">&lt;-</span><span class="nf">auto.arima</span><span class="p">(</span><span class="n">serie_PE_treino</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">stepwise</span> <span class="o">=</span> <span class="bp">F</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">trace</span> <span class="o">=</span> <span class="bp">T</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">max.p</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">max.q</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">max.P</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">max.Q</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">max.D</span> <span class="o">=</span> <span class="m">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">d</span><span class="o">=</span><span class="m">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl"><span class="n">max.order</span> <span class="o">=</span> <span class="m">20</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">ggtsdiag</span><span class="p">(</span><span class="n">ajuste_PE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">previsao_BR</span><span class="o">&lt;-</span><span class="nf">forecast</span><span class="p">(</span><span class="n">ajuste_brasil</span><span class="p">,</span><span class="m">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">previsao_PE</span><span class="o">&lt;-</span><span class="nf">forecast</span><span class="p">(</span><span class="n">ajuste_PE</span><span class="p">,</span><span class="m">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">## HoltWINTERS</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ajuste_brasil_A</span><span class="o">&lt;-</span><span class="nf">HoltWinters</span><span class="p">(</span><span class="n">serie_brasil_treino</span><span class="p">,</span> <span class="n">seasonal</span> <span class="o">=</span> <span class="s">&#34;additive&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">ajuste_PE_A</span><span class="o">&lt;-</span><span class="nf">HoltWinters</span><span class="p">(</span><span class="n">serie_PE_treino</span><span class="p">,</span> <span class="n">seasonal</span> <span class="o">=</span> <span class="s">&#34;additive&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">previsao_BR_A</span><span class="o">&lt;-</span><span class="nf">forecast</span><span class="p">(</span><span class="n">ajuste_brasil_A</span><span class="p">,</span><span class="m">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">previsao_PE_A</span><span class="o">&lt;-</span><span class="nf">forecast</span><span class="p">(</span><span class="n">ajuste_PE_A</span><span class="p">,</span><span class="m">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">previsao_BR_A</span>
+</span></span><span class="line"><span class="cl"><span class="n">previsao_PE_A</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">###</span>
+</span></span><span class="line"><span class="cl"><span class="n">dadoss</span><span class="o">&lt;-</span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">previsao_BR</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dadoss</span><span class="o">$</span><span class="n">real</span><span class="o">&lt;-</span><span class="nf">as.vector</span><span class="p">(</span><span class="n">serie_brasil_teste[</span><span class="m">-7</span><span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dadoss</span><span class="o">$</span><span class="n">data</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;2020/50&#34;</span><span class="p">,</span><span class="s">&#34;2020/51&#34;</span><span class="p">,</span><span class="s">&#34;2020/52&#34;</span><span class="p">,</span><span class="s">&#34;2021/01&#34;</span><span class="p">,</span><span class="s">&#34;2021/02&#34;</span><span class="p">,</span><span class="s">&#34;2021/03&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">dadoss</span><span class="p">)</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Forecast&#34;</span><span class="p">,</span><span class="s">&#34;Lo80&#34;</span><span class="p">,</span><span class="s">&#34;Hi80&#34;</span><span class="p">,</span><span class="s">&#34;Lo95&#34;</span><span class="p">,</span><span class="s">&#34;Hi95&#34;</span><span class="p">,</span><span class="s">&#34;Real&#34;</span><span class="p">,</span><span class="s">&#34;Point&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">dadoss</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Point</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Forecast</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="s">&#39;Previsto&#39;</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="m">4</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Point</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Real</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="s">&#39;Real&#39;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="m">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_errorbar</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="n">Lo95</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">Hi95</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="m">.2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="m">3</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&#39;Brasil-ARIMA&#39;</span><span class="p">)</span>  <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#34;Número de Casos&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">xlab</span><span class="p">(</span><span class="s">&#34;Datas&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">guides</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">guides</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">dadoss</span><span class="o">&lt;-</span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">previsao_BR_A</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dadoss</span><span class="o">$</span><span class="n">real</span><span class="o">&lt;-</span><span class="nf">as.vector</span><span class="p">(</span><span class="n">serie_brasil_teste[</span><span class="m">-7</span><span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dadoss</span><span class="o">$</span><span class="n">data</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;2020/50&#34;</span><span class="p">,</span><span class="s">&#34;2020/51&#34;</span><span class="p">,</span><span class="s">&#34;2020/52&#34;</span><span class="p">,</span><span class="s">&#34;2021/01&#34;</span><span class="p">,</span><span class="s">&#34;2021/02&#34;</span><span class="p">,</span><span class="s">&#34;2021/03&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">dadoss</span><span class="p">)</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Forecast&#34;</span><span class="p">,</span><span class="s">&#34;Lo80&#34;</span><span class="p">,</span><span class="s">&#34;Hi80&#34;</span><span class="p">,</span><span class="s">&#34;Lo95&#34;</span><span class="p">,</span><span class="s">&#34;Hi95&#34;</span><span class="p">,</span><span class="s">&#34;Real&#34;</span><span class="p">,</span><span class="s">&#34;Point&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">dadoss</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Point</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Forecast</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="s">&#39;Previsto&#39;</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="m">4</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Point</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Real</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="s">&#39;Real&#39;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="m">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_errorbar</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="n">Lo95</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">Hi95</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="m">.2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="m">3</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&#39;Brasil-HoltWinters&#39;</span><span class="p">)</span>  <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#34;Número de Casos&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">xlab</span><span class="p">(</span><span class="s">&#34;Datas&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">guides</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">guides</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#######</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">dadoss</span><span class="o">&lt;-</span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">previsao_PE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dadoss</span><span class="o">$</span><span class="n">real</span><span class="o">&lt;-</span><span class="nf">as.vector</span><span class="p">(</span><span class="n">serie_PE_teste[</span><span class="m">-7</span><span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dadoss</span><span class="o">$</span><span class="n">data</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;2020/50&#34;</span><span class="p">,</span><span class="s">&#34;2020/51&#34;</span><span class="p">,</span><span class="s">&#34;2020/52&#34;</span><span class="p">,</span><span class="s">&#34;2021/01&#34;</span><span class="p">,</span><span class="s">&#34;2021/02&#34;</span><span class="p">,</span><span class="s">&#34;2021/03&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">dadoss</span><span class="p">)</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Forecast&#34;</span><span class="p">,</span><span class="s">&#34;Lo80&#34;</span><span class="p">,</span><span class="s">&#34;Hi80&#34;</span><span class="p">,</span><span class="s">&#34;Lo95&#34;</span><span class="p">,</span><span class="s">&#34;Hi95&#34;</span><span class="p">,</span><span class="s">&#34;Real&#34;</span><span class="p">,</span><span class="s">&#34;Point&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">dadoss</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Point</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Forecast</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="s">&#39;Previsto&#39;</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="m">4</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Point</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Real</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="s">&#39;Real&#39;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="m">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_errorbar</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="n">Lo95</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">Hi95</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="m">.2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="m">3</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&#39;Pernambuco - ARIMA&#39;</span><span class="p">)</span>  <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#34;Número de Casos&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">xlab</span><span class="p">(</span><span class="s">&#34;Datas&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">guides</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">guides</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">dadoss</span><span class="o">&lt;-</span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">previsao_PE_A</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dadoss</span><span class="o">$</span><span class="n">real</span><span class="o">&lt;-</span><span class="nf">as.vector</span><span class="p">(</span><span class="n">serie_PE_teste[</span><span class="m">-7</span><span class="n">]</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">dadoss</span><span class="o">$</span><span class="n">data</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;2020/50&#34;</span><span class="p">,</span><span class="s">&#34;2020/51&#34;</span><span class="p">,</span><span class="s">&#34;2020/52&#34;</span><span class="p">,</span><span class="s">&#34;2021/01&#34;</span><span class="p">,</span><span class="s">&#34;2021/02&#34;</span><span class="p">,</span><span class="s">&#34;2021/03&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">names</span><span class="p">(</span><span class="n">dadoss</span><span class="p">)</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;Forecast&#34;</span><span class="p">,</span><span class="s">&#34;Lo80&#34;</span><span class="p">,</span><span class="s">&#34;Hi80&#34;</span><span class="p">,</span><span class="s">&#34;Lo95&#34;</span><span class="p">,</span><span class="s">&#34;Hi95&#34;</span><span class="p">,</span><span class="s">&#34;Real&#34;</span><span class="p">,</span><span class="s">&#34;Point&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggplot</span><span class="p">(</span><span class="n">dadoss</span><span class="p">,</span> <span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Point</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Forecast</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="s">&#39;Previsto&#39;</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="m">4</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">Point</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">Real</span><span class="p">,</span><span class="n">fill</span><span class="o">=</span><span class="s">&#39;Real&#39;</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">shape</span> <span class="o">=</span> <span class="m">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="m">4</span><span class="p">)</span><span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">geom_errorbar</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">ymin</span><span class="o">=</span><span class="n">Lo95</span><span class="p">,</span> <span class="n">ymax</span><span class="o">=</span><span class="n">Hi95</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="m">.2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="m">3</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">ggtitle</span><span class="p">(</span><span class="s">&#39;Pernambuco - HoltWinters&#39;</span><span class="p">)</span>  <span class="o">+</span> <span class="nf">ylab</span><span class="p">(</span><span class="s">&#34;Número de Casos&#34;</span><span class="p">)</span> <span class="o">+</span> <span class="nf">xlab</span><span class="p">(</span><span class="s">&#34;Datas&#34;</span><span class="p">)</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">guides</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">))</span> <span class="o">+</span>
+</span></span><span class="line"><span class="cl"><span class="nf">guides</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="nf">guide_legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&#34;&#34;</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#####</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">accuracy</span><span class="p">(</span><span class="n">previsao_BR</span><span class="p">,</span><span class="n">serie_brasil_teste</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">accuracy</span><span class="p">(</span><span class="n">previsao_BR_A</span><span class="p">,</span><span class="n">serie_brasil_teste</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">accuracy</span><span class="p">(</span><span class="n">previsao_PE</span><span class="p">,</span><span class="n">serie_PE_teste</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">accuracy</span><span class="p">(</span><span class="n">previsao_PE_A</span><span class="p">,</span><span class="n">serie_PE_teste</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 01-03-2021</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/dez-post/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/quinto-post/" class="prev" rel="prev" title="(Ox vs R): Otimização não linear da distribuição Gamma"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>(Ox vs R): Otimização não linear da distribuição Gamma</a>
+            <a href="/setimo-post/" class="next" rel="next" title="Uma Introdução a análise estatística de forma">Uma Introdução a análise estatística de forma<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Criado por Jerfson Bruno</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span>&nbsp;|&nbsp;<span class="license">MIT</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

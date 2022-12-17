@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>(Ox vs R): Otimização não linear da distribuição Gamma - Jerfson Bruno</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="(Ox vs R): Otimização não linear da distribuição Gamma" />
+<meta property="og:description" content="Esse trabalho foi apresentado na disciplina de Estatística computacional ministrada pelo Prof. Dr. Francisco Cribari Neto.
+A distribuição gama é útil na modelagem de variáveis aleatórias contínuas que são maiores que zero. Ela é comumente usada em estudos de sobrevivência. A distribuição gama também é útil na modelagem de dados com alta variabilidade. Estimar apropriadamente os parâmetros da distribuição gama é vital para o estudo desse e de outras distribuições. Dependendo dos valores de seus parâmetros, a distribuição gama assume várias formas, incluindo curvas em sino semelhante à distribuição normal." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jerfsonbruno.github.io/quinto-post/" /><meta property="og:image" content="https://jerfsonbruno.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-09-02T23:28:49-03:00" />
+<meta property="article:modified_time" content="2020-09-02T23:28:49-03:00" /><meta property="og:site_name" content="LoveIt" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://jerfsonbruno.github.io/images/avatar.png"/>
+
+<meta name="twitter:title" content="(Ox vs R): Otimização não linear da distribuição Gamma"/>
+<meta name="twitter:description" content="Esse trabalho foi apresentado na disciplina de Estatística computacional ministrada pelo Prof. Dr. Francisco Cribari Neto.
+A distribuição gama é útil na modelagem de variáveis aleatórias contínuas que são maiores que zero. Ela é comumente usada em estudos de sobrevivência. A distribuição gama também é útil na modelagem de dados com alta variabilidade. Estimar apropriadamente os parâmetros da distribuição gama é vital para o estudo desse e de outras distribuições. Dependendo dos valores de seus parâmetros, a distribuição gama assume várias formas, incluindo curvas em sino semelhante à distribuição normal."/>
+<meta name="application-name" content="Jerfson Bruno">
+<meta name="apple-mobile-web-app-title" content="Jerfson Bruno"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jerfsonbruno.github.io/quinto-post/" /><link rel="prev" href="https://jerfsonbruno.github.io/sexto-post/" /><link rel="next" href="https://jerfsonbruno.github.io/dez-post/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "(Ox vs R): Otimização não linear da distribuição Gamma",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/jerfsonbruno.github.io\/quinto-post\/"
+        },"image": ["https:\/\/jerfsonbruno.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  2546 ,
+        "url": "https:\/\/jerfsonbruno.github.io\/quinto-post\/","datePublished": "2020-09-02T23:28:49-03:00","dateModified": "2020-09-02T23:28:49-03:00","publisher": {
+            "@type": "Organization",
+            "name": "Jerfson Bruno","logo": {
+                    "@type": "ImageObject",
+                    "url": "https:\/\/jerfsonbruno.github.io\/images\/avatar.png",
+                    "width":  420 ,
+                    "height":  420 
+                }},"author": {
+                "@type": "Person",
+                "name": "Jerfson Bruno"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Jerfson Bruno"><span class="header-title-pre"><i class='fa-solid fa-house'></i></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/sobre/"> Sobre </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Jerfson Bruno"><span class="header-title-pre"><i class='fa-solid fa-house'></i></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/sobre/" title="">Sobre</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">(Ox vs R): Otimização não linear da distribuição Gamma</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Jerfson Bruno</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="02-09-2020">02-09-2020</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;2546 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;12 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  data-kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right" aria-hidden="true"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#revisão-da-literatura">Revisão da Literatura</a>
+      <ul>
+        <li><a href="#monte-carlo">Monte Carlo</a></li>
+        <li><a href="#o-método-de-máxima-verossimilhança">O Método de Máxima Verossimilhança</a>
+          <ul>
+            <li><a href="#propriedades-dos-estimadores-de-máxima-verossimilhança">Propriedades dos Estimadores de Máxima Verossimilhança</a></li>
+          </ul>
+        </li>
+        <li><a href="#distribuição-gama">Distribuição Gama</a>
+          <ul>
+            <li><a href="#verossimilhança-e-log-verossimilhança-para-a-distribuição-gama">Verossimilhança e log-Verossimilhança para a Distribuição Gama</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#metodologia">Metodologia</a></li>
+    <li><a href="#estudo-de-simulação">Estudo de Simulação</a>
+      <ul>
+        <li>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#simulação-no-r">Simulação no R</a></li>
+                <li><a href="#simulação-no-ox">Simulação no Ox</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#tempo-de-execução">Tempo de Execução</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusão">Conclusão</a></li>
+    <li><a href="#r">R</a></li>
+    <li><a href="#ox">Ox</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><code>Esse trabalho foi apresentado na disciplina de Estatística computacional ministrada pelo Prof. Dr. Francisco Cribari Neto.</code></p>
+<p>A distribuição gama é útil na modelagem de variáveis aleatórias
+contínuas que são maiores que zero. Ela é comumente usada em estudos de
+sobrevivência. A distribuição gama também é útil na modelagem de dados
+com alta variabilidade. Estimar apropriadamente os parâmetros da
+distribuição gama é vital para o estudo desse e de outras distribuições.
+Dependendo dos valores de seus parâmetros, a distribuição gama assume
+várias formas, incluindo curvas em sino semelhante à distribuição
+normal.</p>
+<p>Este trabalho contém um estudo de simulação sobre os estimadores
+de máxima verossimilhança, usando o método iterativo BFGS para estimação
+dos parâmetros da distribuição gama.</p>
+<p>A simulação será conduzida para determinar estimativas, intervalos de
+confiança, viés relativo e tempo de execução do algoritmo nas linguagens
+de programação <code>R</code> e <code>Ox</code>.</p>
+<h2 id="revisão-da-literatura">Revisão da Literatura</h2>
+<p>Nesta seção será apresentada a teoria básica sobre simulações de Monte
+Carlo, método de máxima verossimilhança e método iterativo BFGS. Após
+isso, foi usado a distribuição gama para mostrar cada método passo a
+passo.</p>
+<h3 id="monte-carlo">Monte Carlo</h3>
+<p>Suponha que se quer estimar $\theta$, o valor esperado de alguma
+variável aleatória $X$:</p>
+<p>$$\begin{aligned}
+\theta = E(X).\end{aligned}$$</p>
+<p>Suponha, além disso, que possam ser gerados valores de variáveis
+aleatórias independentes com a mesma distribuição de probabilidade de
+$X$. Cada vez que for gerado um novo valor, diz-se que uma simulação foi
+concluída. Suponha que vão ser realizadas $n$ simulações, assim, serão
+gerados $X_1,X_2,\dots,X_n$.</p>
+<p>Se</p>
+<p>$$\begin{aligned}
+\bar{X} = \frac{1}{n} \sum_{i=1}^{n} X_i,\end{aligned}$$</p>
+<p>for sua média, então pela lei forte dos grandes números, $\bar{X}$ será
+usado como um estimador para $\theta$. Para o valor esperado e variância
+tem-se</p>
+<p>$$\begin{aligned}
+E(\bar{X}) = \frac{1}{n} \sum_{i=1}^{n} E(X_i) = \theta,\end{aligned}$$</p>
+<p>e</p>
+<p>$$\begin{aligned}
+Var(\bar{X}) = \frac{\sigma^2}{n}.\end{aligned}$$</p>
+<p>Além disso, decorre do Teorema Central do Limite que, para $n$ grande,
+$\bar{X}$ terá uma distribuição normal aproximada. Assim, se
+$\sigma/\sqrt{n}$ é pequeno, então $\bar{X}$ tende a estar próximo de
+$\theta$ e, quando $n$ for grande, $\bar{X}$ será um bom estimador para
+$\theta$. Esta abordagem para estimar um valor esperado é conhecida como
+a simulação de Monte Carlo.</p>
+<h3 id="o-método-de-máxima-verossimilhança">O Método de Máxima Verossimilhança</h3>
+<p>Segundo, os estimadores de Máxima Verossimilhança desfrutam de
+propriedades desejáveis e podem ser usados na construção de intervalos
+de confiança e testes de hipóteses.</p>
+<p>A ideia da estimação por máxima verossimilhança é de encontrar os
+parâmetros que maximizam a probabilidade de que um certo conjunto de
+dados sejam gerados por algum processo específico. Agora, imagine que
+temos uma amostra aleatória, que não sabemos qual distribuição os dados
+seguem, mas vamos supor que eles seguem alguma distribuição específica,
+por exemplo, uma Gama. O formato da Gama depende dos parâmetros
+$(\alpha,\beta)$, então, a ideia é de encontrar os valores de
+$(\alpha,\beta)$ que melhor se aproximam da distribuição
+empírica/observada dos dados.</p>
+<p>Formalmente, suponhamos $x_1,x_2,&hellip;,x_n$ uma amostra aleatória de
+tamanho $n$ caracterizada pela função de probabilidade ou densidade
+$f(x)$, a função de verossimilhança para o parâmetro $\theta$ é dada
+por:</p>
+<p>$$\begin{align}
+L(\theta|x_i) = \prod_{i=1}^{n} f(x_i|\theta).\end{align}$$</p>
+<p>Então para determinar a melhor distribuição para a amostra, é preciso
+determinar o valor de $\theta$ que maximiza $L(\theta)$. Porém,
+maximizar a $L(\theta)$ muitas vezes não é uma tarefa fácil. Dessa
+forma, foi criado uma método chamado de log-verossimilhança, onde
+maximizar o $l(\theta|x_i)=\log(L(\theta|x_i))$ é o mesmo que maximizar
+o $L(\theta|x_i)$.</p>
+<h4 id="propriedades-dos-estimadores-de-máxima-verossimilhança">Propriedades dos Estimadores de Máxima Verossimilhança</h4>
+<p>A teoria dos estimadores de máxima verossimilhança nos garante que eles
+são consistentes (i.e. que eles aproximam o valor verdadeiro dos
+parâmetros) e normalmente assintóticos (a distribuição assintótica segue
+uma distribuição normal) desde que algumas condições de regularidade
+sejam atendidas.</p>
+<p>A consistência dos estimadores $\hat{\theta}_{MV}$ significa que eles se
+aproximam dos valores verdadeiros do parâmetros $\theta_0$ à medida que
+aumenta o tamanho da amostra. Isto é, se tivermos uma amostra grande
+então podemos ter confiança de que nossos estimadores estão muito
+próximos dos valores verdadeiros dos parâmetros.</p>
+<p>\begin{align} \hat{\theta}_{MV} \rightarrow \theta_0 \end{align}</p>
+<p>Dizemos que os estimadores de máxima verossimilhança são normalmente
+assintóticos porque a sua distribuição assintótica segue uma normal
+padrão.</p>
+<p>Portanto, ao utilizarmos o método de Máxima Verossimilhança para estimar
+os parâmetros de alguma distribuição, na verdade estamos calculando
+estimadores pontuais. Por sua vez, também e possível obter intervalos de
+confiança para os parâmetros estimados. Para tanto, faz-se necessário o
+uso de propriedades adequadas para grandes amostras dos estimadores.
+Frente a isso, e considerando a normalidade assintótica dos estimadores
+de Máxima verossimilhança, obtém-se os intervalos de confiança para os
+parâmetros da distribuição, ou seja:</p>
+<p>\begin{align}
+IC(\theta,(1-\alpha)) = \left( \hat{\theta} - z_{\alpha/2}\sqrt{Var(\hat{\theta})} ; \hat{\theta} + z_{\alpha/2}\sqrt{Var(\hat{\theta})}\right)\end{align}</p>
+<p>em que $(1-\alpha)%$ representa a porcentagem de confiança e
+$z_{\alpha/2}$ representa o quantil da distribuição normal.</p>
+<h3 id="distribuição-gama">Distribuição Gama</h3>
+<p>Se $X$ é uma variável aleatória com distribuição Gama e parâmetros
+$\alpha &gt; 0$ e $\beta &gt; 0$, denotando-se
+$X \sim \ \text{Gama}(\alpha,\beta)$, sua função densidade é dada por</p>
+<p>$$f(x)= \dfrac{x^{\alpha - 1}e^{-\beta x}\beta^\alpha}{\Gamma(\alpha)} \hspace{0.5cm} \text{quando} \hspace{0.5cm}  x \geq 0$$</p>
+<p>A Figura abaixo, representa a distribuição gama com alguns parâmetros. A mesma mostra que
+os parâmetros $\alpha$ e $\beta$ servem como parâmetros de escala e
+forma respectivamente.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/gamma.png"
+        data-srcset="/gamma.png, /gamma.png 1.5x, /gamma.png 2x"
+        data-sizes="auto"
+        alt="/gamma.png"
+        title="/gamma.png" width="800" height="520" /></p>
+<p>A variável Gama foi criada como uma extensão da exponencial para
+descrever o tempo de espera até que um certo número de eventos ocorram,
+dada uma taxa constante de ocorrência. Devido à sua flexibilidade,
+posteriormente foi adotada como modelo heurístico para descrever
+variáveis com distribuições de probabilidade assimétricas.</p>
+<h4 id="verossimilhança-e-log-verossimilhança-para-a-distribuição-gama">Verossimilhança e log-Verossimilhança para a Distribuição Gama</h4>
+<p>A função de verossimilhança para a distribuição gama é dada por:</p>
+<p>$$L(\alpha,\beta|x_i)=\prod^n_{i=1}f(x_i;(\alpha,\beta))=\prod^n_{i=1}\frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}_i e^{-\beta x_i}$$</p>
+<p>Com isso, a função log-verossimilhança é dada por:</p>
+<p>$$\begin{aligned}
+l(\theta|x_i)=\log L(\alpha,\beta)=n\alpha\log\beta -n\log \Gamma(\alpha)-\beta \sum^n_{i=1}x_i+(\alpha-1)\sum^n_{i=1}\log x_i\end{aligned}$$</p>
+<p>Para distribuição Gama a função escore é dada por:</p>
+<p>$$\begin{aligned}
+U(\theta)=\dfrac{\partial \log L(\theta)}{\partial \theta}=\left(\dfrac{\partial \log L(\alpha,\beta)}{\partial \alpha}, \dfrac{\partial \log L(\alpha,\beta)}{\partial \beta}\right)^\top, \end{aligned}$$</p>
+<p>em que $$\begin{aligned}
+\dfrac{\partial \log L(\alpha,\beta)}{\partial \alpha}&amp;= n\log \beta-n\frac{\Gamma^\prime (\alpha)}{\Gamma (\alpha)}+\sum^n_{i=1}\log x_i,\
+\dfrac{\partial \log L(\alpha,\beta)}{\partial \beta}&amp;= \frac{n\alpha}{\beta}-\sum^n_{i=1}x_i.\end{aligned}$$</p>
+<p>Com isso, tomamos $\widehat{U}(\theta)=0$, ou seja,
+$\frac{\partial \log L(\alpha,\beta)}{\partial \alpha} =0$ e
+$\frac{\partial \log L(\alpha,\beta)}{\partial \beta}=0$. Obtemos os
+estimadores para $\alpha$ e $\beta$:</p>
+<p>$$\hat{\alpha}=\bar{x}\hat{\beta}$$</p>
+<p>$$\hat{\beta}= \exp \left(  \dfrac{\Gamma&rsquo;(\alpha)}{\Gamma(\alpha)} - \sum_{i=1}^n \dfrac{\log x_i}{n} \right)$$</p>
+<p>O sistema de equações precedente não admite forma fechada, sendo
+necessário a utilização de métodos numéricos para resolve-lo. Na
+literatura existem diversos algoritmos para maximização que envolvem uma
+estimativa inicial $\theta_0$ para $\theta$ e um processo iterativo que
+constrói uma sequencia de estimadores que convergem para $\theta$. Em
+nosso caso em particular, computaremos as estimativas dos parâmetros
+pela maximização numérica por meio do algoritmo de otimização não linear
+quasi-Newton, conhecido como BFGS (Broyden-Fletcher-Goldfarb-Shanno).</p>
+<p>O algoritmo BFGS é similar ao método de Newton-Raphson, distinguindo-se
+apenas pelo fato de utilizar uma sequencia de matrizes simétricas e
+positivas definidas $B^k$ em vez da oposta da hessiana $-H^{-1}$, de tal
+forma que</p>
+<p>$$\begin{aligned}
+\lim_{k\rightarrow \infty} B^k = -H^{-1}.\end{aligned}$$</p>
+<p>Normalmente, utiliza-se a matriz identidade de mesma ordem como matriz
+inicial $B^0$, isso porque uma matriz identidade é sempre positiva
+definida e simétrica, propagando-se para aproximações $B^k$ positivas
+definidas e simétricas.</p>
+<h2 id="metodologia">Metodologia</h2>
+<p>Neste trabalho foram consideradas algumas estratégias para avaliar os
+estimadores de máxima verossimilhança com o método iterativo BFGS. Foram
+realizadas 10.000 replicas de Monte Carlo para esse estudo, e em cada
+replica, foi verificado a estimativa dos parâmetros, erro padrão,
+intervalos de confiança e viés. Todo o algoritmo foi feito nas
+linguagens de programação <code>R</code> e <code>Ox</code> e as mesmas se encontram no
+apêndice.</p>
+<p>Das informações relacionadas as versões dos softwares para as simulações
+são: versão 4.0.2, utilizando a função <code>optim</code> da biblioteca <code>stats</code>. A
+versão do <code>Ox</code>, , é a 8.02, e foi utilizada a função <code>MaxBFGS</code> da
+biblioteca <code>maximize</code>.</p>
+<p>A respeito dos geradores de números aleatórios, optou-se por considerar
+os geradores <em>defaults</em> de ambas linguagens. Sendo <code>rgamma()</code> para o <code>R</code>
+e <code>rangamma</code> para o <code>Ox</code>.</p>
+<h2 id="estudo-de-simulação">Estudo de Simulação</h2>
+<p>Nessa seção serão apresentados os resultados das simulações para
+obtenção das estimativas obtidas pelo método iterativo BFGS com o
+estimador de máxima verossimilhança. Foram gerados amostras de tamanho
+$n=(10,20,30,50,100,200,300,500,1000)$ da distribuição gama variando os
+parametros de escala e forma.</p>
+<p>Na Tabela abaixo estão apresentados os resultados para estimativas do parâmetro de escala
+$\alpha$.</p>
+<p>Para este cenário fixamos o parâmetro de forma em $\beta = 1$, e
+variamos o valor de $\alpha$ em 1 e 2, com isso realizamos $10.000$
+replicas de Monte Carlo. Note pela Tabela que quando aumentamos
+o tamanho da amostra o viés relativo decresce rapidamente para próximo
+de zero, isso em ambas linguagens de programação. Podemos ainda
+considerar que para amostras maiores que $20$ o método de iteração BFGS
+obteve boa aproximação para o valor verdadeiro. Foi construindo um
+intervalo de confiança com $95%$ de confiança sobre a distribuição
+normal, pois virmos que quando o $n$ tende a um valor muito grande os
+estimadores de máxima verossimilhança se aproximam da distribuição
+normal, veremos isso com mais clareza na próxima figura.</p>
+<h5 id="simulação-no-r">Simulação no R</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">n</th>
+<th style="text-align:center">$\alpha$</th>
+<th style="text-align:center">$\hat{\alpha}$</th>
+<th style="text-align:center">IC$(\hat{\alpha})$</th>
+<th style="text-align:center">Viés Relativo $(\hat{\alpha})$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">n=10</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.3461</td>
+<td style="text-align:center">[0.2755 ; 2.4167]</td>
+<td style="text-align:center">34.61%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.7649</td>
+<td style="text-align:center">[0.4687 ; 5.0612]</td>
+<td style="text-align:center">38.25%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=20</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.1410</td>
+<td style="text-align:center">[0.5095 ; 1.7725]</td>
+<td style="text-align:center">14.10%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.3180</td>
+<td style="text-align:center">[0.9705 ; 3.6655]</td>
+<td style="text-align:center">15.90%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=30</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.0889</td>
+<td style="text-align:center">[0.5992 ; 1.5787]</td>
+<td style="text-align:center">8.89%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.2028</td>
+<td style="text-align:center">[1.1606 ; 3.2449]</td>
+<td style="text-align:center">10.14%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=50</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.0535</td>
+<td style="text-align:center">[0.6878 ; 1.4191]</td>
+<td style="text-align:center">5.35%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.1153</td>
+<td style="text-align:center">[1.3422 ; 2.8883]</td>
+<td style="text-align:center">5.76%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=100</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.0277</td>
+<td style="text-align:center">[0.7762 ; 1.2793]</td>
+<td style="text-align:center">2.77%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.0523</td>
+<td style="text-align:center">[1.5230 ; 2.5816]</td>
+<td style="text-align:center">2.62%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=200</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.0128</td>
+<td style="text-align:center">[0.8378 ; 1.1879]</td>
+<td style="text-align:center">1.28%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.0272</td>
+<td style="text-align:center">[1.6578 ; 2.3965]</td>
+<td style="text-align:center">1.35%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=300</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.0089</td>
+<td style="text-align:center">[0.8666 ; 1.1512]</td>
+<td style="text-align:center">0.89%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.0172</td>
+<td style="text-align:center">[1.7172 ; 2.3171]</td>
+<td style="text-align:center">0.86%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=500</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.0047</td>
+<td style="text-align:center">[0.8950 ; 1.1144]</td>
+<td style="text-align:center">0.47%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.0122</td>
+<td style="text-align:center">[1.7805 ; 2.2440]</td>
+<td style="text-align:center">0.61%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=1000</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.0027</td>
+<td style="text-align:center">[0.9253 ; 1.0801]</td>
+<td style="text-align:center">0.27%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.0060</td>
+<td style="text-align:center">[1.8427 ; 2.1693]</td>
+<td style="text-align:center">0.30%</td>
+</tr>
+</tbody>
+</table>
+<p>As figuras abaixo representa a tabela acima.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/11aR.png"
+        data-srcset="/11aR.png, /11aR.png 1.5x, /11aR.png 2x"
+        data-sizes="auto"
+        alt="/11aR.png"
+        title="/11aR.png" width="800" height="584" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/21aR.png"
+        data-srcset="/21aR.png, /21aR.png 1.5x, /21aR.png 2x"
+        data-sizes="auto"
+        alt="/21aR.png"
+        title="/21aR.png" width="800" height="584" /></p>
+<h5 id="simulação-no-ox">Simulação no Ox</h5>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">n</th>
+<th style="text-align:center">$\alpha$</th>
+<th style="text-align:center">$\hat{\alpha}$</th>
+<th style="text-align:center">IC$(\hat{\alpha})$</th>
+<th style="text-align:center">Viés Relativo $(\hat{\alpha})$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">n=10</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.4099</td>
+<td style="text-align:center">[-0.5363 ; 3.3561]</td>
+<td style="text-align:center">40.99%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.7733</td>
+<td style="text-align:center">[0.9286 ; 4.6181]</td>
+<td style="text-align:center">38.67%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=20</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.1762</td>
+<td style="text-align:center">[0.7726 ; 1.5797]</td>
+<td style="text-align:center">17.62%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.3250</td>
+<td style="text-align:center">[1.8151 ; 2.8349]</td>
+<td style="text-align:center">16.25%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=30</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.1157</td>
+<td style="text-align:center">[0.6223 ; 1.6092]</td>
+<td style="text-align:center">11.57%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.1980</td>
+<td style="text-align:center">[1.2346 ; 3.1614]</td>
+<td style="text-align:center">9.90%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=50</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.0720</td>
+<td style="text-align:center">[0.5982 ; 1.5457]</td>
+<td style="text-align:center">7.20%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.1166</td>
+<td style="text-align:center">[1.5333 ; 2.7000]</td>
+<td style="text-align:center">5.83%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=100</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.0397</td>
+<td style="text-align:center">[0.8051 ; 1.2744]</td>
+<td style="text-align:center">3.97%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.0579</td>
+<td style="text-align:center">[1.4068 ; 2.7090]</td>
+<td style="text-align:center">2.89%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=200</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.0237</td>
+<td style="text-align:center">[0.8582 ; 1.1892]</td>
+<td style="text-align:center">2.37%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.0299</td>
+<td style="text-align:center">[1.6824 ; 2.3774]</td>
+<td style="text-align:center">1.50%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=300</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.0174</td>
+<td style="text-align:center">[0.8740 ; 1.1609]</td>
+<td style="text-align:center">1.74%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.0209</td>
+<td style="text-align:center">[1.6906 ; 2.3512]</td>
+<td style="text-align:center">1.05%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=500</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.0127</td>
+<td style="text-align:center">[0.8950 ; 1.1303]</td>
+<td style="text-align:center">1.27%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.0126</td>
+<td style="text-align:center">[1.7935 ; 2.2317]</td>
+<td style="text-align:center">0.63%</td>
+</tr>
+<tr>
+<td style="text-align:center">n=1000</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1.0082</td>
+<td style="text-align:center">[0.9336 ; 1.0829]</td>
+<td style="text-align:center">0.82%</td>
+</tr>
+<tr>
+<td style="text-align:center"></td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2.0078</td>
+<td style="text-align:center">[1.8484 ; 2.1673]</td>
+<td style="text-align:center">0.39%</td>
+</tr>
+</tbody>
+</table>
+<p>As figuras abaixo representa a tabela acima.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/11aOx.png"
+        data-srcset="/11aOx.png, /11aOx.png 1.5x, /11aOx.png 2x"
+        data-sizes="auto"
+        alt="/11aOx.png"
+        title="/11aOx.png" width="800" height="584" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/21aOx.png"
+        data-srcset="/21aOx.png, /21aOx.png 1.5x, /21aOx.png 2x"
+        data-sizes="auto"
+        alt="/21aOx.png"
+        title="/21aOx.png" width="800" height="584" /></p>
+<p>Podemos ver que a medida que o tamanho da amostra aumenta as estimativas se aproximam do
+valor verdadeiro (linha vermelha). Além disso, todos os intervalos de
+confiança contém o valor do parâmetro verdadeiro.</p>
+<p>Como falado anteriormente, as estimativas dos parâmetros tem
+distribuição assintoticamente normal. Pela Figura abaixo, podemos ver com
+clareza que a estimativa do parâmetro $\hat{\alpha}$, a medida que a
+amostra aumenta tem distribuição assintoticamente normal.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/assin.png"
+        data-srcset="/assin.png, /assin.png 1.5x, /assin.png 2x"
+        data-sizes="auto"
+        alt="/assin.png"
+        title="/assin.png" width="800" height="524" /></p>
+<p>As mesmas estimativas foram feitas para o parâmetro $\beta$</p>
+<h3 id="tempo-de-execução">Tempo de Execução</h3>
+<p>Nota-se pela Tabela abaixo que o tempo de
+execução na linguagem de programação em <code>R</code> é superior a do <code>Ox</code>,
+tornando a assim uma linguagem menos atraente para simulações mais
+pesadas. Vale ressaltar que o <code>Ox</code> é aproximadamente 2.1x mais rápido
+que o <code>R</code>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Tamanho</th>
+<th style="text-align:center">R</th>
+<th style="text-align:center">Ox</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">29.63</td>
+<td style="text-align:center">4.40</td>
+</tr>
+<tr>
+<td style="text-align:center">20</td>
+<td style="text-align:center">29.52</td>
+<td style="text-align:center">4.75</td>
+</tr>
+<tr>
+<td style="text-align:center">30</td>
+<td style="text-align:center">28.81</td>
+<td style="text-align:center">4.96</td>
+</tr>
+<tr>
+<td style="text-align:center">50</td>
+<td style="text-align:center">29.07</td>
+<td style="text-align:center">5.50</td>
+</tr>
+<tr>
+<td style="text-align:center">100</td>
+<td style="text-align:center">29.65</td>
+<td style="text-align:center">7.02</td>
+</tr>
+<tr>
+<td style="text-align:center">200</td>
+<td style="text-align:center">32.71</td>
+<td style="text-align:center">10.37</td>
+</tr>
+<tr>
+<td style="text-align:center">300</td>
+<td style="text-align:center">35.12</td>
+<td style="text-align:center">14.75</td>
+</tr>
+<tr>
+<td style="text-align:center">500</td>
+<td style="text-align:center">42.55</td>
+<td style="text-align:center">20.90</td>
+</tr>
+<tr>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">60.20</td>
+<td style="text-align:center">38.97</td>
+</tr>
+</tbody>
+</table>
+<p>A figura abaixo representa a tabela acima.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/te.png"
+        data-srcset="/te.png, /te.png 1.5x, /te.png 2x"
+        data-sizes="auto"
+        alt="/te.png"
+        title="/te.png" width="800" height="524" /></p>
+<h2 id="conclusão">Conclusão</h2>
+<hr>
+<p>O trabalho mostrou toda a parte teórica sobre estimadores de máxima
+verossimilhança através de simulações. Simulada replicas de Monte Carlo,
+vimos que os estimadores de máxima verossimilhança através do método
+BFGS são bastante eficientes para a estimativa do parâmetro, com
+amostras grandes os valores estimados chegam muito próximo do valor
+verdadeiro. Observamos também na prática, que os parâmetros estimados
+seguem assintoticamente a distribuição normal.</p>
+<p>Em relação as linguagens de programação <code>R</code> e <code>Ox</code>, podemos dizer que o
+a programação em R é mais eficiente em encontrar o valor verdadeiro,
+tendo que o viés relativo sempre ficou menor em comparação com o <code>Ox</code>.
+Já o <code>Ox</code> é mais eficiente em relação ao tempo de execução, tornando a
+linguagem mais atraente para simulações mais pesadas.</p>
+<h2 id="r">R</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-r" data-lang="r"><span class="line"><span class="cl"><span class="c1"># Maximizando a distribuição gama em R</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Computacional-Mestrado (UFPE)</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Jerfson Bruno</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">xtable</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">library</span><span class="p">(</span><span class="n">gridExtra</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">max_gama</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl"><span class="n">dados</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">amostra</span> <span class="o">=</span> <span class="nf">rgamma</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl"><span class="n">n_obs</span> <span class="o">&lt;-</span> <span class="nf">nrow</span><span class="p">(</span><span class="n">dados</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">llf</span><span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">a</span> <span class="o">&lt;-</span> <span class="n">x[1]</span>
+</span></span><span class="line"><span class="cl">  <span class="n">b</span> <span class="o">&lt;-</span> <span class="n">x[2]</span>
+</span></span><span class="line"><span class="cl">  <span class="n">lgama</span><span class="o">&lt;-</span><span class="p">((</span><span class="n">a</span><span class="m">-1</span><span class="p">)</span><span class="o">*</span><span class="nf">sum</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">dados</span><span class="o">$</span><span class="n">amostra</span><span class="p">))</span><span class="o">-</span><span class="n">b</span><span class="o">*</span><span class="nf">sum</span><span class="p">(</span><span class="n">dados</span><span class="o">$</span><span class="n">amostra</span><span class="p">)</span><span class="o">-</span><span class="n">n_obs</span><span class="o">*</span><span class="n">a</span><span class="o">*</span><span class="nf">log</span><span class="p">(</span><span class="m">1</span><span class="o">/</span><span class="n">b</span><span class="p">)</span><span class="o">-</span><span class="n">n_obs</span><span class="o">*</span><span class="nf">log</span><span class="p">(</span><span class="nf">gamma</span><span class="p">(</span><span class="n">a</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">return</span><span class="p">(</span><span class="o">-</span><span class="n">lgama</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="n">q</span> <span class="o">&lt;-</span> <span class="nf">optim</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1.0</span><span class="p">,</span> <span class="m">1.0</span><span class="p">),</span> <span class="n">llf</span><span class="p">,</span> <span class="n">hessian</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="nf">return</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">set.seed</span><span class="p">(</span><span class="m">89</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">rm</span><span class="o">&lt;-</span><span class="m">10000</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">a</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">b</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">n</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">20</span><span class="p">,</span><span class="m">30</span><span class="p">,</span><span class="m">50</span><span class="p">,</span><span class="m">100</span><span class="p">,</span><span class="m">200</span><span class="p">,</span><span class="m">300</span><span class="p">,</span><span class="m">500</span><span class="p">,</span><span class="m">1000</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">estimativas_n</span><span class="o">&lt;-</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">n</span><span class="p">)),</span><span class="n">beta</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="nf">length</span><span class="p">(</span><span class="n">n</span><span class="p">)))</span>
+</span></span><span class="line"><span class="cl"><span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="nf">length</span><span class="p">(</span><span class="n">n</span><span class="p">)){</span>
+</span></span><span class="line"><span class="cl">  <span class="n">contador</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl">  <span class="n">estimativas</span><span class="o">&lt;-</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="n">rm</span><span class="p">),</span><span class="n">beta</span><span class="o">=</span><span class="nf">rep</span><span class="p">(</span><span class="kc">NA</span><span class="p">,</span><span class="n">rm</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">  <span class="nf">while</span><span class="p">(</span><span class="n">contador</span><span class="o">&lt;=</span><span class="n">rm</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">    <span class="n">z</span><span class="o">&lt;-</span><span class="nf">max_gama</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">n[2]</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="nf">if</span><span class="p">(</span><span class="n">z</span><span class="o">$</span><span class="n">convergence</span><span class="o">==</span><span class="m">0</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">      <span class="n">estimativas</span><span class="o">$</span><span class="n">alpha[contador]</span><span class="o">&lt;-</span><span class="n">z</span><span class="o">$</span><span class="n">par[1]</span>
+</span></span><span class="line"><span class="cl">      <span class="n">estimativas</span><span class="o">$</span><span class="n">beta[contador]</span><span class="o">&lt;-</span><span class="n">z</span><span class="o">$</span><span class="n">par[2]</span>
+</span></span><span class="line"><span class="cl">      <span class="n">estimativas</span><span class="o">$</span><span class="n">dp_alpha[contador]</span><span class="o">&lt;-</span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">diag</span><span class="p">(</span><span class="nf">solve</span><span class="p">(</span><span class="n">z</span><span class="o">$</span><span class="n">hessian</span><span class="p">)))</span><span class="n">[1]</span>
+</span></span><span class="line"><span class="cl">      <span class="n">estimativas</span><span class="o">$</span><span class="n">dp_beta[contador]</span><span class="o">&lt;-</span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">diag</span><span class="p">(</span><span class="nf">solve</span><span class="p">(</span><span class="n">z</span><span class="o">$</span><span class="n">hessian</span><span class="p">)))</span><span class="n">[2]</span>
+</span></span><span class="line"><span class="cl">      <span class="n">contador</span><span class="o">=</span><span class="n">contador</span><span class="m">+1</span>
+</span></span><span class="line"><span class="cl">      <span class="nf">write.csv</span><span class="p">(</span><span class="n">estimativas</span><span class="p">,</span><span class="nf">paste</span><span class="p">(</span><span class="s">&#39;11-&#39;</span><span class="p">,</span><span class="nf">paste</span><span class="p">(</span><span class="nf">as.character</span><span class="p">(</span><span class="n">n[i]</span><span class="p">),</span><span class="s">&#39;.txt&#39;</span><span class="p">,</span><span class="n">sep</span> <span class="o">=</span> <span class="s">&#39;&#39;</span><span class="p">)),</span> <span class="n">row.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="n">estimativas_n</span><span class="o">$</span><span class="n">alpha[i]</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">estimativas</span><span class="o">$</span><span class="n">alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">estimativas_n</span><span class="o">$</span><span class="n">beta[i]</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">estimativas</span><span class="o">$</span><span class="n">beta</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">estimativas_n</span><span class="o">$</span><span class="n">ep_alpha[i]</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">estimativas</span><span class="o">$</span><span class="n">dp_alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">estimativas_n</span><span class="o">$</span><span class="n">ep_beta[i]</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">estimativas</span><span class="o">$</span><span class="n">dp_beta</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">estimativas_n</span><span class="o">$</span><span class="n">aIC_I[i]</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">estimativas</span><span class="o">$</span><span class="n">alpha</span><span class="p">)</span><span class="m">-1.96</span><span class="o">*</span><span class="nf">mean</span><span class="p">(</span><span class="n">estimativas</span><span class="o">$</span><span class="n">dp_alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">estimativas_n</span><span class="o">$</span><span class="n">aIC_S[i]</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">estimativas</span><span class="o">$</span><span class="n">alpha</span><span class="p">)</span><span class="m">+1.96</span><span class="o">*</span><span class="nf">mean</span><span class="p">(</span><span class="n">estimativas</span><span class="o">$</span><span class="n">dp_alpha</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">estimativas_n</span><span class="o">$</span><span class="n">bIC_I[i]</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">estimativas</span><span class="o">$</span><span class="n">beta</span><span class="p">)</span><span class="m">-1.96</span><span class="o">*</span><span class="nf">mean</span><span class="p">(</span><span class="n">estimativas</span><span class="o">$</span><span class="n">dp_beta</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">estimativas_n</span><span class="o">$</span><span class="n">bIC_S[i]</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">estimativas</span><span class="o">$</span><span class="n">beta</span><span class="p">)</span><span class="m">+1.96</span><span class="o">*</span><span class="nf">mean</span><span class="p">(</span><span class="n">estimativas</span><span class="o">$</span><span class="n">dp_beta</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="n">estimativas_n</span><span class="o">$</span><span class="n">Vies_a[i]</span><span class="o">&lt;-</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">estimativas</span><span class="o">$</span><span class="n">alpha</span><span class="p">)</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">a</span><span class="o">*</span><span class="m">100</span>
+</span></span><span class="line"><span class="cl">  <span class="n">estimativas_n</span><span class="o">$</span><span class="n">Vies_b[i]</span><span class="o">&lt;-</span><span class="p">(</span><span class="nf">mean</span><span class="p">(</span><span class="n">estimativas</span><span class="o">$</span><span class="n">beta</span><span class="p">)</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="n">b</span><span class="o">*</span><span class="m">100</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nf">write.csv</span><span class="p">(</span><span class="n">estimativas_n</span><span class="p">,</span> <span class="s">&#39;gama11_R.txt&#39;</span><span class="p">,</span> <span class="n">row.names</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="ox">Ox</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span><span class="lnt">74
+</span><span class="lnt">75
+</span><span class="lnt">76
+</span><span class="lnt">77
+</span><span class="lnt">78
+</span><span class="lnt">79
+</span><span class="lnt">80
+</span><span class="lnt">81
+</span><span class="lnt">82
+</span><span class="lnt">83
+</span><span class="lnt">84
+</span><span class="lnt">85
+</span><span class="lnt">86
+</span><span class="lnt">87
+</span><span class="lnt">88
+</span><span class="lnt">89
+</span><span class="lnt">90
+</span><span class="lnt">91
+</span><span class="lnt">92
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">###Programação em Ox
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">// Maximizando a distribuição gama em Ox
+</span></span><span class="line"><span class="cl">// Computacional-Mestrado (UFPE)
+</span></span><span class="line"><span class="cl">// Jerfson Bruno
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">#include&lt;oxstd.h&gt;
+</span></span><span class="line"><span class="cl">#import&lt;maximize&gt; //
+</span></span><span class="line"><span class="cl">#include&lt;oxprob.h&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">decl n = 1000;
+</span></span><span class="line"><span class="cl">decl Rmc = 10000;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">static decl vetor_gamma;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">gamma(const vetor_parametros, const adFunc, const escore, const hessiana){
+</span></span><span class="line"><span class="cl">decl t, cont;
+</span></span><span class="line"><span class="cl">decl a1 = vetor_parametros[0];
+</span></span><span class="line"><span class="cl">decl a2 = vetor_parametros[1];
+</span></span><span class="line"><span class="cl">decl vone = ones(1, n);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">adFunc[0] = (a1-1)*(vone*(log(vetor_gamma)))-a2*(vone*(vetor_gamma))
+</span></span><span class="line"><span class="cl">-n*a1*log(1/a2)-n*log(gammafact(a1));
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if(escore){
+</span></span><span class="line"><span class="cl">(escore[0])[0] = n*log(a2) - n*(gammafact(a1)/gammafact(a1)) +
+</span></span><span class="line"><span class="cl">(vone*(log(vetor_gamma)));
+</span></span><span class="line"><span class="cl">(escore[0])[1] = (n*a1)/a2 -(vone*(vetor_gamma));
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if(isnan(adFunc[0])||isdotinf(adFunc[0]))
+</span></span><span class="line"><span class="cl">return 0;
+</span></span><span class="line"><span class="cl">else
+</span></span><span class="line"><span class="cl">return 1;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">main(){
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">decl maxgama, i, var1, variancia, dp, vp, dfunc, mhess, vies;
+</span></span><span class="line"><span class="cl">decl alpha = 2.0, beta = 2.0;
+</span></span><span class="line"><span class="cl">decl v = &lt;2.0, 2.0&gt;;
+</span></span><span class="line"><span class="cl">decl cont = 0;
+</span></span><span class="line"><span class="cl">decl exectime;
+</span></span><span class="line"><span class="cl">decl ep;
+</span></span><span class="line"><span class="cl">decl v_estimativa = zeros(Rmc, 2);
+</span></span><span class="line"><span class="cl">decl media;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">exectime = timer();
+</span></span><span class="line"><span class="cl">ranseed(&#34;MWC_32&#34;);
+</span></span><span class="line"><span class="cl">ranseed(89);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">for(i = 0; i &lt; Rmc; i++){
+</span></span><span class="line"><span class="cl">vetor_gamma = rangamma(n, 1, alpha, beta);
+</span></span><span class="line"><span class="cl">vp = &lt;1; 1&gt;;  
+</span></span><span class="line"><span class="cl">maxgama = MaxBFGS(gamma, &amp;vp, &amp;dfunc, 0, TRUE);
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">if(maxgama == MAX_CONV || maxgama == MAX_WEAK_CONV){
+</span></span><span class="line"><span class="cl">v_estimativa[i][] = vp&#39;;
+</span></span><span class="line"><span class="cl">media = meanc(v_estimativa);
+</span></span><span class="line"><span class="cl">variancia = varc(v_estimativa);
+</span></span><span class="line"><span class="cl">dp = sqrt(variancia);
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">else{
+</span></span><span class="line"><span class="cl">i--;
+</span></span><span class="line"><span class="cl">cont++;
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Num2Derivative(gamma, vp, &amp;mhess);
+</span></span><span class="line"><span class="cl">vies = media - v;
+</span></span><span class="line"><span class="cl">ep = sqrt(diagonal(invertsym(-mhess)));
+</span></span><span class="line"><span class="cl">decl a1 = vies[0]/v&#39;[0], a2 = vies[1]/v&#39;[1];
+</span></span><span class="line"><span class="cl">decl Linf = double(dropc(media,1) - (1.96)*dropc(ep,1));
+</span></span><span class="line"><span class="cl">decl Lsup = double(dropc(media,1) + (1.96)*dropc(ep,1));
+</span></span><span class="line"><span class="cl">decl Linfbeta = double(dropc(media,0) - (1.96)*dropc(ep,0));
+</span></span><span class="line"><span class="cl">decl Lsupbeta = double(dropc(media,0) + (1.96)*dropc(ep,0));
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">println(&#34;Convergência: &#34;, MaxConvergenceMsg(maxgama));
+</span></span><span class="line"><span class="cl">println(&#34;Amostras:\n &#34;, n);
+</span></span><span class="line"><span class="cl">println(&#34;Número de réplicas de Monte Carlo:\n &#34;, Rmc);
+</span></span><span class="line"><span class="cl">println(&#34;Número de falhas:\n &#34;, cont);
+</span></span><span class="line"><span class="cl">println(&#34;Parâmetro verdadeiro de alpha e beta: \n &#34;, &#34;[&#34;, alpha, &#34; ; &#34;, beta,&#34;]&#34;);
+</span></span><span class="line"><span class="cl">println(&#34;Valores estimados para alpha e beta:\n &#34;, &#34;%10.4f&#34;, media);
+</span></span><span class="line"><span class="cl">println(&#34;Viés relativo para alpha e beta: \n &#34;,&#34;[&#34;, a1*100,&#34; ; &#34;, a2*100,&#34;]&#34;);
+</span></span><span class="line"><span class="cl">println(&#34;Intervalo de confiança para alpha:\n &#34;,&#34;[&#34;, Linf, &#34; ; &#34;, Lsup,&#34;]&#34;);
+</span></span><span class="line"><span class="cl">println(&#34;Intervalo de confiança para beta:\n &#34;, &#34;[&#34;, Linfbeta, &#34; ; &#34;, Lsupbeta,&#34;]&#34;);
+</span></span><span class="line"><span class="cl">println(&#34;Variância das estimativas:\n &#34;, &#34;%10.4f&#34;, variancia);
+</span></span><span class="line"><span class="cl">println(&#34;Desvio padrão das estimativas:\n &#34;, &#34;%10.4f&#34;, dp);
+</span></span><span class="line"><span class="cl">println(&#34;Erro padrão assintótico:\n &#34;, &#34;%10.4f&#34;, ep);
+</span></span><span class="line"><span class="cl">println(&#34;Tempo de execução:\n &#34;, timespan(exectime));
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 02-09-2020</span>
+            </div></div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/quinto-post/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/sexto-post/" class="prev" rel="prev" title="Expansões de Edgeworth para a distribuição Lomax"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Expansões de Edgeworth para a distribuição Lomax</a>
+            <a href="/dez-post/" class="next" rel="next" title="Previsões e possíveis casos de subnotificação do COVID-19 na síndrome respiratória aguda grave (SRAG).">Previsões e possíveis casos de subnotificação do COVID-19 na síndrome respiratória aguda grave (SRAG).<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Criado por Jerfson Bruno</div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2018 - 2022</span>&nbsp;|&nbsp;<span class="license">MIT</span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/algoliasearch@4.13.1/dist/algoliasearch-lite.umd.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"algoliaAppID":"","algoliaIndex":"","algoliaSearchKey":"","highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"algolia"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

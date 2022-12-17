@@ -1,4 +1,4 @@
-# Corona Vírus
+# Coronavírus no mundo.
 
 
 Um vírus que foi relatado pela primeira vez na cidade chinesa de Wuhan,
@@ -39,8 +39,7 @@ conseqüências geopolíticas de longo alcance.
 
 ##  Uma introdução ao conjunto de dados
 
-O Conjunto de dados do “Novel Corona Virus 2019”, publicado no Kaggle
-(<https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset>),
+O Conjunto de dados do “Novel Corona Virus 2019”, publicado no [Kaggle](<https://www.kaggle.com/sudalairajkumar/novel-corona-virus-2019-dataset>),
 foi coletado pela John Hopkins University. A equipe coletou os dados de
 várias fontes, como a OMS, CDC local e meios de comunicação. Eles também
 criaram um painel em tempo real para monitorar a propagação do vírus.
@@ -48,6 +47,7 @@ criaram um painel em tempo real para monitorar a propagação do vírus.
 ##  Importando e Carregando os Dados
 
 ``` r
+library(dplyr)
 dados<-read.table('cv.csv', sep = ',', header = T)
 ```
 
@@ -56,20 +56,6 @@ dados<-read.table('cv.csv', sep = ',', header = T)
 Vamos primeiro obter um entendimento básico do conjunto de dados e
 executar operações de limpeza de dados, se necessário.
 
-``` r
-library(dplyr)
-```
-
-    ##
-    ## Attaching package: 'dplyr'
-
-    ## The following objects are masked from 'package:stats':
-    ##
-    ##     filter, lag
-
-    ## The following objects are masked from 'package:base':
-    ##
-    ##     intersect, setdiff, setequal, union
 
 ``` r
 dados %>% head()
@@ -136,9 +122,9 @@ dados %>% summary()
     ##  Max.   :56249   Max.   :1596.000   Max.   :5623.00  
     ##
 
-Fazendo uma rápida análise descritiva, usando a função summary()
+Fazendo uma rápida análise descritiva, usando a função `summary()`
 
-A função summary() retorna as estatísticas gerais das colunas da base de
+A função `summary()` retorna as estatísticas gerais das colunas da base de
 dados. Uma conclusão imediata da saída é que os dados foram relatados
 cumulativamente, ou seja, o número de casos relatados em um determinado
 dia inclui os casos relatados anteriormente. O valor ‘máximo’ de mortes
@@ -203,16 +189,6 @@ análises adicionais. Isso nos ajudará a manter as datas uniformes.
 
 ``` r
 library(lubridate)
-```
-
-    ##
-    ## Attaching package: 'lubridate'
-
-    ## The following object is masked from 'package:base':
-    ##
-    ##     date
-
-``` r
 d<- as.character(dados[,1])
 d<-mdy_hms(d)
 dados[,1] <- as.Date(d, "%d:%m:%Y")
@@ -323,11 +299,10 @@ mxr%>% ggplot(aes(Date, Quantidade, fill=Casos)) + geom_bar(stat = "identity", p
   theme(axis.text.x.bottom = element_text(angle = 90, hjust = 0))
 ```
 
-![](corona_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](corona_files/figure-gfm/unnamed-chunk-14-1.png)
 
 3.  Um olhar mais atento às 10 províncias mais afetadas da China
 
-<!-- end list -->
 
 ``` r
 dados_china<-dados[which(dados[,3]=='China'),]
