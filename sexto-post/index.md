@@ -42,7 +42,7 @@ $$f(x;\alpha,\lambda)={\alpha \over \lambda }\left[{1+{x \over \lambda }}\right]
 A densidade pode ser reescrita de tal forma que mostre
 mais claramente a relação com a distribuição de Pareto Tipo I. Isso é:
 
-$$f(x;\alpha,\lambda)={{\alpha \lambda ^{\alpha }} \over {(x+\lambda )^{\alpha +1}}}.$$
+$$f(x;\alpha,\lambda)={\alpha \lambda ^{\alpha }} \over {(x+\lambda )^{\alpha +1}}.$$
 
 Os momentos da distribuição Lomax são obtidos pela Equação (4); É
 possível ver a demonstração analítica em Gradshteyn and Ryzhik (2007).
@@ -86,7 +86,7 @@ $$f_{S_n^*} (y) = \phi (y) \left\lbrace 1+ \frac{\frac {2(1+\alpha )}{\alpha -3}
 
 ### Função distribuição de Edgeworth aplicada a lomax
 
-$$F_{S_n^*} (y) =  \Phi(y) - \phi (y) \left\lbrace 1+ \frac{{\frac {2(1+\alpha )}{\alpha -3}}\,{\sqrt {\frac {\alpha -2}{\alpha }}}}{6\sqrt{n}} H_2 (y) + \frac{{\frac {6(\alpha ^{3}+\alpha ^{2}-6\alpha -2)}{\alpha (\alpha -3)(\alpha -4)}}}{24n} H_3 (y) + \frac{\left({\frac {2(1+\alpha )}{\alpha -3}}\,{\sqrt {\frac {\alpha -2}{\alpha }}}\right)^2} {72n} H_5 (y)\right\rbrace$$
+$$F_{S_n^*} (y) = \Phi (y) \left\lbrace 1+ \frac{\frac {2(1+\alpha )}{\alpha -3},{\sqrt {\frac {\alpha -2}{\alpha }}}}{6\sqrt{n}} H_2 (y) + \frac{\frac {6(\alpha ^{3}+\alpha ^{2}-6\alpha -2)}{\alpha (\alpha -3)(\alpha -4)}}{24n} H_3 (y) + \frac{\left({\frac {2(1+\alpha )}{\alpha -3}}\,{\sqrt {\frac {\alpha -2}{\alpha }}}\right)^2} {72n} H_5 (y)\right\rbrace$$
 
 Além disso, a lomax tem varias relações com outras distribuições,
 algumas delas:
