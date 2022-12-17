@@ -12,7 +12,7 @@ assimetria e curtose arbitrárias a partir de uma densidade normal.
 # Expansão de Edgeworth: Distribuição Lomax
 
 As fórmulas a baixo são as expansões de Edgeworth para as funções
-densidade e de distribuição de uma soma padronizada $\(S_n^*\)$,
+densidade e de distribuição de uma soma padronizada $S_n^*$,
 respectivamente.
 
 ## Função densidade de Edgeworth
@@ -33,8 +33,8 @@ modelagem de tráfego da Internet. O criador, Lomax (1987), utilizou a
 distribuição inicialmente em análises de dados de tempo de vida de
 falhas de negócios.
 
-Uma variável aleatória $\(X\)$ segue a distribuição de Lomax com
-parâmetros $\(\lambda >0\)$ e $\(\alpha >0\)$ se sua função de
+Uma variável aleatória $X$ segue a distribuição de Lomax com
+parâmetros $\lambda >0$ e $\alpha >0$ se sua função de
 probabilidade for dada por
 
 $$f(x;\alpha,\lambda)={\alpha \over \lambda }\left[{1+{x \over \lambda }}\right]^{-(\alpha +1)}$$
@@ -49,7 +49,7 @@ possível ver a demonstração analítica em Gradshteyn and Ryzhik (2007).
 
 $$\mathbf{E}(X^r) = \dfrac{\alpha \lambda^r \Gamma(r+1) \Gamma(\alpha-r)}{\Gamma(\alpha +1)}, \hspace{0.5cm} \alpha>r$$
 
-Logo, dado a Equação (5) a média e a variância de $\(X\)$, são,
+Logo, dado a Equação (5) a média e a variância de $X$, são,
 respectivamente,
 $$\mathbf{E}(x) = \frac{\lambda}{\alpha-1}, \hspace{0.5cm} \alpha>1$$
 
@@ -57,21 +57,21 @@ e
 $$Var(x) = {\begin{cases}{\dfrac{\lambda^{2}\alpha}{(\alpha -1)^{2}(\alpha -2)}} \hspace{0.5cm} \alpha >2\end{cases}}.$$
 
 O coeficiente de assimetria da distribuição Lomax é dado por
-$$\rho_3={\displaystyle {\frac {2(1+\alpha )}{\alpha -3}}\,{\sqrt {\frac {\alpha -2}{\alpha }}}{\text{ para }}\alpha >3\,}$$
+$$\rho_3= {\frac {2(1+\alpha )}{\alpha -3}}\,{\sqrt {\frac {\alpha -2}{\alpha }}}{\text{ para }}\alpha >3\,$$
 
-Respeitando a condição de existência, $\(\alpha>3\)$, a distribuição Lomax
+Respeitando a condição de existência, $\alpha>3$, a distribuição Lomax
 é sempre assimétrica à direita, independentemente dos valores dos
 parâmetros. O coeficiente de excesso de curtose da distribuição Lomax é
-$$\rho_4= {\displaystyle {\frac {6(\alpha ^{3}+\alpha ^{2}-6\alpha -2)}{\alpha (\alpha -3)(\alpha -4)}}{\text { para }}\alpha >4\}$$
+$$\rho_4= \frac {6(\alpha ^{3}+\alpha ^{2}-6\alpha -2)}{\alpha (\alpha -3)(\alpha -4)}\hspace{0.5cm}{\text{ para }}\alpha >4$$
 
-Respeitando a condição de existência, $\(\alpha>4\)$ a distribuição Lomax
+Respeitando a condição de existência, $\alpha>4$ a distribuição Lomax
 é leptocúrtico, independentemente dos valores dos parâmetros.
 
 Além da função densidade há outras formas de se caracterizar as
 distribuições de probabilidade. Para tanto, pode-se utilizar a função
 geratriz de momentos, função de cumulantes ou a função de distribuição;
 vale notar que nem todas as distribuições de probabilidade possuem
-função geratriz de momentos. A função geratriz de momentos de $\(X\)$ é
+função geratriz de momentos. A função geratriz de momentos de $X$ é
 dada por
 $$M_X (t) = \alpha (-t \lambda)^\alpha e^{(-t\lambda)} \Gamma(-\alpha, -t \lambda)$$
 
@@ -107,8 +107,8 @@ algumas delas:
 
 ## Simulação
 
-Sejam $\(X_1,...,X_n\)$ variáveis aleatórias com distribuição Lomax, com
-parâmetros $\(\lambda=5\)$, $\(\alpha=5\)$. As expansões de Edgeworth para a
+Sejam $X_1,...,X_n$ variáveis aleatórias com distribuição Lomax, com
+parâmetros $\lambda=5$, $\alpha=5$. As expansões de Edgeworth para a
 função densidade com tamanhos n=10, n=50, n=100 e n=200, são
 apresentadas na Figura a seguir.
 ### n=10

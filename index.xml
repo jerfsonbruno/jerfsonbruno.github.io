@@ -49,7 +49,7 @@ A distribuição gama é útil na modelagem de variáveis aleatórias contínuas
     <author>Jerfson Bruno</author>
     <guid>https://jerfsonbruno.github.io/sexto-post/</guid>
     <description><![CDATA[Esse trabalho foi apresentado na disciplina de teoria assintotica ministrada pelo Prof. Dr. Gauss Moutinho Cordeiro. O objetivo deste trabalho é usar uma ferramenta matemática conhecida como expansão de Edgeworth em um conjunto de dados gerados a partir da distribuição lomax. Tal expansão permite obter uma função densidade de probabilidade com assimetria e curtose arbitrárias a partir de uma densidade normal.
-Expansão de Edgeworth: Distribuição Lomax As fórmulas a baixo são as expansões de Edgeworth para as funções densidade e de distribuição de uma soma padronizada $(S_n^*)$, respectivamente.]]></description>
+Expansão de Edgeworth: Distribuição Lomax As fórmulas a baixo são as expansões de Edgeworth para as funções densidade e de distribuição de uma soma padronizada $S_n^*$, respectivamente.]]></description>
 </item>
 <item>
     <title>Coronavírus no mundo.</title>
