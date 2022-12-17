@@ -82,7 +82,7 @@ $$K_X(t) = \log(M_Y (t))=  \log (\alpha ) - \alpha \log(t\lambda) - t \lambda + 
 ### Função densidade de Edgeworth aplicada a lomax
 
 
-$$f_{S_n^*} (y) = \phi (y) \left\lbrace 1+ \frac{{\frac {2(1+\alpha )}{\alpha -3}}\,{\sqrt {\frac {\alpha -2}{\alpha }}}}{6\sqrt{n}} H_3 (y) + \frac{{\frac {6(\alpha ^{3}+\alpha ^{2}-6\alpha -2)}{\alpha (\alpha -3)(\alpha -4)}}}{24n} H_4 (y) + \frac{\left({\frac {2(1+\alpha )}{\alpha -3}}\,{\sqrt {\frac {\alpha -2}{\alpha }}}\right)^2} {72n} H_6 (y)\right\rbrace$$
+$$f_{S_n^*} (y) = \phi (y) \left\lbrace 1+ \frac{\frac {2(1+\alpha )}{\alpha -3},{\sqrt {\frac {\alpha -2}{\alpha }}}}{6\sqrt{n}} H_3 (y) + \frac{{\frac {6(\alpha ^{3}+\alpha ^{2}-6\alpha -2)}{\alpha (\alpha -3)(\alpha -4)}}}{24n} H_4 (y) + \frac{\left({\frac {2(1+\alpha )}{\alpha -3}}\,{\sqrt {\frac {\alpha -2}{\alpha }}}\right)^2} {72n} H_6 (y)\right\rbrace$$
 
 ### Função distribuição de Edgeworth aplicada a lomax
 
