@@ -3,9 +3,17 @@
         <title>Jerfson Bruno</title>
         <link>https://jerfsonbruno.github.io/</link>
         <description>Hugo theme - LoveIt</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 06 Jul 2022 01:28:15 -0300</lastBuildDate>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 14 Jan 2023 20:57:37 -0300</lastBuildDate>
             <atom:link href="https://jerfsonbruno.github.io/index.xml" rel="self" type="application/rss+xml" />
         <item>
+    <title>Método de máxima curvatura no R</title>
+    <link>https://jerfsonbruno.github.io/curva/</link>
+    <pubDate>Sat, 14 Jan 2023 20:57:37 -0300</pubDate>
+    <author>Jerfson Bruno</author>
+    <guid>https://jerfsonbruno.github.io/curva/</guid>
+    <description><![CDATA[Essa pequena introdução foi feita para ajudar um amigo que atualmente está trabalhando com método da máxima curvatura. O método da máxima curvatura é um método de interpolação de dados que busca aproximar os dados observados por uma curva suave que passa pelos pontos de dados. Ele é frequentemente usado em análises de campo geofísico, como sismologia e geologia, para estimar a distribuição de propriedades físicas sob a superfície da Terra.]]></description>
+</item>
+<item>
     <title>Classificação não supervisionada no contexto não euclidiano. </title>
     <link>https://jerfsonbruno.github.io/oitavo-post/</link>
     <pubDate>Wed, 06 Jul 2022 01:28:15 -0300</pubDate>
