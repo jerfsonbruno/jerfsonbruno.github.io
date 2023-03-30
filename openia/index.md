@@ -72,7 +72,7 @@ create_image(
 
 Por fim, podemos utilizar o addin do RStudio para codificar de forma colaborativa com um modelo da OpenAI. O addin pode ser acessado pelo menu Addins ou por Tools -> Addins -> Browse Addins e pesquisando por "openai".
 
-![](openai RStudio demo.gif)
+![openai.gif](openai.gif)
 
 Com o pacote openai, é possível explorar diversas funcionalidades da API da OpenAI diretamente em R. Experimente utilizar os exemplos apresentados neste post e explorar outras funções disponíveis na documentação da OpenAI!
 
