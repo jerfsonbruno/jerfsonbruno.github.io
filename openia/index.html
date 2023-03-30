@@ -4,33 +4,37 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
-        <title>Método de máxima curvatura no R - Jerfson Bruno</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Método de máxima curvatura no R" />
-<meta property="og:description" content="Essa pequena introdução foi feita para ajudar um amigo que atualmente está trabalhando com método da máxima curvatura. O método da máxima curvatura é um método de interpolação de dados que busca aproximar os dados observados por uma curva suave que passa pelos pontos de dados. Ele é frequentemente usado em análises de campo geofísico, como sismologia e geologia, para estimar a distribuição de propriedades físicas sob a superfície da Terra." />
+        <title>Utilizando a OpenAI (chatGPT) com R - Jerfson Bruno</title><meta name="Description" content="Hugo theme - LoveIt"><meta property="og:title" content="Utilizando a OpenAI (chatGPT) com R" />
+<meta property="og:description" content="Todo este exemplo foi criado usando o ChatGPT, uma poderosa linguagem de inteligência artificial desenvolvida pela OpenAI.
+A OpenAI é uma empresa que trabalha com inteligência artificial e aprendizado de máquina, e possui diversas ferramentas e modelos pré-treinados disponíveis para uso através de sua API. Neste post, vamos mostrar como utilizar a API da OpenAI em R com o pacote openai.
+Se você quiser criar uma conta na plataforma, basta acessar o site oficial e seguir as instruções para começar a utilizar essa ferramenta incrível." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://jerfsonbruno.github.io/curva/" /><meta property="og:image" content="https://jerfsonbruno.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-01-14T20:57:37-03:00" />
-<meta property="article:modified_time" content="2023-01-14T21:11:46-03:00" /><meta property="og:site_name" content="LoveIt" />
+<meta property="og:url" content="https://jerfsonbruno.github.io/openia/" /><meta property="og:image" content="https://jerfsonbruno.github.io/images/avatar.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-03-30T16:36:31-03:00" />
+<meta property="article:modified_time" content="2023-03-30T16:36:31-03:00" /><meta property="og:site_name" content="LoveIt" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://jerfsonbruno.github.io/images/avatar.png"/>
 
-<meta name="twitter:title" content="Método de máxima curvatura no R"/>
-<meta name="twitter:description" content="Essa pequena introdução foi feita para ajudar um amigo que atualmente está trabalhando com método da máxima curvatura. O método da máxima curvatura é um método de interpolação de dados que busca aproximar os dados observados por uma curva suave que passa pelos pontos de dados. Ele é frequentemente usado em análises de campo geofísico, como sismologia e geologia, para estimar a distribuição de propriedades físicas sob a superfície da Terra."/>
+<meta name="twitter:title" content="Utilizando a OpenAI (chatGPT) com R"/>
+<meta name="twitter:description" content="Todo este exemplo foi criado usando o ChatGPT, uma poderosa linguagem de inteligência artificial desenvolvida pela OpenAI.
+A OpenAI é uma empresa que trabalha com inteligência artificial e aprendizado de máquina, e possui diversas ferramentas e modelos pré-treinados disponíveis para uso através de sua API. Neste post, vamos mostrar como utilizar a API da OpenAI em R com o pacote openai.
+Se você quiser criar uma conta na plataforma, basta acessar o site oficial e seguir as instruções para começar a utilizar essa ferramenta incrível."/>
 <meta name="application-name" content="Jerfson Bruno">
 <meta name="apple-mobile-web-app-title" content="Jerfson Bruno"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jerfsonbruno.github.io/curva/" /><link rel="prev" href="https://jerfsonbruno.github.io/oitavo-post/" /><link rel="next" href="https://jerfsonbruno.github.io/openia/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://jerfsonbruno.github.io/openia/" /><link rel="prev" href="https://jerfsonbruno.github.io/curva/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
         <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "Método de máxima curvatura no R",
+        "headline": "Utilizando a OpenAI (chatGPT) com R",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/jerfsonbruno.github.io\/curva\/"
-        },"image": ["https:\/\/jerfsonbruno.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  664 ,
-        "url": "https:\/\/jerfsonbruno.github.io\/curva\/","datePublished": "2023-01-14T20:57:37-03:00","dateModified": "2023-01-14T21:11:46-03:00","publisher": {
+            "@id": "https:\/\/jerfsonbruno.github.io\/openia\/"
+        },"image": ["https:\/\/jerfsonbruno.github.io\/images\/Apple-Devices-Preview.png"],"genre": "posts","wordcount":  393 ,
+        "url": "https:\/\/jerfsonbruno.github.io\/openia\/","datePublished": "2023-03-30T16:36:31-03:00","dateModified": "2023-03-30T16:36:31-03:00","publisher": {
             "@type": "Organization",
             "name": "Jerfson Bruno","logo": {
                     "@type": "ImageObject",
@@ -106,10 +110,10 @@
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Método de máxima curvatura no R</h1><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animate__animated animate__flipInX">Utilizando a OpenAI (chatGPT) com R</h1><div class="post-meta">
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="author" class="author"><i class="fas fa-user-circle fa-fw" aria-hidden="true"></i>Jerfson Bruno</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="14-01-2023">14-01-2023</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;664 words&nbsp;
-                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;4 minutes&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;<time datetime="30-03-2023">30-03-2023</time>&nbsp;<i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>&nbsp;393 words&nbsp;
+                <i class="far fa-clock fa-fw" aria-hidden="true"></i>&nbsp;2 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  data-kept="">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
@@ -117,116 +121,123 @@
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li><a href="#repositórios-de-dados-abertos">Repositórios de dados abertos</a></li>
-    <li><a href="#exemplos-de-conjuntos-de-dados">Exemplos de conjuntos de dados</a></li>
+    <li><a href="#instalação">Instalação</a></li>
+    <li><a href="#configuração">Configuração</a></li>
+    <li><a href="#exemplos">Exemplos</a>
+      <ul>
+        <li><a href="#listando-os-modelos-disponíveis">Listando os modelos disponíveis</a></li>
+        <li><a href="#gerando-texto-com-o-modelo-davinci">Gerando texto com o modelo davinci</a></li>
+        <li><a href="#gerando-imagens-com-base-em-um-prompt">Gerando imagens com base em um prompt</a></li>
+        <li><a href="#colaborando-com-o-modelo-utilizando-o-addin-do-rstudio">Colaborando com o modelo utilizando o addin do RStudio</a></li>
+      </ul>
+    </li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p><code>Essa pequena introdução foi feita para ajudar um amigo que atualmente está trabalhando com método da máxima curvatura. </code></p>
-<p>O método da máxima curvatura é um método de interpolação de dados que busca aproximar os dados observados por uma curva suave que passa pelos pontos de dados. Ele é frequentemente usado em análises de campo geofísico, como sismologia e geologia, para estimar a distribuição de propriedades físicas sob a superfície da Terra.</p>
-<p>Para usar o método da máxima curvatura em R, você pode usar a função <code>Tps</code> do pacote <code>fields</code>. A sintaxe básica para a função <code>Tps</code> é:</p>
+            </div><div class="content" id="content"><p><code>Todo este exemplo foi criado usando o ChatGPT, uma poderosa linguagem de inteligência artificial desenvolvida pela OpenAI.</code></p>
+<p>A OpenAI é uma empresa que trabalha com inteligência artificial e aprendizado de máquina, e possui diversas ferramentas e modelos pré-treinados disponíveis para uso através de sua API. Neste post, vamos mostrar como utilizar a API da OpenAI em R com o pacote openai.</p>
+<p>Se você quiser criar uma conta na plataforma, basta acessar o site oficial e seguir as instruções para começar a utilizar essa ferramenta incrível.</p>
+<h2 id="instalação">Instalação</h2>
+<p>Para utilizar o pacote openai, você pode instalar a versão de desenvolvimento diretamente do GitHub utilizando o devtools:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">library(fields)
-</span></span><span class="line"><span class="cl">Tps(x, y, knots = NULL, lambda = 0)
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">install.packages(&#34;devtools&#34;)
+</span></span><span class="line"><span class="cl">devtools::install_github(&#34;samterfa/openai&#34;)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Onde:</p>
-<ul>
-<li>
-<p><code>x</code> e <code>y</code> são vetores de dados observados, com os valores de x e y correspondentes.</p>
-</li>
-<li>
-<p><code>knots</code> é um vetor opcional de nós (pontos de interpolação) para a curva suave. Se não for especificado, o número de nós será calculado automaticamente.</p>
-</li>
-<li>
-<p><code>lambda</code> é um parâmetro de suavização opcional que controla o grau de curvatura da curva suave. Valores mais altos de lambda resultam em curvas mais suaves.</p>
-</li>
-</ul>
-<p>Por exemplo, suponha que você tenha os seguintes dados observados:</p>
+</div><h2 id="configuração">Configuração</h2>
+<p>Para realizar chamadas à API da OpenAI, é necessário utilizar as suas chaves de acesso, que podem ser obtidas em sua conta na plataforma. É possível definir essas chaves como variáveis de ambiente utilizando o seguinte código:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">x &lt;- c(0, 1, 2, 3, 4, 5)
-</span></span><span class="line"><span class="cl">y &lt;- x^2
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Sys.setenv(openai_organization_id = {seu_organization_id})
+</span></span><span class="line"><span class="cl">Sys.setenv(openai_secret_key = {sua_secret_key})
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Para aproximar esses dados por uma curva suave usando o método da máxima curvatura, você pode usar o seguinte código:</p>
+</div><p>Você pode encontrar mais informações sobre a autenticação na API da OpenAI [aqui]{https://platform.openai.com/docs/api-reference/authentication}.</p>
+<h2 id="exemplos">Exemplos</h2>
+<p>gora que já configuramos o ambiente, vamos ver alguns exemplos de como utilizar a API da OpenAI com o R e o pacote openai.</p>
+<h3 id="listando-os-modelos-disponíveis">Listando os modelos disponíveis</h3>
+<p>Podemos listar os modelos disponíveis na API utilizando a função <code>list_models()</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">library(fields)
-</span></span><span class="line"><span class="cl">fit &lt;- Tps(x, y)
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">library(openai)
+</span></span><span class="line"><span class="cl">library(purrr)
+</span></span><span class="line"><span class="cl">list_models() %&gt;% 
+</span></span><span class="line"><span class="cl">  pluck(&#39;data&#39;) %&gt;% 
+</span></span><span class="line"><span class="cl">  map_dfr(compact)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Isso criará um objeto <code>fit</code> que contém a curva suave ajustada aos dados observados. Você pode plotar a curva suave usando o seguinte código:</p>
+</div><h3 id="gerando-texto-com-o-modelo-davinci">Gerando texto com o modelo davinci</h3>
+<p>Podemos gerar texto utilizando o modelo pré-treinado davinci com a função <code>create_completion()</code>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">create_completion(
+</span></span><span class="line"><span class="cl">  model = &#39;davinci&#39;, 
+</span></span><span class="line"><span class="cl">  max_tokens = 30,
+</span></span><span class="line"><span class="cl">  temperature = .5,
+</span></span><span class="line"><span class="cl">  top_p = 1,
+</span></span><span class="line"><span class="cl">  n = 1,
+</span></span><span class="line"><span class="cl">  stream = F, 
+</span></span><span class="line"><span class="cl">  prompt = &#39;Era uma vez&#39;) %&gt;% 
+</span></span><span class="line"><span class="cl">  pluck(&#39;choices&#39;) %&gt;% 
+</span></span><span class="line"><span class="cl">  map_chr(~ .x$text)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="gerando-imagens-com-base-em-um-prompt">Gerando imagens com base em um prompt</h3>
+<p>Podemos gerar imagens utilizando a função <code>create_image()</code> com um prompt de descrição:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">plot(x, y, type = &#34;p&#34;)
-</span></span><span class="line"><span class="cl">curve(predict(fit, x), add = TRUE)
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">create_image(
+</span></span><span class="line"><span class="cl">  prompt = &#34;Um zebra patinando&#34;, 
+</span></span><span class="line"><span class="cl">  n = 1, 
+</span></span><span class="line"><span class="cl">  response_format = &#34;url&#34;)
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="repositórios-de-dados-abertos">Repositórios de dados abertos</h2>
-<p>Existem vários repositórios de dados públicos que você pode usar para testar o método da máxima curvatura em R. Alguns exemplos incluem:</p>
-<ul>
-<li>
-<p>UCI Machine Learning Repository: um repositório de dados de aprendizado de máquina com vários conjuntos de dados para análise. Disponível em: <a href="http://archive.ics.uci.edu/ml/index.php" target="_blank" rel="noopener noreffer ">http://archive.ics.uci.edu/ml/index.php</a></p>
-</li>
-<li>
-<p>Kaggle: uma plataforma de dados para análise e aprendizado de máquina com centenas de conjuntos de dados públicos. Disponível em: <a href="https://www.kaggle.com/datasets" target="_blank" rel="noopener noreffer ">https://www.kaggle.com/datasets</a></p>
-</li>
-<li>
-<p>Data.gov: um portal de dados governamentais dos EUA com dados de várias agências federais. Disponível em: <a href="https://www.data.gov/" target="_blank" rel="noopener noreffer ">https://www.data.gov/</a></p>
-</li>
-</ul>
-<p>Você também pode procurar por conjuntos de dados específicos em bases de dados acadêmicas ou em repositórios de dados de domínios específicos, como geofísica ou geologia. Alguns exemplos incluem:</p>
-<ul>
-<li>
-<p>EarthChem Library: um repositório de dados geoquímicos com dados de campo, laboratório e modelagem. Disponível em: <a href="https://www.earthchem.org/library" target="_blank" rel="noopener noreffer ">https://www.earthchem.org/library</a></p>
-</li>
-<li>
-<p>Earth Science Data System: um repositório de dados científicos da Terra com dados de satélites, observações de campo e outras fontes. Disponível em: <a href="https://earthdata.nasa.gov/" target="_blank" rel="noopener noreffer ">https://earthdata.nasa.gov/</a></p>
-</li>
-</ul>
-<h2 id="exemplos-de-conjuntos-de-dados">Exemplos de conjuntos de dados</h2>
-<p>Aqui estão alguns exemplos de conjuntos de dados reais que você pode usar para testar o método da máxima curvatura em R:</p>
-<ul>
-<li>
-<p>UCI Machine Learning Repository: um repositório de dados de aprendizado de máquina com vários conjuntos de dados para análise. Por exemplo, você pode usar o conjunto de dados <a href="https://archive.ics.uci.edu/ml/datasets/Wine&#43;Quality" target="_blank" rel="noopener noreffer ">&ldquo;Wine Quality&rdquo;</a>, que consiste em dados de laboratório sobre o teor alcoólico, pH, açúcares e outras propriedades de vinhos brancos e tintos.</p>
-</li>
-<li>
-<p>Kaggle: uma plataforma de dados para análise e aprendizado de máquina com centenas de conjuntos de dados públicos. Por exemplo, você pode usar o conjunto de dados <a href="https://www.kaggle.com/c/nyc-taxi-trip-duration/data" target="_blank" rel="noopener noreffer ">&ldquo;New York City Taxi Trip Duration&rdquo;</a>, que consiste em dados de viagens de táxi em Nova York, incluindo a duração da viagem, a distância percorrida, a hora e o local de partida e chegada.</p>
-</li>
-<li>
-<p>EarthChem Library: um repositório de dados geoquímicos com dados de campo, laboratório e modelagem. Por exemplo, você pode usar o conjunto de dados <a href="https://www.earthchem.org/library/data/view/doi:10.1594/IEDA/100632" target="_blank" rel="noopener noreffer ">&ldquo;Global Soil Sampling for Organic Carbon&rdquo;</a>, que consiste em dados de amostras de solo coletadas em todo o mundo e medidas de teores de carbono orgânico no solo.</p>
-</li>
-<li>
-<p>Earth Science Data System: um repositório de dados científicos da Terra com dados de satélites, observações de campo e outras fontes. Por exemplo, você pode usar o conjunto de dados  <a href="https://earthdata.nasa.gov/data/near-real-time-data/featured-datasets/global-land-data-assimilation-system-gldas" target="_blank" rel="noopener noreffer ">&ldquo;Global Land Data Assimilation System&rdquo;</a>, que consiste em dados de modelagem climática e hidrológica para todo o mundo, incluindo dados de precipitação, temperatura, umidade e outras variáveis.</p>
-</li>
-</ul>
+</div><h3 id="colaborando-com-o-modelo-utilizando-o-addin-do-rstudio">Colaborando com o modelo utilizando o addin do RStudio</h3>
+<p>Por fim, podemos utilizar o addin do RStudio para codificar de forma colaborativa com um modelo da OpenAI. O addin pode ser acessado pelo menu Addins ou por Tools -&gt; Addins -&gt; Browse Addins e pesquisando por &ldquo;openai&rdquo;.</p>
+<p>![](openai RStudio demo.gif)</p>
+<p>Com o pacote openai, é possível explorar diversas funcionalidades da API da OpenAI diretamente em R. Experimente utilizar os exemplos apresentados neste post e explorar outras funções disponíveis na documentação da OpenAI!</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 14-01-2023&nbsp;<a class="git-hash" href="https://github.com/dillonzq/LoveIt/commit/68336dbd969926d05d22515bef9a2e02f4d9710d" target="_blank" title="commit by Jerfson Bruno(jerfson35@gmail.com) 68336dbd969926d05d22515bef9a2e02f4d9710d: atualização_mmc">
-                                    <i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>68336db</a></span>
+                <span>Updated on 30-03-2023</span>
             </div></div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/curva/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/openia/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
                 <span></span>
@@ -241,8 +252,7 @@
         </section>
     </div>
 
-    <div class="post-nav"><a href="/oitavo-post/" class="prev" rel="prev" title="Classificação não supervisionada no contexto não euclidiano. "><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Classificação não supervisionada no contexto não euclidiano. </a>
-            <a href="/openia/" class="next" rel="next" title="Utilizando a OpenAI (chatGPT) com R">Utilizando a OpenAI (chatGPT) com R<i class="fas fa-angle-right fa-fw" aria-hidden="true"></i></a></div>
+    <div class="post-nav"><a href="/curva/" class="prev" rel="prev" title="Método de máxima curvatura no R"><i class="fas fa-angle-left fa-fw" aria-hidden="true"></i>Método de máxima curvatura no R</a></div>
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">
